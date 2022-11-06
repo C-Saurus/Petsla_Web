@@ -7,6 +7,7 @@ import Cart from './components/pages/Cart/Cart'
 import { Routes, Route, Link } from 'react-router-dom'
 import ProductList from "./components/ProductList/index"
 import ProductDetails from './components/ProductDetails';
+
 function App() {
   return (
     <div className="App">
@@ -27,11 +28,13 @@ function App() {
               <Link to='/cart' className="header__nav-third-link" >Cart</Link>
             </li>
             {/* <li className="header__nav-third-item">
+
                         <Link to='/contact' className="header__nav-third-link" >Contact</Link>
                     </li>
                     <li className="header__nav-third-item">
                         <Link to='/account' className="header__nav-third-link" >Account</Link>
                     </li> */}
+
           </ul>
         </div>
       </div>
@@ -41,6 +44,7 @@ function App() {
         <Route path="/product/:productId" element={<ProductDetails />} />
         <Route>404 Not Found!</Route>
         <Route path='/cart' element={<Cart />}></Route>
+
         {/* <Route  path='/contact' element={<Contact/>}></Route>
         <Route  path='/account' element={<Account/>}></Route> */}
       </Routes>

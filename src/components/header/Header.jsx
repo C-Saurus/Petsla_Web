@@ -1,5 +1,5 @@
 import React from 'react'
-import logoIcon from '/Users/MSI GF/OneDrive/Desktop/ProPTIT/FrontEnd/clone-pesla/src/asset/logo.png'
+import logoIcon from "../../asset/logo.png"
 import './Header.css'
 import '../CssBase/responsive.css'
 import '../CssBase/base.css'

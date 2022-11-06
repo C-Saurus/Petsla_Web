@@ -75,7 +75,7 @@
   border-radius: 50%;
   background-image: url(./asset/america.png);
   background-size: cover;
-  background-position: 50%;
+  background-position: 50%; 
   cursor: pointer;
 }
 

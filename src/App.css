@@ -26,10 +26,10 @@
 
 .header__nav-third-link:hover {
   color: rgb(230, 150, 70);
-  
+
 }
 
-.header__nav-third-link:after{
+.header__nav-third-link:after {
   position: absolute;
   content: "";
   width: 0;
@@ -47,4 +47,3 @@
   color: rgb(230, 150, 70);
   width: 100%;
 }
-

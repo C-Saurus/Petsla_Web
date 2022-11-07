@@ -1,0 +1,42 @@
+
+.footer {
+    margin-bottom: 20px;
+}
+
+.footer__banner {
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+.footer__botNav {
+    
+}
+
+.footer__description {
+    padding: 1.5rem;
+    color: gray;
+    font: bold;
+    
+}
+
+.footer__followUs {
+    padding: 1.5rem;
+}
+
+.footer__followUs--icon {
+    display: flex;
+    color: gray;
+}
+
+.footer__banner--img {
+    display: inline-block;
+    width: 100%;
+    -webkit-transition: all 10s ease;
+    -moz-transition: all 10s ease;
+    -o-transition: all 10s ease;
+    -ms-transition: all 10s ease;
+    transition: all 10s ease;
+}
+.footer__banner--img:hover {
+    transform: scale(1.3);
+}

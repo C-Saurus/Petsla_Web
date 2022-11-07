@@ -7,7 +7,7 @@ import Cart from './components/pages/Cart/Cart'
 import { Routes, Route, Link } from 'react-router-dom'
 import ProductList from "./components/ProductList/index"
 import ProductDetails from './components/ProductDetails';
-
+import Footer from './components/footer/footer';
 function App() {
   return (
     <div className="App">
@@ -48,6 +48,7 @@ function App() {
         {/* <Route  path='/contact' element={<Contact/>}></Route>
         <Route  path='/account' element={<Account/>}></Route> */}
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }

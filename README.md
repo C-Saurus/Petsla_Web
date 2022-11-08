@@ -3,6 +3,12 @@
 2. Đinh Bá Hùng
 3. Vũ Hữu Đạt
 
+### Thư viện
+npm i redux
+npm i react-redux
+npm i reactstrap
+npm i bootstrap
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

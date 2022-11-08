@@ -4,6 +4,8 @@ import './ProductList.css'
 import Product from '../Product';
 import { useDispatch, useSelector } from 'react-redux'
 import { setProducts } from "../../redux/actions/productsAction"
+import Sortbar from './SortBar/sortBar'
+
 const ProductList = () => {
     const dispatch = useDispatch();
 
@@ -26,6 +28,7 @@ const ProductList = () => {
     return (
         <div className="products">
             <div className="grid wide">
+                <Sortbar/>
                 <div className="home-product">
                     <div className="row display-products">
                         {

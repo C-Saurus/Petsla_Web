@@ -40,8 +40,8 @@ const Product = ({ product }) => {
                         </div>
                     </div>
                 </div>
-            </div >
-        </div >
+            </div>
+        </div>
     )
 }
 export default Product;

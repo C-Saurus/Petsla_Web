@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import logoIcon from "../../asset/logo.png"
 import './Header.css'
-import '../CssBase/responsive.css'
-import '../CssBase/base.css'
+import './CssBase/responsive.css'
+import './CssBase/base.css'
+import {Link} from 'react-router-dom'
 function Header() {
+
   return (
     <div>
         <header>
@@ -44,11 +46,11 @@ function Header() {
                                 
                             </div>
                             <div className="header__nav-first-listIcon-item">
-                                <div className="header__nav-first-listIcon-item3">
+                                <button className="header__nav-first-listIcon-item3">
                                     <i className="fa-solid fa-arrow-right-to-bracket"></i>
                                     <div className="header__nav-first-listIcon-item3-hover">Login</div>
-                                </div>
-
+                                </button>
+                                
                             </div>
                         </div>
                     </div>
@@ -81,6 +83,29 @@ function Header() {
                     </div>
                 </div>
             </div>
+            <div className="header__nav-third">
+                <div className="container">
+                    <ul className="header__nav-third-list">
+                        <li className="header__nav-third-item">
+                            <Link to='/' className="header__nav-third-link" >Home</Link>
+                        </li>
+                        <li className="header__nav-third-item">
+                            <Link to='/shop' className="header__nav-third-link" >Shop</Link>
+                        </li>
+                        <li className="header__nav-third-item">
+                            <Link to='/cart' className="header__nav-third-link" >Cart</Link>
+                        </li>
+                        {/* <li className="header__nav-third-item">
+
+                                    <Link to='/contact' className="header__nav-third-link" >Contact</Link>
+                                </li>
+                                <li className="header__nav-third-item">
+                                    <Link to='/account' className="header__nav-third-link" >Account</Link>
+                                </li> */}
+
+                    </ul>
+            </div>
+      </div>
         </div>
       </div>
   )

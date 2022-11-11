@@ -33,7 +33,7 @@ const footer = () => {
 
                 </div>
             </div>
-
+            
         </div>
     )
 }

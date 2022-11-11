@@ -1,7 +1,7 @@
 import { ActionTypes } from "../../redux/constants/actionTypes"
 
 export const selectProductReducer = (state = {}, { type, payload }) => {
-    console.log(type);
+    // console.log(type);
     switch (type) {
         case ActionTypes.SELECT_PRODUCT:
             return { ...state, ...payload };

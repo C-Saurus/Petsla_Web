@@ -26,11 +26,26 @@ const ProductList = () => {
     }, []);
 
     return (
-        <div className="products">
-            <div className="grid wide">
-                <Sortbar/>
-                <div className="home-product">
-                    <div className="row display-products">
+        // <div className="products">
+        //     <div className="grid wide">
+        //         <Sortbar/>
+        //         <div className="home-product">
+        //             <div className="row display-products">
+        //                 {
+        //                     productList.map(product => {
+        //                         return (<Product key={product.id} product={product} />)
+        //                     }
+        //                     )
+        //                 }
+        //             </div>
+        //         </div>
+
+        //     </div>
+        // </div>
+         <div className="shop">
+            <div className="container">
+                <div className="grid">
+                    <div className="row">
                         {
                             productList.map(product => {
                                 return (<Product key={product.id} product={product} />)
@@ -39,10 +54,8 @@ const ProductList = () => {
                         }
                     </div>
                 </div>
-
             </div>
-        </div>
-
+        </div> 
     )
 }
 export default ProductList;

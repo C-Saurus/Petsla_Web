@@ -1,6 +1,10 @@
 import React from 'react'
 import { ProductTypes } from '../../redux/constants/productTypes';
 import './Product.css'
+import '../../asset/css/base.css'
+import '../../asset/css/main.css'
+import '../../asset/css/product.css'
+import '../../asset/css/responsive.css'
 import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
@@ -8,35 +12,29 @@ const Product = ({ product }) => {
     const imgURL = ProductTypes.URL + images;
     console.log(imgURL)
     return (
-        <div key={id} className="col l-3 m-4 c-6">
-            <div className="home-product-item">
-                <div className="home-product-item__img">
-                    <Link to={`/product/${id}`} className="hp-item-link">
-                        <div className="hp-item-img" style={{
-                            backgroundImage: `url(${imgURL})`
-                        }}>
-                        </div>
-                    </Link>
-                </div>
-                <div className="home-product-item__content">
-                    <div className="hp-item-text">
-                        <a href="./assets/product/product_1.html" className="hp-item-link">
-                            <div className="hp-item-name">
-                                {product_name}
-                            </div>
-                        </a>
-                        <div className="hp-item-price">
-                            {price}
-                        </div>
+        <div key={id} className="coll ll-3 mm-4 ss-6">
+            <div className="product-item">
+                <Link to={`/product/${id}`}>
+                    <div className="product-item-bgr" style={{
+                        backgroundImage: `url(${imgURL})`
+                    }}>
                     </div>
-                    <div className="home-product-item__action">
-                        <div className="hp-item-buy hp-item-btn-wrap">
-                            <i className="fa-solid fa-bag-shopping"></i>
-                            <span className="d-none d-md-block">Buy now</span>
+                </Link>
+                <div className="product-content pad-content">
+                    <div class="product-content-desc">
+                        <Link to={`/product/${id}`} className="hp-item-link">
+                            <span className="title"> {product_name}</span>
+                        </Link>
+                        <div className="price">{price}</div>
+                    </div>
+                    <div className="product-content-cart">
+                        <div className="buy-btn">
+                            <i className="buy-icon fa-solid fa-bag-shopping"></i>
+                            <span>Buy now</span>
                         </div>
-                        <div className="hp-item-cart hp-item-btn-wrap">
-                            <i className="fa-solid fa-cart-shopping"></i>
-                            <span className="d-none d-xl-block">Add to Cart</span>
+                        <div className="cart-btn">
+                            <i className="cart-icon fa-solid fa-cart-shopping"></i>
+                            <span className="hidden-text-cart">Add to Cart</span>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,26 @@
 import './footer.css'
-import '../../grid.css'
-const footer = () => {
+import './grid.css'
+import '../header/CssBase/responsive.css'
+// import 'bootstrap/dist/css/bootstrap.css'
+import "bootstrap-icons/font/bootstrap-icons.css"
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+
+
+const Footer = () => {
+    const [isActive, setIsActive] = useState(1);
+    const homeActive = () => {
+        setIsActive(1)
+    }
+    const shopActive = () => {
+        setIsActive(2)
+    }
+    const cartActive = () => {
+        setIsActive(3)
+    }
+    const accountActive = () => {
+        setIsActive(4)
+    }
     return (
         <div className="footer">
             <div className="footer__banner">
@@ -33,8 +53,62 @@ const footer = () => {
 
                 </div>
             </div>
-            
+            <div class="bottom__nav">
+                <ul class="bot-nav-list">
+                    <li class="bot-nav-item" onClick={homeActive}>
+                        <Link className='bot-nav-link' to={`/`}>
+                            <div class="item-wrap">
+                                <div class="bot-nav-icon" style = {{ color: isActive === 1 ?  "orange": "black"}}>
+                                    <i class="bi bi-house"></i>
+                                </div>
+                                <div class="bot-nav-Btn bot-nav-homeBtn" style = {{ color: isActive === 1 ?  "orange": "black"}}>
+                                    Home
+                                </div>
+                            </div>
+                        </Link>
+
+                    </li>
+                    <li class="bot-nav-item" onClick={shopActive}>
+                        <Link className='bot-nav-link' to={`/shop`}>
+                            <div class="item-wrap">
+                                <div class="bot-nav-icon shop" style = {{ color: isActive === 2 ?  "orange": "black"}}>
+                                    <i class="bi bi-shop"></i>
+                                </div>
+                                <div class="bot-nav-Btn shop" style = {{ color: isActive === 2 ?  "orange": "black"}}>
+                                    Shop
+                                </div>
+                            </div>
+                        </Link>
+                    </li>
+                    <li class="bot-nav-item" onClick={cartActive}>
+                        <Link className='bot-nav-link' to={`/cart`}>
+                            <div class="item-wrap">
+                                <div class="bot-nav-icon" style = {{ color: isActive === 3 ?  "orange": "black"}}>
+                                    <i class="bi bi-house"></i>
+                                </div>
+                                <div class="bot-nav-Btn" style = {{ color: isActive === 3 ?  "orange": "black"}}>
+                                    Cart
+                                </div>
+                            </div>
+                        </Link>
+
+                    </li>
+                    <li class="bot-nav-item" onClick={accountActive}>
+                        <Link className='bot-nav-link' to = {'/account'}>
+                            <div class="item-wrap">
+                                <div class="bot-nav-icon" style = {{ color: isActive === 4 ?  "orange": "black"}}>
+                                    <i class="bi bi-person"></i>
+                                </div>
+                                <div class="bot-nav-Btn bot-nav-homeBtn" style = {{ color: isActive === 4 ?  "orange": "black"}}>
+                                    Account
+                                </div>
+                            </div>
+                        </Link>
+
+                    </li>
+                </ul>
+            </div>
         </div>
     )
 }
-export default footer
+export default Footer

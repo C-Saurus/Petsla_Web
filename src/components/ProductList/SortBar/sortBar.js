@@ -1,4 +1,4 @@
-import '../../../grid.css'
+import '../../header/CssBase/base.css'
 import style from './style.module.css'
 const sortbar = () => {
     return (

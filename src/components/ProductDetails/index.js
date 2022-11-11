@@ -9,18 +9,20 @@ import { ProductTypes } from '../../redux/constants/productTypes';
 const ProductDetails = () => {
     const { productId } = useParams();
     let product = useSelector((state) => state.selectProduct);
-    console.log(product)
+    // console.log(product)
     const { product_name, price, description, images } = product;
     const imgURL = ProductTypes.URL + images;
 
     const dispatch = useDispatch();
-    const fetchProductDetail = async (id) => {
+    const fetchProductDetail = async (productId) => {
         const response = await axios
             .get("http://petsla-api.herokuapp.com/products/")
             .catch((err) => {
                 console.log("Err: ", err);
             });
-        dispatch(selectProduct(response.data[id]));
+            const selected = response.data.filter(ele => ele.id.toString() === productId)
+            console.log(selected)
+        dispatch(selectProduct(selected[0]));
     };
 
     useEffect(() => {

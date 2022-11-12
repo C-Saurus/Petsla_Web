@@ -5,26 +5,30 @@ import { useDispatch, useSelector } from 'react-redux'
 // import { setProducts } from "../../redux/actions/productsAction"
 import Sortbar from './SortBar/sortBar'
 import PaginationCustom from '../Pagination/pagination';
-import productListReducer from './productListSlice';
+import { fetchProductList, productListReducer } from './productListSlice';
+import { productListSelector } from '../../redux/selectors';
 const ProductList = () => {
     const dispatch = useDispatch();
-
-    const productList = useSelector((state) => state.allProducts.productList);
+    // const productList = useSelector((state) => state.allProducts.productList);
+    const productList = useSelector(productListSelector);
     // console.log("productList: ", productList)
 
-    const fetchProducts = async () => {
-        const response = await axios
-            .get("http://petsla-api.herokuapp.com/products/")
-            .catch((err) => {
-                console.log("Err: ", err);
-            });
-        dispatch(productListReducer.actions.setProducts(response.data))
-    };
+    // const fetchProducts = async () => {
+    //     const response = await axios
+    //         .get("http://petsla-api.herokuapp.com/products/")
+    //         .catch((err) => {
+    //             console.log("Err: ", err);
+    //         });
+    //     dispatch(productListReducer.actions.setProducts(response.data))
+    // };
+
+    // useEffect(() => {
+    //     fetchProducts();
+    // }, []);
 
     useEffect(() => {
-        fetchProducts();
-    }, []);
-
+        dispatch(fetchProductList());
+    }, [])
     return (
         <div className="shop">
             <div className="container">
@@ -38,7 +42,7 @@ const ProductList = () => {
                             )
                         }
                     </div>
-                   <PaginationCustom />
+                    <PaginationCustom />
                 </div>
             </div>
         </div>

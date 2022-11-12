@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectProduct, removeProduct } from "../../redux/actions/productsAction"
 import { ProductTypes } from '../../redux/constants/productTypes';
+import selectProductReducer from '../Product/productSlice'
 
 const ProductDetails = () => {
     const { productId } = useParams();
@@ -29,13 +30,13 @@ const ProductDetails = () => {
             });
         const selected = response.data.filter(ele => ele.id.toString() === productId)
         // console.log(selected)
-        dispatch(selectProduct(selected[0]));
+        dispatch(selectProductReducer.actions.selectProduct(selected[0]));
     };
 
     useEffect(() => {
         if (productId && productId !== "") fetchProductDetail(productId);
         return () => {
-            dispatch(removeProduct());
+            dispatch(selectProductReducer.actions.removeProduct());
         };
     }, [productId]);
 

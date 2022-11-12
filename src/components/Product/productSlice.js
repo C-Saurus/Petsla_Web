@@ -1,13 +1,54 @@
-import { ActionTypes } from "../../redux/constants/actionTypes"
+// const selectProductReducer = (state = {}, { type, payload }) => {
+//     // console.log(type);
+//     switch (type) {
+//         case 'product/selectProduct':
+//             return { ...state, ...payload };
+//         case 'product/removeProduct':
+//             return {};
+//         default:
+//             return state;
+//     }
+// };
 
-export const selectProductReducer = (state = {}, { type, payload }) => {
-    // console.log(type);
-    switch (type) {
-        case ActionTypes.SELECT_PRODUCT:
-            return { ...state, ...payload };
-        case ActionTypes.REMOVE_PRODUCT:
-            return {};
-        default:
-            return state;
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import axios from 'axios';
+
+export const selectProductReducer = createSlice({
+    name: 'product',
+    initialState: {
+        status: 'idle',
+        product: {}
+    },
+    reducers: {
+        // action creators
+        selectProduct: (state, action) => {
+            console.log('state: ', state)
+            state.product = action.payload;
+        },
+        removeProduct: (state) => {
+            state.product = {};
+        }
+    },
+    extraReducers: builder => {
+        builder.addCase(fetchProductDetail.pending, (state, action) => {
+            state.status = 'loading';
+        }).addCase(fetchProductDetail.fulfilled, (state, action) => {
+            // console.log('action: ', {action})
+            state.product = action.payload;
+            state.status = 'idle';
+        })
     }
-};
+})
+
+export const fetchProductDetail = createAsyncThunk('product/fetchProductDetail', async (productId) => {
+    const response = await axios
+        .get("http://petsla-api.herokuapp.com/products/")
+        .catch((err) => {
+            console.log("Err: ", err);
+        });
+    const selected = response.data.filter(ele => ele.id.toString() === productId)
+    return selected[0];
+})
+
+
+

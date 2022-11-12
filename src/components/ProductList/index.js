@@ -17,7 +17,9 @@ const ProductList = () => {
     const pages = [...Array(Math.ceil(products.length / productsPerPage)).keys()]
     const indexOfPrev = (currentPage - 1) * productsPerPage;
     const indexOfAfter = indexOfPrev + productsPerPage;
-    const pros = products.slice(indexOfPrev,indexOfAfter)
+    // console.log(indexOfPrev, "->", indexOfAfter)
+    const pros = products.slice(indexOfPrev, indexOfAfter)
+    // console.log("pros: ", pros)
 
     useEffect(() => {
         dispatch(fetchProductList());
@@ -25,17 +27,24 @@ const ProductList = () => {
 
     const handleChangePage = (val) => {
         setCurrentPage(val)
+        window.scrollTo(0, 0);
     }
     const handleShiftLeftPage = () => {
         setCurrentPage(currentPage - 1)
+        window.scrollTo(0, 0);
     }
     const handleShiftRightPage = () => {
         setCurrentPage(currentPage + 1)
+        window.scrollTo(0, 0);
     }
 
     const handleChangeProducts = (e) => {
+        const numOfProducts = parseInt(e.target.value)
+        if(numOfProducts < productsPerPage){
+            window.scrollTo(0, 0);
+        }
         setCurrentPage(1);
-        setProductsPerPage(e.target.value)
+        setProductsPerPage((parseInt(e.target.value)))
     }
     return (
         <div className="shop">

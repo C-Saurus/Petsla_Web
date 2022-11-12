@@ -1,5 +1,7 @@
 .PaginationCustom {
     margin-top: 2.5rem;
+    display: flex;
+    justify-content: space-between;
 }
 .pagination {
     --bs-pagination-padding-x: 0.75rem;

@@ -5,11 +5,12 @@ import { useDispatch, useSelector } from 'react-redux'
 // import { setProducts } from "../../redux/actions/productsAction"
 import Sortbar from './SortBar/sortBar'
 import PaginationCustom from '../Pagination/pagination';
-import productListReducer from './productListSlice';
+import { productListReducer } from './productListSlice';
+import { productListSelector } from '../../redux/selectors';
 const ProductList = () => {
     const dispatch = useDispatch();
-
-    const productList = useSelector((state) => state.allProducts.productList);
+    // const productList = useSelector((state) => state.allProducts.productList);
+    const productList = useSelector(productListSelector);
     // console.log("productList: ", productList)
 
     const fetchProducts = async () => {
@@ -38,7 +39,7 @@ const ProductList = () => {
                             )
                         }
                     </div>
-                   <PaginationCustom />
+                    <PaginationCustom />
                 </div>
             </div>
         </div>

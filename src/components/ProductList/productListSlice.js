@@ -14,7 +14,7 @@
 
 import { createSlice } from '@reduxjs/toolkit'
 
-const productListReducer = createSlice({
+export const productListReducer = createSlice({
     name: 'productList',
     initialState: {
         productList: []
@@ -26,4 +26,6 @@ const productListReducer = createSlice({
         }
     }
 })
-export default productListReducer;
+
+
+// thunk action 

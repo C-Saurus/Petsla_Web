@@ -7,13 +7,16 @@ import './ProductDetails.css'
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { selectProduct, removeProduct } from "../../redux/actions/productsAction"
+// import { selectProduct, removeProduct } from "../../redux/actions/productsAction"
 import { ProductTypes } from '../../redux/constants/productTypes';
-import selectProductReducer from '../Product/productSlice'
+import { selectProductReducer } from '../Product/productSlice'
+import { selectProductSelector } from '../../redux/selectors'
 
 const ProductDetails = () => {
     const { productId } = useParams();
-    let product = useSelector((state) => state.selectProduct);
+    // let product = useSelector((state) => state.selectProduct);
+    let product = useSelector(selectProductSelector);
+
     // console.log(product)
     const { product_name, price, description, images } = product;
     // console.log("product: ", product)
@@ -29,7 +32,7 @@ const ProductDetails = () => {
                 console.log("Err: ", err);
             });
         const selected = response.data.filter(ele => ele.id.toString() === productId)
-        // console.log(selected)
+        // console.log(selected[0])
         dispatch(selectProductReducer.actions.selectProduct(selected[0]));
     };
 
@@ -41,7 +44,7 @@ const ProductDetails = () => {
     }, [productId]);
 
     const changePrice = (price) => {
-        if(typeof price === "number")
+        if (typeof price === "number")
             return price.toLocaleString();
         else return price;
     }

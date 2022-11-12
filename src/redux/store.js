@@ -8,8 +8,8 @@
 // export default store;
 
 import { configureStore } from '@reduxjs/toolkit'
-import selectProductReducer from '../components/Product/productSlice';
-import productListReducer from '../components/ProductList/productListSlice';
+import {selectProductReducer} from '../components/Product/productSlice';
+import {productListReducer} from '../components/ProductList/productListSlice';
 
 const store = configureStore({
     reducer: {

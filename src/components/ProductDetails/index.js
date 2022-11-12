@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { selectProduct, removeProduct } from "../../redux/actions/productsAction"
 import { ProductTypes } from '../../redux/constants/productTypes';
-import { selectProductReducer } from '../Product/productSlice'
+import { fetchProductDetail, selectProductReducer } from '../Product/productSlice'
 import { selectProductSelector } from '../../redux/selectors'
 
 const ProductDetails = () => {
@@ -25,22 +25,28 @@ const ProductDetails = () => {
     const imgURL = ProductTypes.URL + images;
 
     const dispatch = useDispatch();
-    const fetchProductDetail = async (productId) => {
-        const response = await axios
-            .get("http://petsla-api.herokuapp.com/products/")
-            .catch((err) => {
-                console.log("Err: ", err);
-            });
-        const selected = response.data.filter(ele => ele.id.toString() === productId)
-        // console.log(selected[0])
-        dispatch(selectProductReducer.actions.selectProduct(selected[0]));
-    };
+    // const fetchProductDetail = async (productId) => {
+    //     const response = await axios
+    //         .get("http://petsla-api.herokuapp.com/products/")
+    //         .catch((err) => {
+    //             console.log("Err: ", err);
+    //         });
+    //     const selected = response.data.filter(ele => ele.id.toString() === productId)
+    //     // console.log(selected[0])
+    //     dispatch(selectProductReducer.actions.selectProduct(selected[0]));
+    // };
 
+    // useEffect(() => {
+    //     if (productId && productId !== "") fetchProductDetail(productId);
+    //     return () => {
+    //         dispatch(selectProductReducer.actions.removeProduct());
+    //     };
+    // }, [productId]);
     useEffect(() => {
-        if (productId && productId !== "") fetchProductDetail(productId);
-        return () => {
-            dispatch(selectProductReducer.actions.removeProduct());
-        };
+        if (productId && productId !== "") dispatch(fetchProductDetail(productId));
+        // return () => {
+        //     dispatch(selectProductReducer.actions.removeProduct());
+        // };
     }, [productId]);
 
     const changePrice = (price) => {

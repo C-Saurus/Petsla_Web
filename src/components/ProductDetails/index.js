@@ -44,9 +44,9 @@ const ProductDetails = () => {
     // }, [productId]);
     useEffect(() => {
         if (productId && productId !== "") dispatch(fetchProductDetail(productId));
-        // return () => {
-        //     dispatch(selectProductReducer.actions.removeProduct());
-        // };
+        return () => {
+            dispatch(selectProductReducer.actions.removeProduct());
+        };
     }, [productId]);
 
     const changePrice = (price) => {

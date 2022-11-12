@@ -25,9 +25,9 @@ export const selectProductReducer = createSlice({
             console.log('state: ', state)
             state.product = action.payload;
         },
-        // removeProduct: (state) => {
-        //     state.product = {};
-        // }
+        removeProduct: (state) => {
+            state.product = {};
+        }
     },
     extraReducers: builder => {
         builder.addCase(fetchProductDetail.pending, (state, action) => {

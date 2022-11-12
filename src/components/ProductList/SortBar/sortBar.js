@@ -3,7 +3,7 @@ import style from './style.module.css'
 const sortbar = () => {
     return (
         <div className={style.sortWrap}>
-            <div className='col c-6 m-6 l-4' >
+            <div className='col s-6 m-6 l-4' >
                 <div className={style.sortSelectGr}>
                     <label htmlFor='sort-by'> Sort By: </label>
                     <select id='sort-by' className={style.sortby}>

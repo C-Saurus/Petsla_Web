@@ -27,14 +27,14 @@ const Footer = () => {
                 <img className='footer__banner--img' src="https://www.leoasher.dev/static/media/bannerFooter.4b09af08.png"></img>
             </div>
             <div className='footer__botNav'>
-                <div className="grid wide">
+                <div className="grid">
                     <div className='row'>
-                        <div style={{ "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }} className="footer__description col c-12 m-4 l-4">
+                        <div style={{ "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }} className="footer__description col s-12 m-4 l-4">
                             <div style={{ margin: "10px auto", fontSize: "1.2rem", fontWeight: "bold" }}>Về Petsla</div>
                             <div>PetsLa ra đời với sứ mệnh Pets hóa thế giới loài người bằng cách mang đến cho cộng đồng những content thú vị, đáng yêu về pets.</div>
                         </div>
-                        <div className="col c-12 m-4 l-4"></div>
-                        <div style={{ "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }} className='footer__followUs col c-12 m-4 l-4'>
+                        <div className="col s-12 m-4 l-4"></div>
+                        <div style={{ "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }} className='footer__followUs col s-12 m-4 l-4'>
                             <div style={{ margin: "10px auto", fontSize: "1.2rem", fontWeight: "bold", color: "gray" }}>Follow us</div>
                             <div className='footer__followUs--icon'>
                                 <a href="https://www.facebook.com/" style={{ marginRight: "5px", color: "gray" }} target="_blank">

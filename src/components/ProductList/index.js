@@ -4,7 +4,7 @@ import Product from '../Product';
 import { useDispatch, useSelector } from 'react-redux'
 import { setProducts } from "../../redux/actions/productsAction"
 import Sortbar from './SortBar/sortBar'
-
+import PaginationCustom from '../Pagination/pagination';
 const ProductList = () => {
     const dispatch = useDispatch();
 
@@ -37,9 +37,11 @@ const ProductList = () => {
                             )
                         }
                     </div>
+                   <PaginationCustom />
                 </div>
             </div>
         </div>
+
     )
 }
 export default ProductList;

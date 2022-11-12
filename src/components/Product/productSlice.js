@@ -1,13 +1,31 @@
-import { ActionTypes } from "../../redux/constants/actionTypes"
+// const selectProductReducer = (state = {}, { type, payload }) => {
+//     // console.log(type);
+//     switch (type) {
+//         case 'product/selectProduct':
+//             return { ...state, ...payload };
+//         case 'product/removeProduct':
+//             return {};
+//         default:
+//             return state;
+//     }
+// };
 
-export const selectProductReducer = (state = {}, { type, payload }) => {
-    // console.log(type);
-    switch (type) {
-        case ActionTypes.SELECT_PRODUCT:
-            return { ...state, ...payload };
-        case ActionTypes.REMOVE_PRODUCT:
-            return {};
-        default:
-            return state;
+import { createSlice } from '@reduxjs/toolkit'
+
+const selectProductReducer = createSlice({
+    name: 'product',
+    initialState: {
+        productList: []
+    },
+    reducers: {
+        // action creators
+        selectProduct: (state, action) => {
+            state.productList = action.payload;
+        },
+        removeProduct: (state) => {
+            state = {};
+        }
     }
-};
+})
+
+export default selectProductReducer;

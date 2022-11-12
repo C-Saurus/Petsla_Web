@@ -2,9 +2,10 @@ import React, { useEffect } from 'react'
 import axios from "axios"
 import Product from '../Product';
 import { useDispatch, useSelector } from 'react-redux'
-import { setProducts } from "../../redux/actions/productsAction"
+// import { setProducts } from "../../redux/actions/productsAction"
 import Sortbar from './SortBar/sortBar'
-
+import PaginationCustom from '../Pagination/pagination';
+import productListReducer from './productListSlice';
 const ProductList = () => {
     const dispatch = useDispatch();
 
@@ -17,7 +18,7 @@ const ProductList = () => {
             .catch((err) => {
                 console.log("Err: ", err);
             });
-        dispatch(setProducts(response.data))
+        dispatch(productListReducer.actions.setProducts(response.data))
     };
 
     useEffect(() => {
@@ -37,9 +38,11 @@ const ProductList = () => {
                             )
                         }
                     </div>
+                   <PaginationCustom />
                 </div>
             </div>
         </div>
+
     )
 }
 export default ProductList;

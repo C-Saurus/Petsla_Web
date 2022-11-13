@@ -6,6 +6,7 @@ import { fetchProductList, productListReducer } from './productListSlice';
 import { productListSelector } from '../../redux/selectors';
 import './productList.css'
 const ProductList = () => {
+
     const dispatch = useDispatch();
     const productList = useSelector(productListSelector);
 
@@ -17,8 +18,8 @@ const ProductList = () => {
     const pages = [...Array(Math.ceil(products.length / productsPerPage)).keys()]
     const indexOfPrev = (currentPage - 1) * productsPerPage;
     const indexOfAfter = indexOfPrev + productsPerPage;
-    const pros = products.slice(indexOfPrev,indexOfAfter)
-
+    const pros = products.slice(indexOfPrev, indexOfAfter)
+    window.scrollTo(0, 0);
     useEffect(() => {
         dispatch(fetchProductList());
     }, [])

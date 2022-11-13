@@ -6,12 +6,26 @@ export const productListSelector = (state) => state.allProducts.productList
 
 export const cartListSelector = (state) => state.cartListProducts.cartList
 
-export const searchTextSelector = (state) => state.searchText.searchText
-
+export const searchTextSelector = (state) => state.filter.searchText
+export const sortSelector = (state) => state.filter.sortValue
 export const remainProducts = createSelector(
     productListSelector,
     searchTextSelector,
-    (productList, searchText) => {
-        return productList.filter((product) => product.product_name.toLowerCase().includes(searchText.toLowerCase()));
+    sortSelector,
+    (productList, searchText, sortValue) => {
+        const currentList = productList.filter((product) => product.product_name.toLowerCase().includes(searchText.toLowerCase()));
+        if (sortValue === "0") {
+            return currentList;
+        }
+        else if (sortValue === "1") {
+            return currentList.sort((a, b) => a.product_name.localeCompare(b.product_name));
+        }
+        else if (sortValue === "2") {
+            return currentList.sort((a, b) => b.product_name.localeCompare(a.product_name));
+        }
+        else if (sortValue === "3") {
+            return currentList.sort((a, b) => a.price - b.price);
+        }
+        else return currentList.sort((a, b) => b.price - a.price);
     }
 )

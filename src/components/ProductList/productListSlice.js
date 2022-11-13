@@ -28,26 +28,7 @@ export const productListReducer = createSlice({
             state.productList = action.payload;
         },
 
-        sortBy: (state, action) => {
-            if (action.payload == "0") {
-                state.productList = initialList;
-            }
-            if (action.payload == "1") {
-                state.productList = state.productList.sort((a, b) => a.product_name.localeCompare(b.product_name))
-            }
-            if (action.payload == "2") {
-                state.productList = state.productList.sort((a, b) => b.product_name.localeCompare(a.product_name))
-            }
-            if (action.payload == "3") {
-                state.productList = state.productList.sort((a, b) => a.price - b.price)
-            }
-            if (action.payload == "4") {
-                state.productList = state.productList.sort((a, b) => b.price - a.price)
-            }
-        },
-        searchBy : (state, action) => {
-            
-        }
+        
     },
     extraReducers: builder => {
         builder.addCase(fetchProductList.pending, (state, action) => {

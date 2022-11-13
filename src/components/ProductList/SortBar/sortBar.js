@@ -3,11 +3,12 @@ import style from './style.module.css'
 import { useDispatch } from "react-redux"
 import { productListSelector } from "../../../redux/selectors"
 import { productListReducer } from "../productListSlice"
+import { FilterSlice } from "../../header/FilterSlice"
 
 const Sortbar = () => {
     const dispatch = useDispatch()
     const handleSortType = (e) => {
-        dispatch(productListReducer.actions.sortBy(e.target.value));
+        dispatch(FilterSlice.actions.setSortValue(e.target.value));
     }
 
     return (

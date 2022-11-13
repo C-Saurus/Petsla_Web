@@ -8,7 +8,7 @@ import { logOut } from '../../redux/actions/auth/apiRequest'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CartLogo from '../pages/Cart/CartLogo'
-import { searchSlice } from './SearchSlice'
+import { FilterSlice } from './FilterSlice'
 function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ function Header() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    dispatch(searchSlice.actions.setSearchText(searchTxt))
+    dispatch(FilterSlice.actions.setSearchText(searchTxt))
   }
 
   return (

@@ -14,7 +14,7 @@ const CartList = () => {
         let total = 0;
 
         cartList.forEach((item) => {
-            items += item.quantity;
+            items = cartList.length;
             total += item.quantity * item.price;
         });
 

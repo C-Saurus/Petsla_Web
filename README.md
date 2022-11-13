@@ -8,6 +8,7 @@ npm i redux
 npm i react-redux
 npm i reactstrap
 npm install react-bootstrap bootstrap
+npm i react-toastify
 
 # Getting Started with Create React App
 

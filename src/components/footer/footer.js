@@ -1,6 +1,6 @@
 import './footer.css'
 import './grid.css'
-import '../header/CssBase/responsive.css'
+import '../../asset/css/responsive.css'
 // import 'bootstrap/dist/css/bootstrap.css'
 import "bootstrap-icons/font/bootstrap-icons.css"
 import { useState } from 'react'
@@ -53,53 +53,53 @@ const Footer = () => {
 
                 </div>
             </div>
-            <div class="bottom__nav">
-                <ul class="bot-nav-list">
-                    <li class="bot-nav-item" onClick={homeActive}>
+            <div className="bottom__nav">
+                <ul className="bot-nav-list">
+                    <li className="bot-nav-item" onClick={homeActive}>
                         <Link className='bot-nav-link' to={`/`}>
-                            <div class="item-wrap">
-                                <div class="bot-nav-icon" style = {{ color: isActive === 1 ?  "orange": "black"}}>
-                                    <i class="bi bi-house"></i>
+                            <div className="item-wrap">
+                                <div className="bot-nav-icon" style = {{ color: isActive === 1 ?  "orange": "black"}}>
+                                    <i className="bi bi-house"></i>
                                 </div>
-                                <div class="bot-nav-Btn bot-nav-homeBtn" style = {{ color: isActive === 1 ?  "orange": "black"}}>
+                                <div className="bot-nav-Btn bot-nav-homeBtn" style = {{ color: isActive === 1 ?  "orange": "black"}}>
                                     Home
                                 </div>
                             </div>
                         </Link>
 
                     </li>
-                    <li class="bot-nav-item" onClick={shopActive}>
+                    <li className="bot-nav-item" onClick={shopActive}>
                         <Link className='bot-nav-link' to={`/shop`}>
-                            <div class="item-wrap">
-                                <div class="bot-nav-icon shop" style = {{ color: isActive === 2 ?  "orange": "black"}}>
-                                    <i class="bi bi-shop"></i>
+                            <div className="item-wrap">
+                                <div className="bot-nav-icon bot-shop" style = {{ color: isActive === 2 ?  "orange": "black"}}>
+                                    <i className="bi bi-shop"></i>
                                 </div>
-                                <div class="bot-nav-Btn shop" style = {{ color: isActive === 2 ?  "orange": "black"}}>
+                                <div className="bot-nav-Btn bot-shop" style = {{ color: isActive === 2 ?  "orange": "black"}}>
                                     Shop
                                 </div>
                             </div>
                         </Link>
                     </li>
-                    <li class="bot-nav-item" onClick={cartActive}>
+                    <li className="bot-nav-item" onClick={cartActive}>
                         <Link className='bot-nav-link' to={`/cart`}>
-                            <div class="item-wrap">
-                                <div class="bot-nav-icon" style = {{ color: isActive === 3 ?  "orange": "black"}}>
-                                    <i class="bi bi-house"></i>
+                            <div className="item-wrap">
+                                <div className="bot-nav-icon" style = {{ color: isActive === 3 ?  "orange": "black"}}>
+                                    <i className="bi bi-house"></i>
                                 </div>
-                                <div class="bot-nav-Btn" style = {{ color: isActive === 3 ?  "orange": "black"}}>
+                                <div className="bot-nav-Btn" style = {{ color: isActive === 3 ?  "orange": "black"}}>
                                     Cart
                                 </div>
                             </div>
                         </Link>
 
                     </li>
-                    <li class="bot-nav-item" onClick={accountActive}>
+                    <li className="bot-nav-item" onClick={accountActive}>
                         <Link className='bot-nav-link' to = {'/account'}>
-                            <div class="item-wrap">
-                                <div class="bot-nav-icon" style = {{ color: isActive === 4 ?  "orange": "black"}}>
-                                    <i class="bi bi-person"></i>
+                            <div className="item-wrap">
+                                <div className="bot-nav-icon" style = {{ color: isActive === 4 ?  "orange": "black"}}>
+                                    <i className="bi bi-person"></i>
                                 </div>
-                                <div class="bot-nav-Btn bot-nav-homeBtn" style = {{ color: isActive === 4 ?  "orange": "black"}}>
+                                <div className="bot-nav-Btn bot-nav-homeBtn" style = {{ color: isActive === 4 ?  "orange": "black"}}>
                                     Account
                                 </div>
                             </div>

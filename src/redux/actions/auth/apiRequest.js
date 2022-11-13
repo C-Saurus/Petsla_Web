@@ -38,5 +38,10 @@ export const getUsers = async (accessToken, dispatch) => {
 }
 
 export const logOut = async(dispatch, navigate, accessToken) => {
-    dispatch(loginSuccess())
+    dispatch(logoutStart())
+    try {
+        dispatch(logoutSuccess());
+    } catch(err) {
+        dispatch(logoutFailed());
+    }
 }

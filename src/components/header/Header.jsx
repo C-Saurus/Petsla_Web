@@ -12,7 +12,8 @@ import { FilterSlice } from './FilterSlice'
 function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user  = useSelector((state) => state.auth.login.currentUser);
+  const user  = useSelector((state) => state.auth.login.currentUser) || localStorage.getItem("token");
+//   const user = localStorage.getItem("token");
   console.log(user)
   const handleLogin = (e) => {
     e.preventDefault();

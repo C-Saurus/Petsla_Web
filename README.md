@@ -9,7 +9,7 @@ npm i react-redux
 npm i reactstrap
 npm install react-bootstrap bootstrap
 npm i react-toastify
-
+npm i bootstrap-icons
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

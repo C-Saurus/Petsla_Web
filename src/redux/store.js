@@ -8,6 +8,7 @@
 // export default store;
 
 import { configureStore } from '@reduxjs/toolkit'
+import { searchSlice } from '../components/header/SearchSlice';
 import { cartListReducer } from '../components/pages/Cart/cartSlice';
 import {selectProductReducer} from '../components/Product/productSlice';
 import {productListReducer} from '../components/ProductList/productListSlice';
@@ -18,7 +19,7 @@ const store = configureStore({
         allProducts: productListReducer.reducer,
         selectProduct: selectProductReducer.reducer,
         cartListProducts: cartListReducer.reducer,
-
+        searchText: searchSlice.reducer,
         // auth
         auth: authReducer,
         user: userReducer

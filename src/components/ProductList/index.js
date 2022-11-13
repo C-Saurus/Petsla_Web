@@ -3,11 +3,11 @@ import Product from '../Product';
 import { useDispatch, useSelector } from 'react-redux'
 import Sortbar from './SortBar/sortBar'
 import { fetchProductList, productListReducer } from './productListSlice';
-import { productListSelector } from '../../redux/selectors';
+import { productListSelector, remainProducts } from '../../redux/selectors';
 import style from './style.module.css'
 const ProductList = () => {
     const dispatch = useDispatch();
-    const productList = useSelector(productListSelector);
+    const productList = useSelector(remainProducts);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage, setProductsPerPage] = useState(12);

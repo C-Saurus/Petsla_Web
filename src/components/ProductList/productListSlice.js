@@ -15,7 +15,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-var initialList = []
+let initialList = []
 export const productListReducer = createSlice({
     name: 'productList',
     initialState: {
@@ -44,6 +44,9 @@ export const productListReducer = createSlice({
             if (action.payload == "4") {
                 state.productList = state.productList.sort((a, b) => b.price - a.price)
             }
+        },
+        searchBy : (state, action) => {
+            
         }
     },
     extraReducers: builder => {

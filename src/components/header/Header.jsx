@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, useState} from 'react'
 import logoIcon from "../../asset/logo.png"
 import './Header.css'
 import './responsive.css'
@@ -8,6 +8,7 @@ import { logOut } from '../../redux/actions/auth/apiRequest'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CartLogo from '../pages/Cart/CartLogo'
+import { searchSlice } from './SearchSlice'
 function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,6 +33,17 @@ function Header() {
     });
     navigate("/shop")
   }
+
+  const[searchTxt, setSearchTxt] = useState("");
+  const handleSearchInput = (e) => {
+    setSearchTxt(e.target.value)
+  }
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    dispatch(searchSlice.actions.setSearchText(searchTxt))
+  }
+
   return (
     <Fragment>
         <header>
@@ -100,8 +112,8 @@ function Header() {
                     <div className="header__nav-second-search">
                         <form action="">
                             <div className="header__nav-second-search-form">
-                                <input type="text" name="search" placeholder="Everything here is better than your ex" className="header__nav-second-search-input"/>
-                                <button type="submit" className="header__nav-second-search-btn">
+                                <input onChange={handleSearchInput} type="text" name="search" placeholder="Everything here is better than your ex" className="header__nav-second-search-input"/>
+                                <button onClick={handleSearch} type="submit" className="header__nav-second-search-btn">
                                     <i className="fa-solid fa-magnifying-glass header__nav-second-search-icon"></i>
                                 </button>
                             </div>

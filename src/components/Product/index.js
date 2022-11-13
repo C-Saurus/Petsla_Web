@@ -13,7 +13,7 @@ const Product = ({ product }) => {
     return (
         <div key={id} className="coll ll-3 mm-4 ss-6">
             <div className="product-item">
-                <Link to={`/product/${id}`}>
+                <Link to={`/product/${id}`} style={{textDecoration: "none"}}>
                     <div className="product-item-bgr" style={{
                         backgroundImage: `url(${imgURL})`
                     }}>
@@ -21,7 +21,7 @@ const Product = ({ product }) => {
                 </Link>
                 <div className="product-content pad-content">
                     <div className="product-content-desc">
-                        <Link to={`/product/${id}`} className="hp-item-link">
+                        <Link to={`/product/${id}`} className="hp-item-link" style={{textDecoration: "none"}}>
                             <span className="title"> {product_name}</span>
                         </Link>
                         <div className="price">{price.toLocaleString('vi-VN')}</div>

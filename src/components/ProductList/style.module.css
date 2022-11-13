@@ -27,7 +27,7 @@
     padding-left: 0;
     list-style: none;
 }
-.page-link {
+.pageLink {
     position: relative;
     display: block;
     padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
@@ -39,44 +39,46 @@
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-    .page-link {
+    .pageLink {
         transition: none;
     }
 }
-.page-link:hover {
+.pageLink:hover {
     z-index: 2;
     color: var(--bs-pagination-hover-color);
     background-color: var(--bs-pagination-hover-bg);
     border-color: var(--bs-pagination-hover-border-color);
 }
-.page-link:focus {
+.pageLink:focus {
     z-index: 3;
     color: var(--bs-pagination-focus-color);
     background-color: var(--bs-pagination-focus-bg);
     outline: 0;
 }
-.active > .page-link,
-.page-link.active {
+.active > .pageLink,
+.pageLink.active {
     z-index: 3;
     color: var(--bs-pagination-active-color);
     background-color: var(--bs-pagination-active-bg);
     border-color: var(--bs-pagination-active-border-color);
 }
-.disabled > .page-link,
-.page-link.disabled {
+.disabled > .pageLink,
+.pageLink.disabled {
     color: var(--bs-pagination-disabled-color);
     pointer-events: none;
     background-color: var(--bs-pagination-disabled-bg);
     border-color: var(--bs-pagination-disabled-border-color);
 }
-.page-item:not(:first-child) .page-link {
+.pageItem:not(:first-child) .pageLink {
     margin-left: -1px;
 }
-.page-item:first-child .page-link {
+.pageItem:first-child .pageLink {
     border-top-left-radius: var(--bs-pagination-border-radius);
     border-bottom-left-radius: var(--bs-pagination-border-radius);
 }
-.page-item:last-child .page-link {
+.pageItem:last-child .pageLink {
     border-top-right-radius: var(--bs-pagination-border-radius);
     border-bottom-right-radius: var(--bs-pagination-border-radius);
 }
+
+

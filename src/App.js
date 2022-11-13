@@ -6,6 +6,8 @@ import { Routes, Route } from 'react-router-dom'
 import ProductList from "./components/ProductList/index"
 import ProductDetails from './components/ProductDetails';
 import Footer from './components/footer/footer';
+import Register from './components/header/Register/Register'
+import Login from './components/header/Login/Login';
 function App() {
   return (
     <div className="App">
@@ -19,7 +21,8 @@ function App() {
         <Route path="/product/:productId" element={<ProductDetails />} />
         <Route>404 Not Found!</Route>
         <Route path='/cart' element={<Cart />}></Route>
-
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/register' element={<Register />}></Route>
         {/* <Route  path='/contact' element={<Contact/>}></Route>
         <Route  path='/account' element={<Account/>}></Route> */}
       </Routes>

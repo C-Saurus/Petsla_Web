@@ -1,14 +1,36 @@
-import React, {Fragment, useState} from 'react'
+import React, {Fragment} from 'react'
 import logoIcon from "../../asset/logo.png"
 import './Header.css'
-import './CssBase/responsive.css'
-import './CssBase/base.css'
-
-import {Link} from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Modal, Button, Form} from 'react-bootstrap';
+import './responsive.css'
+import {Link, useNavigate} from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { logOut } from '../../redux/actions/auth/apiRequest'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Header() {
-  const [modal, setModal] = useState(false)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user  = useSelector((state) => state.auth.login.currentUser);
+  console.log(user)
+  const handleLogin = (e) => {
+    e.preventDefault();
+    navigate("/login")
+  }
+  const handleLogout = (e) => {
+    e.preventDefault();
+    logOut(dispatch, navigate);
+    toast.success('Đăng xuất thành công!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
+    navigate("/shop")
+  }
   return (
     <Fragment>
         <header>
@@ -48,55 +70,19 @@ function Header() {
                             
                         </div>
                         <div className="header__nav-first-listIcon-item">
-                            <button className="header__nav-first-listIcon-item3" onClick={() => setModal(!modal)}>
+                            {!user
+                            ? 
+                            <button className="header__nav-first-listIcon-item3" onClick={handleLogin}>
                                 <i className="fa-solid fa-arrow-right-to-bracket"></i>
                                 <div className="header__nav-first-listIcon-item3-hover">Login</div>
                             </button>
-                            <Modal show={modal} onHide={() => setModal(!modal)} centered dialogClassName="modal-90w">
-                                <Modal.Header closeButton>
-                                    <Modal.Title>Login</Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
-                                    <Form>
-                                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                                            <Form.Control type="text" placeholder="Username..." required />
-                                        </Form.Group>
-                                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                                            <Form.Control type="password" placeholder="Password..." required />
-                                        </Form.Group>
-                                        <Form.Group className="mb-4" controlId="formBasicCheckbox">
-                                            <Form.Check type="checkbox" label="Remember me" />
-                                        </Form.Group>
-                                        <Form.Group className="d-grid">
-                                            <Button variant="success" type="submit">
-                                                Login
-                                             </Button>
-                                        </Form.Group>
-                                        <div className='separate-wrap'>
-                                            <div className='separate-dash'></div>
-                                            <div className='separate-text'>or</div>
-                                            <div className='separate-dash'></div>
-                                        </div>
-                                        <Form.Group>
-                                            <div className="d-grid gap-3">
-                                                <Button variant="danger" size="md">
-                                                    Login with Google
-                                                </Button>
-                                                <Button variant="primary" size="md">
-                                                    Login with Facebook
-                                                </Button>
-                                            </div>
-                                        </Form.Group>
-                                    </Form>
-                                    <div>
-                                        <div className='change-modal-wrap'>
-                                            <div className='change-to-register'>Do not have an account? Register</div>
-                                            <div className='forgot-password'>Forgot password?</div>
-                                        </div>
-                                    </div>
-                                </Modal.Body>
-                                
-                            </Modal>
+                            :
+                            <button className="header__nav-first-listIcon-item3" onClick={handleLogout}>
+                                <i className="fa-solid fa-right-from-bracket"></i>
+                                <div className="header__nav-first-listIcon-item3-hover">Logout</div>
+                            </button>
+                            }
+                            
                         </div>
                     </div>
                 </div>
@@ -152,7 +138,21 @@ function Header() {
                 </ul>
             </div>
         </div>
-      </Fragment>
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            />
+            {/* Same as */}
+        <ToastContainer />
+    </Fragment>
   )
 }
 

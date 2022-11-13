@@ -6,7 +6,6 @@ import { fetchProductList, productListReducer } from './productListSlice';
 import { productListSelector } from '../../redux/selectors';
 import style from './style.module.css'
 const ProductList = () => {
-
     const dispatch = useDispatch();
     const productList = useSelector(productListSelector);
 
@@ -25,7 +24,7 @@ const ProductList = () => {
     useEffect(() => {
         dispatch(fetchProductList());
     }, [])
-    
+
     const handleChangePage = (val) => {
         setCurrentPage(val)
         window.scrollTo(0, 0);

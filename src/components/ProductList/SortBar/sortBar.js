@@ -1,6 +1,7 @@
 import "../../../asset/css/base.css"
 import style from './style.module.css'
 import { useDispatch } from "react-redux"
+import { productListSelector } from "../../../redux/selectors"
 import { productListReducer } from "../productListSlice"
 
 const Sortbar = () => {

@@ -8,6 +8,7 @@
 // export default store;
 
 import { configureStore } from '@reduxjs/toolkit'
+import { cartListReducer } from '../components/pages/Cart/cartSlice';
 import {selectProductReducer} from '../components/Product/productSlice';
 import {productListReducer} from '../components/ProductList/productListSlice';
 import authReducer from './actions/authSlice'
@@ -16,6 +17,7 @@ const store = configureStore({
     reducer: {
         allProducts: productListReducer.reducer,
         selectProduct: selectProductReducer.reducer,
+        cartListProducts: cartListReducer.reducer,
 
         // auth
         auth: authReducer,

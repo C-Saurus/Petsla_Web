@@ -1,13 +1,13 @@
 import './App.css';
 import Header from './components/header/Header';
 import Home from './components/pages/Home/Home'
-import Cart from './components/pages/Cart/Cart'
 import { Routes, Route } from 'react-router-dom'
 import ProductList from "./components/ProductList/index"
 import ProductDetails from './components/ProductDetails';
 import Footer from './components/footer/footer';
 import Register from './components/header/Register/Register'
 import Login from './components/header/Login/Login';
+import CartList from './components/pages/Cart/CartList';
 function App() {
   return (
     <div className="App">
@@ -20,7 +20,7 @@ function App() {
         <Route path='/shop' element={<ProductList />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
         <Route>404 Not Found!</Route>
-        <Route path='/cart' element={<Cart />}></Route>
+        <Route path='/cart' element={<CartList />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
         {/* <Route  path='/contact' element={<Contact/>}></Route>

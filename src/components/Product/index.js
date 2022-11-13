@@ -5,15 +5,22 @@ import '../../asset/css/main.css'
 import '../../asset/css/product.css'
 import '../../asset/css/responsive.css'
 import { Link } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { cartListReducer } from '../pages/Cart/cartSlice';
 
 const Product = ({ product }) => {
     const { id, product_name, price, images } = product;
     const imgURL = ProductTypes.URL + images;
     // console.log(imgURL)
+    const dispatch = useDispatch();
+    const handleAddToCart = () => {
+        dispatch(cartListReducer.actions.addToCart(product));
+    }
+
     return (
         <div key={id} className="coll ll-3 mm-4 ss-6">
             <div className="product-item">
-                <Link to={`/product/${id}`} style={{textDecoration: "none"}}>
+                <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>
                     <div className="product-item-bgr" style={{
                         backgroundImage: `url(${imgURL})`
                     }}>
@@ -21,7 +28,7 @@ const Product = ({ product }) => {
                 </Link>
                 <div className="product-content pad-content">
                     <div className="product-content-desc">
-                        <Link to={`/product/${id}`} className="hp-item-link" style={{textDecoration: "none"}}>
+                        <Link to={`/product/${id}`} className="hp-item-link" style={{ textDecoration: "none" }}>
                             <span className="title"> {product_name}</span>
                         </Link>
                         <div className="price">{price.toLocaleString('vi-VN')}</div>
@@ -31,10 +38,10 @@ const Product = ({ product }) => {
                             <i className="buy-icon fa-solid fa-bag-shopping"></i>
                             <span>Buy now</span>
                         </div>
-                        <div className="cart-btn">
+                        <button className="cart-btn" onClick={handleAddToCart}>
                             <i className="cart-icon fa-solid fa-cart-shopping"></i>
                             <span className="hidden-text-cart">Add to Cart</span>
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>

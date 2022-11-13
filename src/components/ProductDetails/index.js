@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ProductTypes } from '../../redux/constants/productTypes';
 import { fetchProductDetail, selectProductReducer } from '../Product/productSlice'
 import { selectProductSelector } from '../../redux/selectors'
+import { cartListReducer } from '../pages/Cart/cartSlice'
 
 const ProductDetails = () => {
     const { productId } = useParams();
@@ -54,6 +55,11 @@ const ProductDetails = () => {
             return price.toLocaleString();
         else return price;
     }
+
+    const handleAddToCart = () => {
+        dispatch(cartListReducer.actions.addToCart(product));
+    }
+
     return (
         <div className="product">
             <div className="container">
@@ -72,7 +78,7 @@ const ProductDetails = () => {
                             <button type="button" className="btn1">
                                 <span>Buy Now</span>
                             </button>
-                            <button type="button" className="btn2">
+                            <button type="button" className="btn2" onClick={handleAddToCart}>
                                 <span>Add to Cart</span>
                             </button>
                         </div>

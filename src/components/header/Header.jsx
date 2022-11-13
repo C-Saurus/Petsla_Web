@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logOut } from '../../redux/actions/auth/apiRequest'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CartLogo from '../pages/Cart/CartLogo'
 function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -106,12 +107,7 @@ function Header() {
                             </div>
                         </form>
                     </div>
-                    <div className="header__nav-second-btn">
-                        <div className="header__nav-second-btn-item">
-                            <i className="fa-solid fa-cart-shopping header__nav-second-btn-icon"></i>
-                            <span className="header__nav-second-btn-num">0</span>
-                        </div>
-                    </div>
+                    <CartLogo />
                 </div>
             </div>
         </div>

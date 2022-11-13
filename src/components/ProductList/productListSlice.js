@@ -25,6 +25,7 @@ export const productListReducer = createSlice({
         setProducts: (state, action) => {
             state.productList = action.payload;
         }
+        
     },
     extraReducers: builder => {
         builder.addCase(fetchProductList.pending, (state, action) => {

@@ -1,20 +1,40 @@
 import './footer.css'
-import '../../grid.css'
-const footer = () => {
+import './grid.css'
+import '../../asset/css/responsive.css'
+// import 'bootstrap/dist/css/bootstrap.css'
+import "bootstrap-icons/font/bootstrap-icons.css"
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+
+
+const Footer = () => {
+    const [isActive, setIsActive] = useState(1);
+    const homeActive = () => {
+        setIsActive(1)
+    }
+    const shopActive = () => {
+        setIsActive(2)
+    }
+    const cartActive = () => {
+        setIsActive(3)
+    }
+    const accountActive = () => {
+        setIsActive(4)
+    }
     return (
         <div className="footer">
             <div className="footer__banner">
                 <img className='footer__banner--img' src="https://www.leoasher.dev/static/media/bannerFooter.4b09af08.png"></img>
             </div>
             <div className='footer__botNav'>
-                <div className="grid wide">
+                <div className="grid">
                     <div className='row'>
-                        <div style={{ "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }} className="footer__description col c-12 m-4 l-4">
+                        <div style={{ "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }} className="footer__description col s-12 m-4 l-4">
                             <div style={{ margin: "10px auto", fontSize: "1.2rem", fontWeight: "bold" }}>Về Petsla</div>
                             <div>PetsLa ra đời với sứ mệnh Pets hóa thế giới loài người bằng cách mang đến cho cộng đồng những content thú vị, đáng yêu về pets.</div>
                         </div>
-                        <div className="col c-12 m-4 l-4"></div>
-                        <div style={{ "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }} className='footer__followUs col c-12 m-4 l-4'>
+                        <div className="col s-12 m-4 l-4"></div>
+                        <div style={{ "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }} className='footer__followUs col s-12 m-4 l-4'>
                             <div style={{ margin: "10px auto", fontSize: "1.2rem", fontWeight: "bold", color: "gray" }}>Follow us</div>
                             <div className='footer__followUs--icon'>
                                 <a href="https://www.facebook.com/" style={{ marginRight: "5px", color: "gray" }} target="_blank">
@@ -33,8 +53,62 @@ const footer = () => {
 
                 </div>
             </div>
+            <div className="bottom__nav">
+                <ul className="bot-nav-list">
+                    <li className="bot-nav-item" onClick={homeActive}>
+                        <Link className='bot-nav-link' to={`/`}>
+                            <div className="item-wrap">
+                                <div className="bot-nav-icon" style = {{ color: isActive === 1 ?  "orange": "black"}}>
+                                    <i className="bi bi-house"></i>
+                                </div>
+                                <div className="bot-nav-Btn bot-nav-homeBtn" style = {{ color: isActive === 1 ?  "orange": "black"}}>
+                                    Home
+                                </div>
+                            </div>
+                        </Link>
 
+                    </li>
+                    <li className="bot-nav-item" onClick={shopActive}>
+                        <Link className='bot-nav-link' to={`/shop`}>
+                            <div className="item-wrap">
+                                <div className="bot-nav-icon bot-shop" style = {{ color: isActive === 2 ?  "orange": "black"}}>
+                                    <i className="bi bi-shop"></i>
+                                </div>
+                                <div className="bot-nav-Btn bot-shop" style = {{ color: isActive === 2 ?  "orange": "black"}}>
+                                    Shop
+                                </div>
+                            </div>
+                        </Link>
+                    </li>
+                    <li className="bot-nav-item" onClick={cartActive}>
+                        <Link className='bot-nav-link' to={`/cart`}>
+                            <div className="item-wrap">
+                                <div className="bot-nav-icon" style = {{ color: isActive === 3 ?  "orange": "black"}}>
+                                    <i className="bi bi-house"></i>
+                                </div>
+                                <div className="bot-nav-Btn" style = {{ color: isActive === 3 ?  "orange": "black"}}>
+                                    Cart
+                                </div>
+                            </div>
+                        </Link>
+
+                    </li>
+                    <li className="bot-nav-item" onClick={accountActive}>
+                        <Link className='bot-nav-link' to = {'/account'}>
+                            <div className="item-wrap">
+                                <div className="bot-nav-icon" style = {{ color: isActive === 4 ?  "orange": "black"}}>
+                                    <i className="bi bi-person"></i>
+                                </div>
+                                <div className="bot-nav-Btn bot-nav-homeBtn" style = {{ color: isActive === 4 ?  "orange": "black"}}>
+                                    Account
+                                </div>
+                            </div>
+                        </Link>
+
+                    </li>
+                </ul>
+            </div>
         </div>
     )
 }
-export default footer
+export default Footer

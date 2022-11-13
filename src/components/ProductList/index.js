@@ -35,7 +35,7 @@ const ProductList = () => {
 
     const handleChangeProducts = (e) => {
         setCurrentPage(1);
-        setProductsPerPage(e.target.value)
+        setProductsPerPage((parseInt(e.target.value)))
     }
     return (
         <div className="shop">

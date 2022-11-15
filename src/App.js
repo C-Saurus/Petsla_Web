@@ -5,9 +5,10 @@ import { Routes, Route } from 'react-router-dom'
 import ProductList from "./components/ProductList/index"
 import ProductDetails from './components/ProductDetails';
 import Footer from './components/footer/footer';
-import Register from './components/header/Register/Register'
-import Login from './components/header/Login/Login';
+import Register from './feature/Register/Register'
+import Login from './feature/Login/Login';
 import CartList from './components/pages/Cart/CartList';
+import { ToastContainer} from 'react-toastify';
 function App() {
   return (
     <div className="App">
@@ -27,6 +28,20 @@ function App() {
         <Route  path='/account' element={<Account/>}></Route> */}
       </Routes>
       <Footer></Footer>
+      <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            />
+            {/* Same as */}
+        <ToastContainer />
     </div>
   );
 }

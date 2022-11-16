@@ -28,6 +28,10 @@ const CartPopUpItem = ({ item }) => {
     dispatch(cartListReducer.actions.removeFromCart(item));
   };
 
+  useEffect(() => {
+    setQty(quantity);
+  }, [quantity]);
+
   return (
     <div key={id} className="product-item-choose">
       <div className="product-plus-minus">
@@ -47,8 +51,8 @@ const CartPopUpItem = ({ item }) => {
           className="minus"
           onClick={() => handleChangeQty(-1)}
           disabled={isDisabled}
-          onMouseEnter={() =>  setIsHover(true)}
-          onMouseLeave={() =>  setIsHover(false)}
+          onMouseEnter={() => setIsHover(true)}
+          onMouseLeave={() => setIsHover(false)}
           style={{
             backgroundColor: isHover ? "#e69646" : "transparent",
             color: isHover ? "#fafafa" : "black",

@@ -10,7 +10,6 @@ export default function CartLogo() {
     const status = useSelector(cartpopupSelector)
 
     const [cartQuantity, setCartQuantity] = useState(0);
-    const [isActive, setIsActive] = useState(status);
 
     useEffect(() => {
         const sum = cartList.reduce((quantity, object) => {
@@ -20,9 +19,7 @@ export default function CartLogo() {
     }, [cartList]);
 
     const handleCartLogo = () => {
-        let tmp = !isActive
-        setIsActive(tmp)
-        dispatch(cartListReducer.actions.displayCartPopUp(tmp))
+        dispatch(cartListReducer.actions.displayCartPopUp(!status))
     }
     return (
         <div className="header__nav-second-btn" >

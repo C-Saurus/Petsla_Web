@@ -5,46 +5,56 @@ import { useDispatch } from "react-redux";
 import { cartListReducer } from "../cartSlice";
 
 const CartItem = ({ item }) => {
-    const { product_name, price, description, images, quantity } = item;
-    const imgURL = ProductTypes.URL + images;
+  const { product_name, price, description, images, quantity } = item;
+  const imgURL = ProductTypes.URL + images;
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const [qty, setQty] = useState(quantity);
+  const [qty, setQty] = useState(quantity);
 
-    const handleChangeQty = (e) => {
-        setQty(e.target.value);
-        dispatch(cartListReducer.actions.adjustQuantity({...item, quantity: e.target.value}));
-    }
-
-    const handelRemoveFromCart  = () => {
-        dispatch(cartListReducer.actions.removeFromCart(item));
-    }
-
-    return (
-        <div className={style.cartItem}>
-            <img
-                className={style.cartItem__image}
-                src={imgURL}
-                alt={product_name}
-            />
-            <div className={style.cartItem__details}>
-                <p className={style.details__title}>{product_name}</p>
-                <p className={style.details__desc}>{description}</p>
-                <p className={style.details__price}>{price.toLocaleString()}đ</p>
-            </div>
-            <div className={style.cartItem__actions}>
-                <div className={style.cartItem__qty}>
-                    <label htmlFor="qty">Quantity</label>
-                    <input min="1" type="number" id="qty" name="qty" value={qty} onChange={handleChangeQty} />
-                </div>
-                <button className={style.actions__deleteItemBtn} onClick={handelRemoveFromCart}>
-                    <img src={imgURL} alt="" />
-                </button>
-            </div>
-        </div>
+  const handleChangeQty = (e) => {
+    setQty(e.target.value);
+    dispatch(
+      cartListReducer.actions.adjustQuantity({
+        ...item,
+        quantity: e.target.value,
+      })
     );
-};
+  };
 
+  const handelRemoveFromCart = () => {
+    dispatch(cartListReducer.actions.removeFromCart(item));
+  };
+
+  return (
+    <div className={style.cartItem}>
+      <img className={style.cartItem__image} src={imgURL} alt={product_name} />
+      <div className={style.cartItem__details}>
+        <p className={style.details__title}>{product_name}</p>
+        <p className={style.details__desc}>{description}</p>
+        <p className={style.details__price}>{price.toLocaleString()}đ</p>
+      </div>
+      <div className={style.cartItem__actions}>
+        <div className={style.cartItem__qty}>
+          <label htmlFor="qty">Quantity</label>
+          <input
+            min="1"
+            type="number"
+            id="qty"
+            name="qty"
+            value={qty}
+            onChange={handleChangeQty}
+          />
+        </div>
+        <button
+          className={style.actions__deleteItemBtn}
+          onClick={handelRemoveFromCart}
+        >
+          <img src={imgURL} alt="" />
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default CartItem;

@@ -1,15 +1,3 @@
-// const selectProductReducer = (state = {}, { type, payload }) => {
-//     // console.log(type);
-//     switch (type) {
-//         case 'product/selectProduct':
-//             return { ...state, ...payload };
-//         case 'product/removeProduct':
-//             return {};
-//         default:
-//             return state;
-//     }
-// };
-
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 
@@ -33,7 +21,6 @@ export const selectProductReducer = createSlice({
         builder.addCase(fetchProductDetail.pending, (state, action) => {
             state.status = 'loading';
         }).addCase(fetchProductDetail.fulfilled, (state, action) => {
-            // console.log('action: ', {action})
             state.product = action.payload;
             state.status = 'idle';
         })

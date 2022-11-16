@@ -7,19 +7,17 @@ import { productListSelector, remainProducts } from '../../redux/selectors';
 import style from './style.module.css'
 const ProductList = () => {
     const dispatch = useDispatch();
+
     const productList = useSelector(remainProducts);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage, setProductsPerPage] = useState(12);
 
     const products = [...productList]
-
     const pages = [...Array(Math.ceil(products.length / productsPerPage)).keys()]
     const indexOfPrev = (currentPage - 1) * productsPerPage;
     const indexOfAfter = indexOfPrev + productsPerPage;
-    // console.log(indexOfPrev, "->", indexOfAfter)
     const pros = products.slice(indexOfPrev, indexOfAfter)
-    // console.log("pros: ", pros)
 
     useEffect(() => {
         dispatch(fetchProductList());

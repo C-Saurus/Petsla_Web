@@ -5,12 +5,16 @@ import { useDispatch } from "react-redux";
 import { cartListReducer } from "../cartSlice";
 
 const CartItem = ({ item }) => {
+  const dispatch = useDispatch();
+
   const { product_name, price, description, images, quantity } = item;
   const imgURL = ProductTypes.URL + images;
 
-  const dispatch = useDispatch();
-
   const [qty, setQty] = useState(quantity);
+
+  useEffect(() => {
+    setQty(quantity);
+  }, [quantity]);
 
   const handleChangeQty = (e) => {
     setQty(e.target.value);
@@ -25,10 +29,6 @@ const CartItem = ({ item }) => {
   const handelRemoveFromCart = () => {
     dispatch(cartListReducer.actions.removeFromCart(item));
   };
-
-  useEffect(() => {
-    setQty(quantity);
-  }, [quantity]);
 
   return (
     <div className={style.cartItem}>

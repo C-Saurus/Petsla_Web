@@ -12,6 +12,11 @@ const CartPopUpItem = ({ item }) => {
   const [isDisabled, setIsDisabled] = useState(quantity > 1 ? false : true);
   const [isHover, setIsHover] = useState(quantity <= 1 ? false : true);
 
+  useEffect(() => {
+    setQty(quantity);
+    setIsDisabled(quantity > 1 ? false : true);
+  }, [quantity]);
+
   const handleChangeQty = (val = 0) => {
     if (val + qty <= 1) {
       setIsDisabled(true);
@@ -24,13 +29,10 @@ const CartPopUpItem = ({ item }) => {
       cartListReducer.actions.adjustQuantity({ ...item, quantity: qty + val })
     );
   };
+
   const handelRemoveFromCart = () => {
     dispatch(cartListReducer.actions.removeFromCart(item));
   };
-
-  useEffect(() => {
-    setQty(quantity);
-  }, [quantity]);
 
   return (
     <div key={id} className="product-item-choose">

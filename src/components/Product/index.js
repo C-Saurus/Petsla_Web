@@ -7,14 +7,17 @@ import '../../asset/css/responsive.css'
 import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { cartListReducer } from '../pages/Cart/cartSlice';
+import { successToast } from '../../utils/Toastify';
 
 const Product = ({ product }) => {
+    const dispatch = useDispatch();
+
     const { id, product_name, price, images } = product;
     const imgURL = ProductTypes.URL + images;
-    // console.log(imgURL)
-    const dispatch = useDispatch();
+    
     const handleAddToCart = () => {
         dispatch(cartListReducer.actions.addToCart(product));
+        successToast("Add to Cart Successfully");
     }
 
     return (

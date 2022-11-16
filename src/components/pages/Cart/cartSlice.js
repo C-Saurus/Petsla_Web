@@ -3,7 +3,10 @@ import { createSlice } from '@reduxjs/toolkit'
 export const cartListReducer = createSlice({
     name: 'cart',
     initialState: {
-        cartList: [] // [{...product, quantity},..]
+        cartList: [], // [{...product, quantity},..]
+        cartPopUp: {
+            status: false
+        }
     },
     reducers: {
         // action creators
@@ -27,6 +30,9 @@ export const cartListReducer = createSlice({
             state.cartList = state.cartList.map((item) => {
                return item.id === action.payload.id ? {...item, quantity:qty} : item
             })
+        },
+        displayCartPopUp: (state, action) => {
+            state.cartPopUp.status = action.payload
         }
     }
 })

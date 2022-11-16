@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux';
-import { cartListSelector } from '../../../../redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { cartListSelector, cartpopupSelector } from '../../../../redux/selectors';
+import { cartListReducer } from '../cartSlice';
 
 export default function CartLogo() {
-    
-    const [cartQuantity, setCartQuantity] = useState(0);
+    const dispatch = useDispatch();
+
     const cartList = useSelector(cartListSelector)
+    const status = useSelector(cartpopupSelector)
+
+    const [cartQuantity, setCartQuantity] = useState(0);
+    const [isActive, setIsActive] = useState(status);
+
     useEffect(() => {
         const sum = cartList.reduce((quantity, object) => {
             return quantity + object.quantity;
@@ -13,10 +19,16 @@ export default function CartLogo() {
         setCartQuantity(sum);
     }, [cartList]);
 
+    const handleCartLogo = () => {
+        let tmp = !isActive
+        setIsActive(tmp)
+        dispatch(cartListReducer.actions.displayCartPopUp(tmp))
+    }
     return (
         <div className="header__nav-second-btn" >
             <div className="header__nav-second-btn-item">
-                <i className="fa-solid fa-cart-shopping header__nav-second-btn-icon"></i>
+                <button className="fa-solid fa-cart-shopping header__nav-second-btn-icon" style={{ border: "none", backgroundColor: "transparent" }} onClick={handleCartLogo}>
+                </button>
                 <span className="header__nav-second-btn-num">{cartQuantity}</span>
             </div>
         </div>

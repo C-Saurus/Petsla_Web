@@ -69,10 +69,6 @@
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
-    background-image: url(/src/asset/america.png);
-    background-size: cover;
-    background-position: 50%;
-    cursor: pointer;
   }
   
   .header__nav-first-listIcon-item1-hover {
@@ -80,13 +76,14 @@
     color: rgb(255, 255, 255);
     position: absolute;
     left: 50%;
+    top: 12%;
     font-size: .875rem;
     padding: .3rem .5rem;
     border-radius: 3px;
     white-space: nowrap;
-    transform: translate(-50%) translateY(100%);
-    opacity: 0;
+    opacity: 1;
     transition: .3s;
+   
   }
   
   .header__nav-first-listIcon-item1:hover .header__nav-first-listIcon-item1-hover {
@@ -106,6 +103,7 @@
     color: rgb(255, 255, 255);
     position: absolute;
     left: 50%;
+    top: 90%;
     font-size: .875rem;
     padding: .3rem .5rem;
     border-radius: 3px;
@@ -116,7 +114,7 @@
   }
   
   
-  .header__nav-first-listIcon-item2:hover .header__nav-first-listIcon-item2-hover {
+  .header__nav-first-listIcon-item2-icon:focus .header__nav-first-listIcon-item2-hover {
     opacity: 1;
   }
   
@@ -136,6 +134,7 @@
     color: rgb(255, 255, 255);
     position: absolute;
     left: 50%;
+    top: 150%;
     font-size: .875rem;
     padding: .3rem .5rem;
     border-radius: 3px;
@@ -145,7 +144,7 @@
   }
   
   
-  .header__nav-first-listIcon-item3:hover .header__nav-first-listIcon-item3-hover {
+  .header__nav-first-listIcon-item3-icon:hover .header__nav-first-listIcon-item3-hover {
     opacity: 1;
   }
   

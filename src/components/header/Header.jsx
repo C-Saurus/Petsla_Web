@@ -5,11 +5,13 @@ import './responsive.css'
 import {Link, useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logOut } from '../../redux/actions/auth/apiRequest'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import ChangeLangPopOver from '../../service/language/languageChange'
+import { successToast, errorToast } from '../../utils/Toastify/index'
 import CartLogo from '../pages/Cart/CartLogo'
 import { FilterSlice } from './FilterSlice'
+import { useTranslation } from 'react-i18next';
 function Header() {
+    const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user  = useSelector((state) => state.auth.login.currentUser) || localStorage.getItem("token");
@@ -22,16 +24,7 @@ function Header() {
   const handleLogout = (e) => {
     e.preventDefault();
     logOut(dispatch, navigate);
-    toast.success('Đăng xuất thành công!', {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-    });
+    successToast('Đăng xuất thành công!')
     navigate("/shop")
   }
 
@@ -72,14 +65,19 @@ function Header() {
                     <div className="header__nav-first-listIcon">
                         <div className="header__nav-first-listIcon-item">
                             <div className="header__nav-first-listIcon-item1">
-                                <div className="header__nav-first-listIcon-item1-hover">Toggle theme</div>
+                                <ChangeLangPopOver />
+                                <div className="header__nav-first-listIcon-item1-hover">
+                                    {t('content.theme')}
+                                </div>
                             </div>
                             
                         </div>
                         <div className="header__nav-first-listIcon-item">
                             <div className="header__nav-first-listIcon-item2">
-                                <i className="fa-solid fa-moon" ></i>
-                                <div className="header__nav-first-listIcon-item2-hover">Toggle theme</div>
+                                <i className="header__nav-first-listIcon-item2-icon fa-solid fa-moon" ></i>
+                                <span className="header__nav-first-listIcon-item2-hover">
+                                    {t('content.theme')}
+                                </span>
                             </div>
                             
                         </div>
@@ -87,13 +85,17 @@ function Header() {
                             {!user
                             ? 
                             <button className="header__nav-first-listIcon-item3" onClick={handleLogin}>
-                                <i className="fa-solid fa-arrow-right-to-bracket"></i>
-                                <div className="header__nav-first-listIcon-item3-hover">Login</div>
+                                <i className="header__nav-first-listIcon-item3-icon fa-solid fa-arrow-right-to-bracket"></i>
+                                <span className="header__nav-first-listIcon-item3-hover">
+                                    {t('content.login')}
+                                </span>
                             </button>
                             :
                             <button className="header__nav-first-listIcon-item3" onClick={handleLogout}>
-                                <i className="fa-solid fa-right-from-bracket"></i>
-                                <div className="header__nav-first-listIcon-item3-hover">Logout</div>
+                                <i className="header__nav-first-listIcon-item3-icon fa-solid fa-right-from-bracket"></i>
+                                <span className="header__nav-first-listIcon-item3-hover" style={{width: `200px`}}>
+                                    {t('content.logout')}
+                                </span>
                             </button>
                             }
                             
@@ -113,7 +115,7 @@ function Header() {
                     <div className="header__nav-second-search">
                         <form action="">
                             <div className="header__nav-second-search-form">
-                                <input onChange={handleSearchInput} type="text" name="search" placeholder="Everything here is better than your ex" className="header__nav-second-search-input"/>
+                                <input onChange={handleSearchInput} type="text" name="search" placeholder={t('content.title_text')} className="header__nav-second-search-input"/>
                                 <button onClick={handleSearch} type="submit" className="header__nav-second-search-btn">
                                     <i className="fa-solid fa-magnifying-glass header__nav-second-search-icon"></i>
                                 </button>
@@ -128,13 +130,13 @@ function Header() {
             <div className="container">
                 <ul className="header__nav-third-list">
                     <li className="header__nav-third-item">
-                        <Link to='/' className="header__nav-third-link" >Home</Link>
+                        <Link to='/' className="header__nav-third-link" >{t('content.home')}</Link>
                     </li>
                     <li className="header__nav-third-item">
-                        <Link to='/shop' className="header__nav-third-link" >Shop</Link>
+                        <Link to='/shop' className="header__nav-third-link" >{t('content.shop')}</Link>
                     </li>
                     <li className="header__nav-third-item">
-                        <Link to='/cart' className="header__nav-third-link" >Cart</Link>
+                        <Link to='/cart' className="header__nav-third-link" >{t('content.cart')}</Link>
                     </li>
                     {/* <li className="header__nav-third-item">
 
@@ -147,20 +149,6 @@ function Header() {
                 </ul>
             </div>
         </div>
-        <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-            />
-            {/* Same as */}
-        <ToastContainer />
     </Fragment>
   )
 }

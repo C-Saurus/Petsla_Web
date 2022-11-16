@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./style.module.css";
 import { ProductTypes } from "../../../../redux/constants/productTypes";
 import { useDispatch } from "react-redux";
@@ -25,6 +25,10 @@ const CartItem = ({ item }) => {
   const handelRemoveFromCart = () => {
     dispatch(cartListReducer.actions.removeFromCart(item));
   };
+
+  useEffect(() => {
+    setQty(quantity);
+  }, [quantity]);
 
   return (
     <div className={style.cartItem}>

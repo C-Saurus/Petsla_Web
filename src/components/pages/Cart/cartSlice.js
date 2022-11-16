@@ -27,7 +27,7 @@ export const cartListReducer = createSlice({
         },
         adjustQuantity: (state, action) => {
             const qty = parseInt(action.payload.quantity)
-            state.cartList = state.cartList.map((item) => {
+             state.cartList = state.cartList.map((item) => {
                return item.id === action.payload.id ? {...item, quantity:qty} : item
             })
         },

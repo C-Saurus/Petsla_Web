@@ -23,6 +23,10 @@ const ProductList = () => {
         dispatch(fetchProductList());
     }, [])
 
+    useEffect(() => {
+        setCurrentPage(1)
+    }, [productList])
+    
     const handleChangePage = (val) => {
         setCurrentPage(val)
         window.scrollTo(0, 0);

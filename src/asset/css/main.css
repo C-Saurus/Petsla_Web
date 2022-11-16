@@ -593,7 +593,7 @@
 }
 
 .product-item-choose {
-    display: none;
+    display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
@@ -614,15 +614,12 @@
     border-radius: .375rem;
     cursor: pointer;
     font-weight: 100;
+    background-color: transparent;
+    color: #000;
     transform: translateY(-2px);
 }
 
 .plus:hover {
-    background-color: #e69646;
-    color: #fafafa;
-}
-
-.minus:hover {
     background-color: #e69646;
     color: #fafafa;
 }

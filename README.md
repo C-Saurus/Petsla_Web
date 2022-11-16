@@ -13,6 +13,7 @@ npm i bootstrap-icons
 npm i react-hook-form
 npm i yup
 npm i @hookform/resolvers
+npm i react-i18next i18next i18next-http-backend --save i18next-browser-languagedetector
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

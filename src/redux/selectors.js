@@ -5,6 +5,7 @@ export const selectProductSelector = (state) => state.selectProduct.product
 export const productListSelector = (state) => state.allProducts.productList
 
 export const cartListSelector = (state) => state.cartListProducts.cartList
+export const cartpopupSelector = (state) => state.cartListProducts.cartPopUp.status
 
 export const searchTextSelector = (state) => state.filter.searchText
 export const sortSelector = (state) => state.filter.sortValue

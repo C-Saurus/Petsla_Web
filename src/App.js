@@ -9,6 +9,7 @@ import Register from './feature/Register/Register'
 import Login from './feature/Login/Login';
 import CartList from './components/pages/Cart/CartList';
 import { ToastContainer} from 'react-toastify';
+import CartPopUp from './components/pages/Cart/CartPopUp';
 function App() {
   return (
     <div className="App">
@@ -27,6 +28,7 @@ function App() {
         {/* <Route  path='/contact' element={<Contact/>}></Route>
         <Route  path='/account' element={<Account/>}></Route> */}
       </Routes>
+      <CartPopUp />
       <Footer></Footer>
       <ToastContainer
             position="top-right"

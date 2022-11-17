@@ -10,7 +10,6 @@ import { successToast, errorToast } from "../../utils/toastify/index";
 import CartLogo from "../CartLogo";
 import { FilterSlice } from "./filterSlice";
 import { useTranslation } from "react-i18next";
-import { ToastContainer } from "react-toastify";
 function Header() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -193,7 +192,6 @@ function Header() {
           </ul>
         </div>
       </div>
-      <ToastContainer />
     </Fragment>
   );
 }

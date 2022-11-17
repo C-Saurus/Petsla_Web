@@ -1,13 +1,13 @@
 import React from 'react'
-import { ProductTypes } from '../../../../redux/constants/productTypes';
+import { ProductTypes } from '../../../../service/productTypes';
 import '../../../../asset/css/base.css'
 import '../../../../asset/css/main.css'
 import '../../../../asset/css/product.css'
 import '../../../../asset/css/responsive.css'
 import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { cartListReducer } from '../../../Cart/Service/cartSlice';
-import { successToast } from '../../../../utils/Toastify';
+import { cartListReducer } from '../../../Cart/service/cartSlice';
+import { successToast } from '../../../../utils/toastify';
 
 const Product = ({ product }) => {
     const dispatch = useDispatch();

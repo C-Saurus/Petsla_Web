@@ -4,11 +4,11 @@ import './Header.css'
 import './responsive.css'
 import {Link, useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { logOut } from '../../redux/actions/auth/apiRequest'
-import ChangeLangPopOver from '../../service/language/languageChange'
-import { successToast, errorToast } from '../../utils/Toastify/index'
+import { logOut } from '../../service/apiRequest'
+import ChangeLangPopOver from '../../components/language/languageChange'
+import { successToast, errorToast } from '../../utils/toastify/index'
 import CartLogo from '../CartLogo'
-import { FilterSlice } from './FilterSlice'
+import { FilterSlice } from './filterSlice'
 import { useTranslation } from 'react-i18next';
 function Header() {
     const { t } = useTranslation();
@@ -142,10 +142,10 @@ function Header() {
                     {/* <li className="header__nav-third-item">
 
                                 <Link to='/contact' className="header__nav-third-link" >Contact</Link>
-                            </li>
-                            <li className="header__nav-third-item">
-                                <Link to='/account' className="header__nav-third-link" >Account</Link>
                             </li> */}
+                    <li className="header__nav-third-item">
+                        <Link to='/account/profile' className="header__nav-third-link" >Account</Link>
+                    </li>
 
                 </ul>
             </div>

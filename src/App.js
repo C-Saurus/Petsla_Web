@@ -1,15 +1,17 @@
 import './App.css';
-import Header from './components/header/Header';
-import Home from './feature/Home/Home'
+import Header from './components/Header/Header';
+import Home from './feature/Home'
 import { Routes, Route } from 'react-router-dom'
-import ProductList from "./feature/Shop/Component/ProductList/index"
-import ProductDetails from './feature/Shop/Component/ProductDetails/index';
-import Footer from './components/footer/footer';
+import ProductList from "./feature/Shop/component/ProductList"
+import ProductDetails from './feature/Shop/component/ProductDetails';
+import Footer from './components/Footer';
 import Register from './feature/Register/Register'
 import Login from './feature/Login/Login';
-import CartList from './feature/Cart//Component/CartList';
+import CartList from './feature/Cart/components/CartList';
 import { ToastContainer} from 'react-toastify';
 import CartPopUp from './components/CartPopUp/';
+import Profile from './feature/Account/Profile';
+
 function App() {
   return (
     <div className="App">
@@ -25,8 +27,8 @@ function App() {
         <Route path='/cart' element={<CartList />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
-        {/* <Route  path='/contact' element={<Contact/>}></Route>
-        <Route  path='/account' element={<Account/>}></Route> */}
+        {/* <Route  path='/contact' element={<Contact/>}></Route> */}
+        <Route  path='/account/profile' element={<Profile/>}></Route>
       </Routes>
       <CartPopUp />
       <Footer></Footer>

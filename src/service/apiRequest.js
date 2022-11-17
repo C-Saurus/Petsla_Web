@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { loginFailed, loginStart, loginSuccess, registerFailed, registerStart, registerSuccess, logoutStart, logoutSuccess, logoutFailed } from '../authSlice';
-import { getUserFailed, getUserStart, getUserSuccess } from '../userSlice';
+import { loginFailed, loginStart, loginSuccess, registerFailed, registerStart, registerSuccess, logoutStart, logoutSuccess, logoutFailed } from './authSlice';
+import { getUserFailed, getUserStart, getUserSuccess } from './userSlice';
 export const loginUser = async (user, dispatch) => {
     dispatch(loginStart());
     try{

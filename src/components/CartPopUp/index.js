@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom"
 import "../../asset/css/main.css"
 import noProduct from "../../asset/image/no_product.png"
-import { cartListSelector, cartpopupSelector } from '../../redux/selectors';
-import { cartListReducer } from '../../feature/Cart/Service/cartSlice';
+import { cartListSelector, cartpopupSelector } from '../../service/selectors';
+import { cartListReducer } from '../../feature/Cart/service/cartSlice';
 import CartPopUpItem from './CartPopUpItem';
 const CartPopUp = () => {
     const dispatch = useDispatch();

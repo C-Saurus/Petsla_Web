@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import style from "./style.module.css";
-import { ProductTypes } from "../../../../redux/constants/productTypes";
+import { ProductTypes } from "../../../../service/productTypes";
 import { useDispatch } from "react-redux";
-import { cartListReducer } from "../../Service/cartSlice";
+import { cartListReducer } from "../../service/cartSlice";
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();

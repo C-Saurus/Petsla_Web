@@ -9,35 +9,18 @@ import { Link, useLocation } from 'react-router-dom'
 
 const Footer = () => {
     const location = useLocation();
-    // console.log(location)
     const [isActive, setIsActive] = useState(1);
 
     useEffect(() => {
-        if (location.pathname === "/") {
-            setIsActive(1)
-        }
-        if (location.pathname === "/shop") {
-            setIsActive(2)
-        }
-        if (location.pathname === "/cart") {
-            setIsActive(3)
-        }
-        if (location.pathname === "/account") {
-            setIsActive(4)
+        switch (location.pathname) {
+            case "/": setIsActive(1)
+            case "/shop": setIsActive(2)
+            case "/cart": setIsActive(3)
+            case "/account/orders": setIsActive(4)
+            case "/account/wishlist": setIsActive(4)
+            case "/account/profile": setIsActive(4)
         }
     }, [location]);
-    const homeActive = () => {
-        setIsActive(1)
-    }
-    const shopActive = () => {
-        setIsActive(2)
-    }
-    const cartActive = () => {
-        setIsActive(3)
-    }
-    const accountActive = () => {
-        setIsActive(4)
-    }
     return (
         <div className="footer">
             <div className="footer__banner">
@@ -72,7 +55,7 @@ const Footer = () => {
             </div>
             <div className="bottom__nav">
                 <ul className="bot-nav-list">
-                    <li className="bot-nav-item" onClick={homeActive}>
+                    <li className="bot-nav-item" >
                         <Link className='bot-nav-link' to={`/`}>
                             <div className="item-wrap">
                                 <div className="bot-nav-icon" style={{ color: isActive === 1 ? "orange" : "black" }}>
@@ -85,7 +68,7 @@ const Footer = () => {
                         </Link>
 
                     </li>
-                    <li className="bot-nav-item" onClick={shopActive}>
+                    <li className="bot-nav-item">
                         <Link className='bot-nav-link' to={`/shop`}>
                             <div className="item-wrap">
                                 <div className="bot-nav-icon bot-shop" style={{ color: isActive === 2 ? "orange" : "black" }}>
@@ -97,7 +80,7 @@ const Footer = () => {
                             </div>
                         </Link>
                     </li>
-                    <li className="bot-nav-item" onClick={cartActive}>
+                    <li className="bot-nav-item">
                         <Link className='bot-nav-link' to={`/cart`}>
                             <div className="item-wrap">
                                 <div className="bot-nav-icon" style={{ color: isActive === 3 ? "orange" : "black" }}>
@@ -110,7 +93,7 @@ const Footer = () => {
                         </Link>
 
                     </li>
-                    <li className="bot-nav-item" onClick={accountActive}>
+                    <li className="bot-nav-item">
                         <Link className='bot-nav-link' to={'/account'}>
                             <div className="item-wrap">
                                 <div className="bot-nav-icon" style={{ color: isActive === 4 ? "orange" : "black" }}>
@@ -128,4 +111,4 @@ const Footer = () => {
         </div>
     )
 }
-export default Footer
+export default Footer;

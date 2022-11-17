@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { ProductTypes } from "../../../redux/constants/productTypes";
-import { cartListReducer } from "../../../feature/Cart/Service/cartSlice";
+import { ProductTypes } from "../../../service/productTypes";
+import { cartListReducer } from "../../../feature/Cart/service/cartSlice";
 const CartPopUpItem = ({ item }) => {
   const dispatch = useDispatch();
 

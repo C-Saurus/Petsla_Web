@@ -6,14 +6,14 @@ import "../../../../asset/css/responsive.css";
 import "./ProductDetails.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { ProductTypes } from "../../../../redux/constants/productTypes";
+import { ProductTypes } from "../../../../service/productTypes";
 import {
   fetchProductDetail,
   selectProductReducer,
-} from "../../Service//productSlice";
-import { selectProductSelector } from "../../../../redux/selectors";
-import { cartListReducer } from "../../../Cart/Service/cartSlice";
-import { successToast } from "../../../../utils/Toastify";
+} from "../../service//productSlice";
+import { selectProductSelector } from "../../../../service/selectors";
+import { cartListReducer } from "../../../Cart/service/cartSlice";
+import { successToast } from "../../../../utils/toastify";
 
 const ProductDetails = () => {
   const { productId } = useParams();

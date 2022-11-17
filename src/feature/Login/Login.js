@@ -3,12 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './login.css'
 import { useNavigate } from 'react-router-dom'
 import { Modal, Button, Form } from 'react-bootstrap';
-import { loginUser } from '../../redux/actions/auth/apiRequest';
+import { loginUser } from '../../service/apiRequest';
 import { useDispatch } from 'react-redux'
-import { successToast, errorToast } from '../../utils/Toastify/index'
+import { successToast, errorToast } from '../../utils/toastify/index'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from '../../utils/ValidateForm/index'
+import { loginSchema } from '../../utils/validateForm/index'
 export default function Login() {
     const [load, setLoad] = useState(false)
     const [username, setUsername] = useState("");

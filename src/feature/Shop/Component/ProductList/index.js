@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Product from '../Product';
 import { useDispatch, useSelector } from 'react-redux'
-import Sortbar from '../SortBar/sortBar'
-import { fetchProductList, productListReducer } from '../../Service/productListSlice';
-import { productListSelector, remainProducts } from '../../../../redux/selectors';
+import Sortbar from '../SortBar'
+import { fetchProductList, productListReducer } from '../../service/productListSlice';
+import { productListSelector, remainProducts } from '../../../../service/selectors';
 import style from './style.module.css'
 const ProductList = () => {
     const dispatch = useDispatch();

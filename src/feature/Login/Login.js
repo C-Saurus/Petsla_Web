@@ -10,8 +10,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../utils/validateForm/index";
 
-import { ToastContainer } from "react-toastify";
-
 export default function Login() {
   const [load, setLoad] = useState(false);
   const [username, setUsername] = useState("");
@@ -126,7 +124,6 @@ export default function Login() {
           </div>
         </Modal.Body>
       </Modal>
-      <ToastContainer />
     </div>
   );
 }

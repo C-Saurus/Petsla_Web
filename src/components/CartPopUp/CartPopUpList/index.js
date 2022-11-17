@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom"
-import "../../asset/css/main.css"
-import noProduct from "../../asset/image/no_product.png"
-import { cartListSelector, cartpopupSelector } from '../../service/selectors';
-import { cartListReducer } from '../../feature/Cart/service/cartSlice';
-import CartPopUpItem from './CartPopUpItem';
+import "../../../asset/css/main.css"
+import noProduct from "../../../asset/image/no_product.png"
+import { cartListSelector, cartpopupSelector } from '../../../service/selectors';
+import { cartListReducer } from '../../../feature/Cart/service/cartSlice';
+import CartPopUpItem from '../CartPopUpItem';
 const CartPopUp = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()

@@ -10,7 +10,7 @@ import { ProductTypes } from "../../../../service/productTypes";
 import {
   fetchProductDetail,
   selectProductReducer,
-} from "../../service//productSlice";
+} from "../../service/productSlice";
 import { selectProductSelector } from "../../../../service/selectors";
 import { cartListReducer } from "../../../Cart/service/cartSlice";
 import { successToast } from "../../../../utils/toastify";

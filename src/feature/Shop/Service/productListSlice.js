@@ -14,8 +14,6 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
-let initialList = []
 export const productListReducer = createSlice({
     name: 'productList',
     initialState: {
@@ -36,7 +34,6 @@ export const productListReducer = createSlice({
         }).addCase(fetchProductList.fulfilled, (state, action) => {
             state.productList = action.payload;
             state.status = 'idle';
-            initialList = action.payload;
         })
     }
 })

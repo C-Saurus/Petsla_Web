@@ -1,9 +1,9 @@
-import "../../../asset/css/base.css"
+import "../../../../asset/css/base.css"
 import style from './style.module.css'
 import { useDispatch } from "react-redux"
-import { productListSelector } from "../../../redux/selectors"
-import { productListReducer } from "../productListSlice"
-import { FilterSlice } from "../../header/FilterSlice"
+import { productListSelector } from "../../../../redux/selectors"
+import { productListReducer } from "../../Service/productListSlice"
+import { FilterSlice } from "../../../../components/header/FilterSlice"
 import { useTranslation } from 'react-i18next';
 const Sortbar = () => {
     const { t } = useTranslation();

@@ -1,15 +1,15 @@
 import './App.css';
 import Header from './components/header/Header';
-import Home from './components/pages/Home/Home'
+import Home from './feature/Home/Home'
 import { Routes, Route } from 'react-router-dom'
-import ProductList from "./components/ProductList/index"
-import ProductDetails from './components/ProductDetails';
+import ProductList from "./feature/Shop/Component/ProductList/index"
+import ProductDetails from './feature/Shop/Component/ProductDetails/index';
 import Footer from './components/footer/footer';
 import Register from './feature/Register/Register'
 import Login from './feature/Login/Login';
-import CartList from './components/pages/Cart/CartList';
+import CartList from './feature/Cart//Component/CartList';
 import { ToastContainer} from 'react-toastify';
-import CartPopUp from './components/pages/Cart/CartPopUp';
+import CartPopUp from './components/CartPopUp/';
 function App() {
   return (
     <div className="App">

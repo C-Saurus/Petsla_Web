@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { FilterSlice } from '../components/header/FilterSlice';
-import { cartListReducer } from '../components/pages/Cart/cartSlice';
-import {selectProductReducer} from '../components/Product/productSlice';
-import {productListReducer} from '../components/ProductList/productListSlice';
+import { cartListReducer } from '../feature/Cart/Service/cartSlice';
+import {selectProductReducer} from '../feature/Shop/Service/productSlice';
+import {productListReducer} from '../feature/Shop/Service/productListSlice';
 import authReducer from './actions/authSlice'
 import userReducer from './actions/userSlice'
 const store = configureStore({

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { cartListSelector, cartpopupSelector } from '../../../../redux/selectors';
-import { cartListReducer } from '../cartSlice';
+import { cartListSelector, cartpopupSelector } from '../../redux/selectors';
+import { cartListReducer } from '../../feature/Cart/Service/cartSlice';
 
 export default function CartLogo() {
     const dispatch = useDispatch();

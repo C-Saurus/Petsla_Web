@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logOut } from '../../redux/actions/auth/apiRequest'
 import ChangeLangPopOver from '../../service/language/languageChange'
 import { successToast, errorToast } from '../../utils/Toastify/index'
-import CartLogo from '../pages/Cart/CartLogo'
+import CartLogo from '../CartLogo'
 import { FilterSlice } from './FilterSlice'
 import { useTranslation } from 'react-i18next';
 function Header() {
@@ -36,6 +36,7 @@ function Header() {
   const handleSearch = (e) => {
     e.preventDefault();
     dispatch(FilterSlice.actions.setSearchText(searchTxt))
+    window.scrollTo(0, 0)
   }
 
   return (

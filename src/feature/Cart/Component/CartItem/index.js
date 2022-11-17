@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import style from "./style.module.css";
 import { ProductTypes } from "../../../../redux/constants/productTypes";
 import { useDispatch } from "react-redux";
-import { cartListReducer } from "../cartSlice";
+import { cartListReducer } from "../../Service/cartSlice";
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();

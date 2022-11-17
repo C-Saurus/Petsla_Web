@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
-import "../../asset/css/base.css";
-import "../../asset/css/main.css";
-import "../../asset/css/product.css";
-import "../../asset/css/responsive.css";
+import "../../../../asset/css/base.css";
+import "../../../../asset/css/main.css";
+import "../../../../asset/css/product.css";
+import "../../../../asset/css/responsive.css";
 import "./ProductDetails.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { ProductTypes } from "../../redux/constants/productTypes";
+import { ProductTypes } from "../../../../redux/constants/productTypes";
 import {
   fetchProductDetail,
   selectProductReducer,
-} from "../Product/productSlice";
-import { selectProductSelector } from "../../redux/selectors";
-import { cartListReducer } from "../pages/Cart/cartSlice";
-import { successToast } from "../../utils/Toastify";
+} from "../../Service//productSlice";
+import { selectProductSelector } from "../../../../redux/selectors";
+import { cartListReducer } from "../../../Cart/Service/cartSlice";
+import { successToast } from "../../../../utils/Toastify";
 
 const ProductDetails = () => {
   const { productId } = useParams();

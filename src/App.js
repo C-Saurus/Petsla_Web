@@ -9,7 +9,7 @@ import Register from './feature/Register/Register'
 import Login from './feature/Login/Login';
 import CartList from './feature/Cart/components/CartList';
 import { ToastContainer} from 'react-toastify';
-import CartPopUp from './components/CartPopUp/';
+import CartPopUp from './components/CartPopUp/CartPopUpList';
 import Profile from './feature/Account/Profile';
 
 function App() {

@@ -1,5 +1,5 @@
 import "./App.css";
-import Header from "./components/Header/Header";
+import Header from "./components/header/Header";
 import Home from "./feature/Home";
 import { Routes, Route } from "react-router-dom";
 import ProductList from "./feature/Shop/component/ProductList";
@@ -11,7 +11,7 @@ import CartList from "./feature/Cart/components/CartList";
 import CartPopUp from "./components/CartPopUp/CartPopUpList";
 import Profile from "./feature/Account/Profile";
 import { ToastContainer } from "react-toastify";
-
+import Missing from "./feature/Missing"
 function App() {
   return (
     <div className="App">
@@ -23,7 +23,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/shop" element={<ProductList />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
-        <Route>404 Not Found!</Route>
+        <Route path="*" element={<Missing />}></Route>
         <Route path="/cart" element={<CartList />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>

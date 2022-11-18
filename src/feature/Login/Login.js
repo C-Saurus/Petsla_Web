@@ -1,21 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { Modal, Button, Form } from "react-bootstrap";
 import { loginUser } from "../../service/apiRequest";
 import { useDispatch } from "react-redux";
-import { successToast, errorToast } from "../../utils/toastify/index";
+import { successToast, errorToast, warnToast } from "../../utils/toastify/index";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../utils/validateForm/index";
 
 export default function Login() {
+  const token = localStorage.getItem("token")
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (token) {
+        warnToast('Bạn đã đăng nhập rồi!')
+        navigate("/shop")
+    }
+  }, [token, navigate])
   const [load, setLoad] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  
   const onSubmit = () => {
     setLoad(true);
     const newUser = {

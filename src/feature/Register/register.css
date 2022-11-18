@@ -1,0 +1,17 @@
+.change-modal-wrap {
+    text-align: center;
+    margin: 1.5rem;
+  }
+
+  .change-to-login {
+    cursor: pointer;
+    opacity: .6;
+    transition: .2s;
+    margin-top: .5rem;
+  }
+
+  .change-to-login:hover {
+    opacity: 1;
+  }
+
+  

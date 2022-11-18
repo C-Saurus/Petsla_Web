@@ -3,22 +3,22 @@ import logoIcon from "../../asset/logo.png";
 import "./Header.css";
 import "./responsive.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../service/apiRequest";
 import ChangeLangPopOver from "../../components/language/languageChange";
-import { successToast } from "../../utils/toastify/index";
+import { successToast, errorToast } from "../../utils/toastify/index";
 import CartLogo from "../CartLogo";
 import { FilterSlice } from "./filterSlice";
 import { useTranslation } from "react-i18next";
-import { currentUser } from "../../service/selectors";
 function Header() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user =
-    currentUser || localStorage.getItem("token");
-
-  console.log(user);
+    useSelector((state) => state.auth.login.currentUser) ||
+    localStorage.getItem("token");
+  //   const user = localStorage.getItem("token");
+  //   console.log(user);
   const handleLogin = (e) => {
     e.preventDefault();
     navigate("/login");
@@ -71,13 +71,13 @@ function Header() {
               </div>
             </div>
             <div className="header__nav-firs-bgr">
-              <Link to="/" className="header__nav-second-branch-link">
+              <a href="" className="header__nav-second-branch-link">
                 <img
                   src={logoIcon}
                   alt=""
                   className="header__nav-second-branch-img"
                 />
-              </Link>
+              </a>
             </div>
             <div className="header__nav-first-listIcon">
               <div className="header__nav-first-listIcon-item">
@@ -130,13 +130,13 @@ function Header() {
         <div className="container">
           <div className="header__nav-second-base">
             <div className="header__nav-second-branch">
-              <Link to="/" className="header__nav-second-branch-link">
+              <a href="" className="header__nav-second-branch-link">
                 <img
                   src={logoIcon}
                   alt=""
                   className="header__nav-second-branch-img"
                 />
-              </Link>
+              </a>
             </div>
             <div className="header__nav-second-search">
               <form action="">

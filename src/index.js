@@ -5,8 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from "react-redux";
-import store from "./redux/store";
-import i18n from './service/language/translation/i18n'
+import store from "./store/store";
+import i18n from './components/language/translation/i18n'
 import { I18nextProvider } from 'react-i18next';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

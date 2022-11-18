@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom'
 import { Modal, Button, Form } from 'react-bootstrap';
-import { registerUser } from '../../redux/actions/auth/apiRequest';
+import { registerUser } from '../../service/apiRequest';
 import { useDispatch } from 'react-redux'
-import { successToast, errorToast } from '../../utils/Toastify/index'
+import { successToast, errorToast } from '../../utils/toastify'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
-import { registerSchema } from '../../utils/ValidateForm/index'
+import { registerSchema } from '../../utils/validateForm/index'
 export default function Register() {
     const [load, setLoad] = useState(false)
     const [fname, setFname] = useState("");

@@ -9,6 +9,7 @@ export const cartpopupSelector = (state) => state.cartListProducts.cartPopUp.sta
 
 export const searchTextSelector = (state) => state.filter.searchText
 export const sortSelector = (state) => state.filter.sortValue
+export const currentUser = (state) => state.auth.login.currentUser
 export const remainProducts = createSelector(
     productListSelector,
     searchTextSelector,

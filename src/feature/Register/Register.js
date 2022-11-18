@@ -5,7 +5,6 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { registerUser } from '../../service/apiRequest';
 import { useDispatch } from 'react-redux'
 import { successToast, errorToast } from '../../utils/toastify'
-import 'react-toastify/dist/ReactToastify.css';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from '../../utils/validateForm/index'

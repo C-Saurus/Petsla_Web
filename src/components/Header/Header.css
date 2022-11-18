@@ -76,7 +76,7 @@
     color: rgb(255, 255, 255);
     position: absolute;
     left: 50%;
-    top: 12%;
+    top: -3%;
     font-size: .875rem;
     padding: .3rem .5rem;
     border-radius: 3px;
@@ -103,7 +103,7 @@
     color: rgb(255, 255, 255);
     position: absolute;
     left: 50%;
-    top: 90%;
+    top: 80%;
     font-size: .875rem;
     padding: .3rem .5rem;
     border-radius: 3px;
@@ -134,7 +134,7 @@
     color: rgb(255, 255, 255);
     position: absolute;
     left: 50%;
-    top: 150%;
+    top: 95%;
     font-size: .875rem;
     padding: .3rem .5rem;
     border-radius: 3px;

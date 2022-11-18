@@ -32,7 +32,7 @@ function App() {
       </Routes>
       <CartPopUp />
       <Footer></Footer>
-      <ToastContainer />
+      <ToastContainer/>
     </div>
   );
 }

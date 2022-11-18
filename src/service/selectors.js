@@ -10,6 +10,7 @@ export const cartpopupSelector = (state) => state.cartListProducts.cartPopUp.sta
 export const searchTextSelector = (state) => state.filter.searchText
 export const sortSelector = (state) => state.filter.sortValue
 export const currentUser = (state) => state.auth.login.currentUser
+export const currentProfile = (state) => state.profile.user.userInfor
 export const remainProducts = createSelector(
     productListSelector,
     searchTextSelector,
@@ -30,4 +31,9 @@ export const remainProducts = createSelector(
         }
         else return currentList.sort((a, b) => b.price - a.price);
     }
+)
+
+export const remainUser = createSelector(
+    currentUser,
+    currentProfile
 )

@@ -10,13 +10,13 @@ import { successToast } from "../../utils/toastify/index";
 import CartLogo from "../CartLogo";
 import { FilterSlice } from "./filterSlice";
 import { useTranslation } from "react-i18next";
-import { currentUser } from "../../service/selectors";
+
 function Header() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user =
-    currentUser || localStorage.getItem("token");
+
+  const user = localStorage.getItem("token");
 
   console.log(user);
   const handleLogin = (e) => {
@@ -115,7 +115,7 @@ function Header() {
                     <i className="header__nav-first-listIcon-item3-icon fa-solid fa-right-from-bracket"></i>
                     <span
                       className="header__nav-first-listIcon-item3-hover"
-                      style={{ width: `200px` }}
+                      style={{ width: `100px` }}
                     >
                       {t("content.logout")}
                     </span>

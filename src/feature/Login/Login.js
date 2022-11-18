@@ -33,7 +33,7 @@ export default function Login() {
     loginUser(newUser, dispatch).then((res) => {
       if (res) {
         successToast("Đăng nhập thành công!");
-        navigate("/shop");
+        navigate("/shop")
       } else {
         errorToast("Sai tên đăng nhập hoặc mật khẩu");
         setLoad(false);

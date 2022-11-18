@@ -1,5 +1,5 @@
 import "./App.css";
-import Header from "./components/header/Header";
+import Header from "./components/Header/Header";
 import Home from "./feature/Home";
 import { Routes, Route } from "react-router-dom";
 import ProductList from "./feature/Shop/component/ProductList";
@@ -28,7 +28,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         {/* <Route  path='/contact' element={<Contact/>}></Route> */}
-        <Route path="/account/profile" element={<Profile />}></Route>
+        <Route path="/account/profile" element={<Profile />} component={<Profile />}></Route>
       </Routes>
       <CartPopUp />
       <Footer></Footer>

@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import logoIcon from "../../asset/logo.png";
 import "./Header.css";
 import "./responsive.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../service/apiRequest";
 import ChangeLangPopOver from "../../components/language/languageChange";
@@ -15,7 +15,7 @@ function Header() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const location = useLocation();
   const user = localStorage.getItem("token");
 
   console.log(user);
@@ -27,7 +27,7 @@ function Header() {
     e.preventDefault();
     logOut(dispatch, navigate);
     successToast("Đăng xuất thành công!");
-    navigate("/shop");
+    navigate("/" + location.pathname)
   };
 
   const [searchTxt, setSearchTxt] = useState("");

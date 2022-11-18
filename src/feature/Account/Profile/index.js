@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import { updateUser } from '../../../service/apiRequest'
+import { getAddOrder, getOrder, updateUser } from '../../../service/apiRequest'
 import { useDispatch } from 'react-redux'
 import { successToast, warnToast } from '../../../utils/toastify'
 import {useNavigate} from 'react-router-dom'
@@ -9,7 +9,7 @@ const Profile = () => {
     useEffect(() => {
         if (!token) {
             warnToast('Bạn cần đăng nhập trước!')
-            navigate("/login")
+            navigate('/login')
         }
     }, [token, navigate])
 
@@ -20,9 +20,16 @@ const Profile = () => {
         name: 'LMI9',
         username: 'BlackPanther2002'
       }
+      const newOrder = {
+        address: 'HNNHNNDD',
+        note: '',
+        number_phone: '14332532',
+        orderItems: [{product_id: 1, quantity: 1, price: 350000}],
+        total_price: 1
+      }
       const dispatch = useDispatch();
       const handleEdit = () => {
-        updateUser(localStorage.getItem("token"), dispatch, newProfile).then(() => {
+        getAddOrder(localStorage.getItem("token"), dispatch, newOrder).then(() => {
             successToast('Đã cập nhật thành công')
         })
       }

@@ -45,7 +45,7 @@ export const getUsers = async (accessToken, dispatch) => {
 export const updateUser = async(accessToken, dispatch, newUser) => {
     dispatch(updateUserStart());
     try {
-        const res = await axios.posst("http://petsla-api.herokuapp.com/profile/", newUser, {
+        const res = await axios.options("http://petsla-api.herokuapp.com/profile/", newUser, {
             headers: {
                 Authorization: 'Bearer ' + accessToken,
             },
@@ -73,6 +73,7 @@ export const getOrder = async(accessToken, dispatch) => {
                 Authorization: 'Bearer ' + accessToken,
             },
         })
+        console.log(res.data)
         dispatch(getOrderSuccess(res.data))
     } catch(err) {
         dispatch(getOrderFailed())
@@ -93,14 +94,15 @@ export const updateOrder = async(accessToken, dispatch) => {
     }
 }
 
-export const getAddOrder = async(accessToken, dispatch) => {
+export const getAddOrder = async(accessToken, dispatch, order) => {
     dispatch(getAddOrderStart())
     try {
-        const res = await axios.post("http://petsla-api.herokuapp.com/add-order/", {
+        const res = await axios.post("http://petsla-api.herokuapp.com/add-order/", order, {
             headers: {
                 Authorization: 'Bearer ' + accessToken,
             },
         })
+        console.log(res.data)
         dispatch(getAddOrderSuccess(res.data))
     } catch(err) {
         dispatch(getAddOrderFailed())

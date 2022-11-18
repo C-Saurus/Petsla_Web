@@ -15,8 +15,8 @@ function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user  = useSelector((state) => state.auth.login.currentUser) || localStorage.getItem("token");
-//   const user = localStorage.getItem("token");
   console.log(user)
+//   const user = localStorage.getItem("token");
   const handleLogin = (e) => {
     e.preventDefault();
     navigate("/login")
@@ -84,19 +84,19 @@ function Header() {
                         <div className="header__nav-first-listIcon-item">
                             {!user
                             ? 
-                            <button className="header__nav-first-listIcon-item3" onClick={handleLogin}>
+                            <div className="header__nav-first-listIcon-item3" onClick={handleLogin}>
                                 <i className="header__nav-first-listIcon-item3-icon fa-solid fa-arrow-right-to-bracket"></i>
                                 <span className="header__nav-first-listIcon-item3-hover">
                                     {t('content.login')}
                                 </span>
-                            </button>
+                            </div>
                             :
-                            <button className="header__nav-first-listIcon-item3" onClick={handleLogout}>
+                            <div className="header__nav-first-listIcon-item3" onClick={handleLogout}>
                                 <i className="header__nav-first-listIcon-item3-icon fa-solid fa-right-from-bracket"></i>
-                                <span className="header__nav-first-listIcon-item3-hover" style={{width: `200px`}}>
+                                <span className="header__nav-first-listIcon-item3-hover" style={{width: `90px`, textAlign: `center`}}>
                                     {t('content.logout')}
                                 </span>
-                            </button>
+                            </div>
                             }
                             
                         </div>

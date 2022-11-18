@@ -1,9 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit'
 const userSlice = createSlice({
-    name: "user",
+    name: "profile",
     initialState: {
         user: {
-            user: null,
+            userInfor: null,
             isFetching: false,
             error: false
         },
@@ -14,7 +14,8 @@ const userSlice = createSlice({
         },
         getUserSuccess: (state, action) => {
             state.user.isFetching = false;
-            state.user.allUsers = action.payload;
+            state.user.userInfor = action.payload;
+            localStorage.setItem("profile", JSON.stringify(action.payload))
         },
         getUserFailed: (state) => {
             state.user.isFetching = false;

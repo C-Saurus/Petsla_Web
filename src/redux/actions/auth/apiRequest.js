@@ -28,9 +28,12 @@ export const registerUser = async (user, dispatch) => {
 export const getUsers = async (accessToken, dispatch) => {
     dispatch(getUserStart());
     try {
-        const res = await axios.post("http://petsla-api.herokuapp.com/profile/", {
-            headers: {token: `Bearer ${accessToken}`},
+        const res = await axios.get("http://petsla-api.herokuapp.com/profile/", {
+            headers: {
+                Authorization: 'Bearer ' + accessToken,
+            },
         });
+        console.log(res.data)
         dispatch(getUserSuccess(res.data));
     } catch(err) {
         dispatch(getUserFailed());

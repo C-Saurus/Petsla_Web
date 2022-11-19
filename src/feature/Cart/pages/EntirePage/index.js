@@ -4,12 +4,30 @@ import { Link } from "react-router-dom";
 import CartListPage from "../cartListPage";
 import "../../../../asset/css/base.css";
 import style from "./style.module.css";
-import CustomerInfoPage from "../customerInfoPage"
+import CustomerInfoPage from "../customerInfoPage";
+import { useSelector } from "react-redux";
+import { cartListSelector } from "../../../../service/selectors";
 
 const EntirePage = () => {
   const location = useLocation();
+  const cartList = useSelector(cartListSelector);
 
   const [page, setPage] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalItems, setTotalItems] = useState(0);
+
+  useEffect(() => {
+    let items = 0;
+    let total = 0;
+
+    cartList.forEach((item) => {
+      items = cartList.length;
+      total += item.quantity * item.price;
+    });
+
+    setTotalItems(items);
+    setTotalPrice(total);
+  }, [cartList]);
 
   useEffect(() => {
     switch (location.pathname) {
@@ -55,7 +73,15 @@ const EntirePage = () => {
               </div>
             </div>
           </div>
-          {!page ? <CartListPage /> : <CustomerInfoPage />}
+          {!page ? (
+            <CartListPage
+              cartList={cartList}
+              totalItems={totalItems}
+              totalPrice={totalPrice}
+            />
+          ) : (
+            <CustomerInfoPage totalItems={totalItems} totalPrice={totalPrice} />
+          )}
         </div>
       </div>
     </React.Fragment>

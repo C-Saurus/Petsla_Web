@@ -21,7 +21,7 @@ const EntirePage = () => {
     let total = 0;
 
     cartList.forEach((item) => {
-      items = cartList.length;
+      items += item.quantity;
       total += item.quantity * item.price;
     });
 

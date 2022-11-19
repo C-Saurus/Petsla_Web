@@ -25,7 +25,7 @@ const authSlice = createSlice({
         loginSuccess: (state, action) => {
             state.login.isFetching = false;
             state.login.currentUser = action.payload.access;
-            localStorage.setItem("token", action.payload.access);
+            localStorage.setItem("token", action.payload.token);
             state.login.error = false;
         },
         loginFailed: (state) => {
@@ -53,6 +53,7 @@ const authSlice = createSlice({
             state.logout.error = false;
             state.login.currentUser = null
             localStorage.removeItem("token");
+            localStorage.removeItem("profile")
         },
         logoutFailed: (state) => {
             state.logout.isFetching = false;

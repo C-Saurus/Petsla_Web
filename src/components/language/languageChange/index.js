@@ -27,7 +27,7 @@ const ChangeLangPopOver = () => {
             <ul className='lang-list'>
               <li
                 className='lang-option'
-                onClick={() => handleChangeLang('en')}>
+                onClick={() => handleChangeLang('en-US')}>
                 <div
                   className='lang-thumbnail'
                   style={{
@@ -55,7 +55,7 @@ const ChangeLangPopOver = () => {
         className='change-lang-btn lang-thumbnail lang-img'
         style={{
           backgroundImage: `url(${
-            currentLang === 'en' ? usFlag : vnFlag
+            currentLang === 'en-US' ? usFlag : vnFlag
           })`,
         }}></div>
     </OverlayTrigger>

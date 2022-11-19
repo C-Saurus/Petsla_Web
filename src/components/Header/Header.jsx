@@ -2,23 +2,21 @@ import React, { Fragment, useState } from "react";
 import logoIcon from "../../asset/logo.png";
 import "./Header.css";
 import "./responsive.css";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { logOut } from "../../service/apiRequest";
-import ChangeLangPopOver from "../../components/language/languageChange";
-import { successToast, errorToast } from "../../utils/toastify/index";
+import ChangeLangPopOver from "../language/languageChange";
+import { successToast } from "../../utils/toastify/index";
 import CartLogo from "../CartLogo";
 import { FilterSlice } from "./filterSlice";
 import { useTranslation } from "react-i18next";
+
 function Header() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user =
-    useSelector((state) => state.auth.login.currentUser) ||
-    localStorage.getItem("token");
-  //   const user = localStorage.getItem("token");
-  //   console.log(user);
+  const location = useLocation();
+  const user = localStorage.getItem("token");
   const handleLogin = (e) => {
     e.preventDefault();
     navigate("/login");
@@ -27,7 +25,7 @@ function Header() {
     e.preventDefault();
     logOut(dispatch, navigate);
     successToast("Đăng xuất thành công!");
-    navigate("/shop");
+    navigate(location.pathname)
   };
 
   const [searchTxt, setSearchTxt] = useState("");
@@ -71,13 +69,13 @@ function Header() {
               </div>
             </div>
             <div className="header__nav-firs-bgr">
-              <a href="" className="header__nav-second-branch-link">
+              <Link to="/" className="header__nav-second-branch-link">
                 <img
                   src={logoIcon}
                   alt=""
                   className="header__nav-second-branch-img"
                 />
-              </a>
+              </Link>
             </div>
             <div className="header__nav-first-listIcon">
               <div className="header__nav-first-listIcon-item">
@@ -115,7 +113,7 @@ function Header() {
                     <i className="header__nav-first-listIcon-item3-icon fa-solid fa-right-from-bracket"></i>
                     <span
                       className="header__nav-first-listIcon-item3-hover"
-                      style={{ width: `200px` }}
+                      style={{ width: `100px` }}
                     >
                       {t("content.logout")}
                     </span>
@@ -130,13 +128,13 @@ function Header() {
         <div className="container">
           <div className="header__nav-second-base">
             <div className="header__nav-second-branch">
-              <a href="" className="header__nav-second-branch-link">
+              <Link to="/" className="header__nav-second-branch-link">
                 <img
                   src={logoIcon}
                   alt=""
                   className="header__nav-second-branch-img"
                 />
-              </a>
+              </Link>
             </div>
             <div className="header__nav-second-search">
               <form action="">
@@ -180,13 +178,9 @@ function Header() {
                 {t("content.cart")}
               </Link>
             </li>
-            {/* <li className="header__nav-third-item">
-
-                                <Link to='/contact' className="header__nav-third-link" >Contact</Link>
-                            </li> */}
             <li className="header__nav-third-item">
               <Link to="/account/profile" className="header__nav-third-link">
-                Account
+                {t("content.account")}
               </Link>
             </li>
           </ul>

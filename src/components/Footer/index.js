@@ -5,12 +5,12 @@ import '../../asset/css/responsive.css'
 import "bootstrap-icons/font/bootstrap-icons.css"
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
     const location = useLocation();
     const [isActive, setIsActive] = useState(1);
-
+    const { t } = useTranslation()
     useEffect(() => {
         switch (location.pathname) {
             case "/": setIsActive(1)
@@ -62,7 +62,7 @@ const Footer = () => {
                                     <i className="bi bi-house"></i>
                                 </div>
                                 <div className="bot-nav-Btn bot-nav-homeBtn" style={{ color: isActive === 1 ? "orange" : "black" }}>
-                                    Home
+                                    {t("content.home")}
                                 </div>
                             </div>
                         </Link>
@@ -75,7 +75,7 @@ const Footer = () => {
                                     <i className="bi bi-shop"></i>
                                 </div>
                                 <div className="bot-nav-Btn bot-shop" style={{ color: isActive === 2 ? "orange" : "black" }}>
-                                    Shop
+                                    {t("content.shop")}
                                 </div>
                             </div>
                         </Link>
@@ -87,20 +87,20 @@ const Footer = () => {
                                     <i className="bi bi-house"></i>
                                 </div>
                                 <div className="bot-nav-Btn" style={{ color: isActive === 3 ? "orange" : "black" }}>
-                                    Cart
+                                    {t("content.cart")}
                                 </div>
                             </div>
                         </Link>
 
                     </li>
                     <li className="bot-nav-item">
-                        <Link className='bot-nav-link' to={'/account'}>
+                        <Link className='bot-nav-link' to={'/account/profile'}>
                             <div className="item-wrap">
                                 <div className="bot-nav-icon" style={{ color: isActive === 4 ? "orange" : "black" }}>
                                     <i className="bi bi-person"></i>
                                 </div>
                                 <div className="bot-nav-Btn bot-nav-homeBtn" style={{ color: isActive === 4 ? "orange" : "black" }}>
-                                    Account
+                                    {t("content.account")}
                                 </div>
                             </div>
                         </Link>

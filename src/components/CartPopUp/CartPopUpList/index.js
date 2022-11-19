@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import OutsideClickHandler from "react-outside-click-handler";
 import "../../../asset/css/main.css";
 import noProduct from "../../../asset/image/no_product.png";
 import {
@@ -28,19 +29,6 @@ const CartPopUp = () => {
     setTotalPrice(total);
   }, [cartList]);
 
-  useEffect(() => {
-    const closeCartPopUp = (e) => {
-    //   console.log("e", e.path[0]);
-      if (e.path[0].tagName !== "BUTTON")
-        dispatch(cartListReducer.actions.displayCartPopUp(false));
-    };
-
-    document.body.addEventListener("click", closeCartPopUp);
-    return () => {
-      document.body.removeEventListener("click", closeCartPopUp);
-    };
-  }, []);
-
   const handleHiddenCartPopUp = () => {
     dispatch(cartListReducer.actions.displayCartPopUp(!status));
   };
@@ -48,6 +36,11 @@ const CartPopUp = () => {
   const handleViewCart = () => {
     navigate("/cart");
   };
+
+  const handleClickOutsideCartPopUp = () => {
+    if (status) dispatch(cartListReducer.actions.displayCartPopUp(false));
+  };
+  
   return (
     <React.Fragment>
       <div
@@ -55,47 +48,49 @@ const CartPopUp = () => {
         id="id-backdrop"
         style={{ display: status ? "block" : "none" }}
       ></div>
-      <div
-        role="dialog"
-        className="top-cart"
-        id="id-top-cart"
-        style={{ right: status ? "0" : "-100%" }}
-      >
-        <div className="top-cart-header">
-          <div className="top-cart-title">Cart: {cartList.length} Items</div>
-          <button
-            type="button"
-            className="btn-close"
-            onClick={handleHiddenCartPopUp}
-          ></button>
-        </div>
-        {!cartList.length ? (
-          <div className="top-cart-body">
-            <div className="no__product" style={{ display: "flex" }}>
-              <img src={noProduct} alt="" className="no__product-img" />
-              <h3 className="no__product-title">There's no item in cart!</h3>
+      <OutsideClickHandler onOutsideClick={handleClickOutsideCartPopUp}>
+        <div
+          role="dialog"
+          className="top-cart"
+          id="id-top-cart"
+          style={{ right: status ? "0" : "-100%" }}
+        >
+          <div className="top-cart-header">
+            <div className="top-cart-title">Cart: {cartList.length} Items</div>
+            <button
+              type="button"
+              className="btn-close"
+              onClick={handleHiddenCartPopUp}
+            ></button>
+          </div>
+          {!cartList.length ? (
+            <div className="top-cart-body">
+              <div className="no__product" style={{ display: "flex" }}>
+                <img src={noProduct} alt="" className="no__product-img" />
+                <h3 className="no__product-title">There's no item in cart!</h3>
+              </div>
             </div>
+          ) : (
+            <div className="top-cart-body">
+              {cartList.map((item) => {
+                return <CartPopUpItem key={item.id} item={item} />;
+              })}
+            </div>
+          )}
+          <div className="top-cart-footer">
+            <button type="button" className="cart-btn-check">
+              Checkout ({totalPrice.toLocaleString()}đ)
+            </button>
+            <button
+              type="button"
+              className="cart-btn-view"
+              onClick={handleViewCart}
+            >
+              View Cart
+            </button>
           </div>
-        ) : (
-          <div className="top-cart-body">
-            {cartList.map((item) => {
-              return <CartPopUpItem key={item.id} item={item} />;
-            })}
-          </div>
-        )}
-        <div className="top-cart-footer">
-          <button type="button" className="cart-btn-check">
-            Checkout ({totalPrice.toLocaleString()}đ)
-          </button>
-          <button
-            type="button"
-            className="cart-btn-view"
-            onClick={handleViewCart}
-          >
-            View Cart
-          </button>
         </div>
-      </div>
+      </OutsideClickHandler>
     </React.Fragment>
   );
 };

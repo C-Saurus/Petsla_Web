@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Modal, Button, Form } from "react-bootstrap";
 import { getUsers, loginUser } from "../../service/apiRequest";
 import { useDispatch } from "react-redux";

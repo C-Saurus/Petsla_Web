@@ -113,29 +113,8 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
                   <Form.Text className='text-danger'>
                     {errors.address?.message}
                   </Form.Text>
-                  <Form.Control
-                    className={style.formControl}
-                    type="text"
-                    placeholder="Full name"
-                    disabled
-                  />
                 </Form.Group>
-                <Form.Group className="my-3">
-                  <Form.Label>PhoneNumber</Form.Label>
-                  <Form.Control
-                    className={style.formControl}
-                    type="text"
-                    placeholder="Phone number"
-                  />
-                </Form.Group>
-                <Form.Group className="my-3">
-                  <Form.Label>Address</Form.Label>
-                  <Form.Control
-                    className={style.formControl}
-                    type="text"
-                    placeholder="Address"
-                  />
-                </Form.Group>
+                
                 <Form.Group className="my-3">
                   <Form.Label>Note</Form.Label>
                   <FloatingLabel controlId="floatingTextarea" label="Note">

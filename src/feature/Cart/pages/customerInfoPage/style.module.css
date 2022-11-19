@@ -1,0 +1,9 @@
+.formControl {
+    background-color: rgb(246, 249, 252) !important;
+    color: black;
+}
+.textBold {
+    text-align: right;
+    color: #e69646;
+    font-weight: 600;
+}

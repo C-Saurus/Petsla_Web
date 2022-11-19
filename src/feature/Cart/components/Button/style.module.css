@@ -1,0 +1,29 @@
+.btn {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 0.375rem 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid #e69646;
+}
+.btn:focus {
+    box-shadow: 0 0 0 0.25rem rgb(49 132 253 / 50%);
+}
+
+.btnType1 {
+    color: #fafafa;
+    background-color: #e69646;
+}
+.btnType1:hover{
+    background-color: #ca7937;
+}
+
+.btnType2 {
+    color: #e69646;
+    background-color: #fff;
+}
+
+.btnType2:hover {
+    color: #fff;
+    background-color: #ea9c4f;
+}

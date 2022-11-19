@@ -7,11 +7,11 @@ import ProductDetails from "./feature/Shop/component/ProductDetails";
 import Footer from "./components/Footer";
 import Register from "./feature/Register/Register";
 import Login from "./feature/Login/Login";
-import CartList from "./feature/Cart/components/CartList";
 import CartPopUp from "./components/CartPopUp/CartPopUpList";
 import Profile from "./feature/Account/Profile";
 import { ToastContainer } from "react-toastify";
 import Missing from "./feature/Missing"
+import EntirePage from "./feature/Cart/pages/EntirePage";
 function App() {
   return (
     <div className="App">
@@ -24,7 +24,8 @@ function App() {
         <Route path="/shop" element={<ProductList />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
         <Route path="*" element={<Missing />}></Route>
-        <Route path="/cart" element={<CartList />}></Route>
+        <Route path="/cart" element={<EntirePage />}></Route>
+        <Route path="/customer-info" element={<EntirePage/>}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         {/* <Route  path='/contact' element={<Contact/>}></Route> */}

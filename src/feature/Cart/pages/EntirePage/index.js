@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import CartListPage from "../cartListPage";
-import CustomerInfoPage from "../customerInfoPage";
 import "../../../../asset/css/base.css";
 import style from "./style.module.css";
+import CustomerInfoPage from "../customerInfoPage"
 
 const EntirePage = () => {
   const location = useLocation();

@@ -15,12 +15,12 @@ const CartPopUpItem = ({ item }) => {
   useEffect(() => {
     setQty(quantity);
     setIsDisabled(quantity > 1 ? false : true);
+    setIsHover(false)
   }, [quantity]);
 
   const handleChangeQty = (val = 0) => {
     if (val + qty <= 1) {
       setIsDisabled(true);
-      setIsHover(false);
     } else {
       setIsDisabled(false);
     }

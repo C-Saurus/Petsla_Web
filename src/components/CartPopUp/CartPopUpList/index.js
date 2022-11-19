@@ -36,11 +36,15 @@ const CartPopUp = () => {
   const handleViewCart = () => {
     navigate("/cart");
   };
+  
+  const handleCheckOut = () => {
+    navigate("/customer-info");
+  };
 
   const handleClickOutsideCartPopUp = () => {
     if (status) dispatch(cartListReducer.actions.displayCartPopUp(false));
   };
-  
+
   return (
     <React.Fragment>
       <div
@@ -78,7 +82,11 @@ const CartPopUp = () => {
             </div>
           )}
           <div className="top-cart-footer">
-            <button type="button" className="cart-btn-check">
+            <button
+              type="button"
+              className="cart-btn-check"
+              onClick={handleCheckOut}
+            >
               Checkout ({totalPrice.toLocaleString()}đ)
             </button>
             <button

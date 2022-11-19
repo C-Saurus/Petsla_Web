@@ -9,7 +9,7 @@ import {
 } from "react-bootstrap";
 import ThisButton from "../../components/Button";
 import style from "./style.module.css";
-export default function CustomerInfoPage() {
+export default function CustomerInfoPage({totalItems,totalPrice}) {
   return (
     <React.Fragment>
       <Form>
@@ -17,7 +17,7 @@ export default function CustomerInfoPage() {
           {/* CustomerInfo */}
           <Col lg={8} md={7} sm={12}>
             <Card>
-              <Card.Header className="text-center">
+              <Card.Header className="text-center" style={{ fontWeight: "600" }}>
                 Thông tin giao hàng
               </Card.Header>
               <Card.Body>
@@ -46,8 +46,8 @@ export default function CustomerInfoPage() {
             </Card>
           </Col>
           {/* Bill */}
-          <Col lg={4} md={5} sm={12}>
-            <Card>
+          <Col lg={4} md={5} sm={12} >
+            <Card style={{backgroundColor: "rgb(246, 249, 252)"}} >
               <Container>
                 <div style={{ padding: "0 0.5rem" }}>
                   <div style={{ padding: "1rem 0" }}>
@@ -56,7 +56,7 @@ export default function CustomerInfoPage() {
                         <div>Quantity</div>
                       </Col>
                       <Col lg={6} md={6} sm={6}>
-                        <div className={style.textBold}>Quantity</div>
+                        <div className={style.textBold}>{totalItems} {totalItems >1 ? "items" : "item"} </div>
                       </Col>
                     </Row>
                     <Row>
@@ -64,7 +64,7 @@ export default function CustomerInfoPage() {
                         <div>Total Price</div>
                       </Col>
                       <Col lg={6} md={6} sm={6}>
-                        <div className={style.textBold}>Total Price</div>
+                        <div className={style.textBold}>{totalPrice.toLocaleString()}đ</div>
                       </Col>
                     </Row>
                   </div>

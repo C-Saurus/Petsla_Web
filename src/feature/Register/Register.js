@@ -1,15 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom'
 import { Modal, Button, Form } from 'react-bootstrap';
 import { registerUser } from '../../service/apiRequest';
 import { useDispatch } from 'react-redux'
-import { successToast, errorToast } from '../../utils/toastify'
-import 'react-toastify/dist/ReactToastify.css';
+import { successToast, errorToast, warnToast } from '../../utils/toastify'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from '../../utils/validateForm/index'
+import './register.css'
 export default function Register() {
+    const token = localStorage.getItem("token")
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (token) {
+            warnToast('Bạn đã đăng nhập rồi!')
+            navigate("/shop")
+        }
+    }, [token, navigate])
     const [load, setLoad] = useState(false)
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
@@ -17,7 +25,7 @@ export default function Register() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+
     const onSubmit = () => {
         setLoad(true)
         const newUser = {
@@ -46,6 +54,10 @@ export default function Register() {
         navigate("/shop")
     }
 
+    const handleLogin = () => {
+        navigate("/login")
+    }
+
     const {
         register,
         handleSubmit,
@@ -55,6 +67,7 @@ export default function Register() {
         mode: "onTouched",
         resolver: yupResolver(registerSchema)
       });
+
     return (
         <div>
             <Modal show={true} onHide={handleOnhide} centered dialogClassName="modal-90w">
@@ -135,6 +148,13 @@ export default function Register() {
                             <Button variant="primary" size="md">
                                 Login with Facebook
                             </Button>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="change-modal-wrap">
+                            <div onClick={handleLogin} className="change-to-register">
+                                Have an account? Login
+                            </div>
                         </div>
                     </div>
                 </Modal.Body>

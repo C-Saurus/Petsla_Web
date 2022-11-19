@@ -1,12 +1,17 @@
 import {createSlice} from '@reduxjs/toolkit'
 const userSlice = createSlice({
-    name: "user",
+    name: "profile",
     initialState: {
         user: {
-            user: null,
+            userInfor: null,
             isFetching: false,
             error: false
         },
+        update: {
+            isFetching: false,
+            error: false,
+            success: false,
+        }
     },
     reducers: {
         getUserStart: (state) => {
@@ -14,11 +19,26 @@ const userSlice = createSlice({
         },
         getUserSuccess: (state, action) => {
             state.user.isFetching = false;
-            state.user.allUsers = action.payload;
+            state.user.userInfor = action.payload;
+            localStorage.setItem("profile", JSON.stringify(action.payload))
         },
         getUserFailed: (state) => {
             state.user.isFetching = false;
             state.user.error = true;
+        },
+        updateUserStart: (state) => {
+            state.update.isFetching = true;
+        },
+        updateUserSuccess: (state, action) => {
+            state.update.isFetching = false;
+            state.update.success = true;
+            state.user.userInfor = action.payload;
+            localStorage.setItem("profile", JSON.stringify(action.payload))
+        },
+        updateUserFailed: (state) => {
+            state.update.isFetching = false;
+            state.update.success = false;
+            state.update.error = true;
         }
     }
 })
@@ -26,7 +46,10 @@ const userSlice = createSlice({
 export const {
     getUserStart,
     getUserSuccess,
-    getUserFailed
+    getUserFailed,
+    updateUserStart,
+    updateUserSuccess,
+    updateUserFailed,
 } = userSlice.actions;
 
 export default userSlice.reducer;

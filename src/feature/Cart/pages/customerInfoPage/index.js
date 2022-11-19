@@ -16,7 +16,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { errorToast, successToast, warnToast } from "../../../../utils/toastify";
 import { getAddOrder } from "../../../../service/apiRequest";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+import ThisButton from "../../components/Button";
 
 export default function CustomerInfoPage({totalItems, totalPrice}) {
   const user = JSON.parse(localStorage.getItem("profile"))
@@ -29,7 +30,6 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
   const [address, setAddress] = useState('')
   const [note, setNote] = useState('')
   const [load, setLoad] = useState(false)
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   
   const newOrder = {
@@ -72,9 +72,6 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
       })
     }
   }
-  const handleBack = () => {
-    navigate('/cart')
-  }
   return (
     <React.Fragment>
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -82,7 +79,10 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
           {/* CustomerInfo */}
           <Col lg={8} md={7} sm={12}>
             <Card>
-              <Card.Header className="text-center" style={{ fontWeight: "600" }}>
+              <Card.Header
+                className="text-center"
+                style={{ fontWeight: "600" }}
+              >
                 Thông tin giao hàng
               </Card.Header>
               <Card.Body>
@@ -113,11 +113,34 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
                   <Form.Text className='text-danger'>
                     {errors.address?.message}
                   </Form.Text>
+                  <Form.Control
+                    className={style.formControl}
+                    type="text"
+                    placeholder="Full name"
+                    disabled
+                  />
+                </Form.Group>
+                <Form.Group className="my-3">
+                  <Form.Label>PhoneNumber</Form.Label>
+                  <Form.Control
+                    className={style.formControl}
+                    type="text"
+                    placeholder="Phone number"
+                  />
+                </Form.Group>
+                <Form.Group className="my-3">
+                  <Form.Label>Address</Form.Label>
+                  <Form.Control
+                    className={style.formControl}
+                    type="text"
+                    placeholder="Address"
+                  />
                 </Form.Group>
                 <Form.Group className="my-3">
                   <Form.Label>Note</Form.Label>
                   <FloatingLabel controlId="floatingTextarea" label="Note">
-                    <Form.Control className={style.formControl}
+                    <Form.Control
+                      className={style.formControl}
                       as="textarea"
                       placeholder="Leave a comment here"
                       value={note}
@@ -129,8 +152,8 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
             </Card>
           </Col>
           {/* Bill */}
-          <Col lg={4} md={5} sm={12} >
-            <Card style={{backgroundColor: "rgb(246, 249, 252)"}} >
+          <Col lg={4} md={5} sm={12}>
+            <Card style={{ backgroundColor: "rgb(246, 249, 252)" }}>
               <Container>
                 <div style={{ padding: "0 0.5rem" }}>
                   <div style={{ padding: "1rem 0" }}>
@@ -139,7 +162,9 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
                         <div>Quantity</div>
                       </Col>
                       <Col lg={6} md={6} sm={6}>
-                        <div className={style.textBold}>{totalItems} {totalItems >1 ? "items" : "item"} </div>
+                        <div className={style.textBold}>
+                          {totalItems} {totalItems > 1 ? "items" : "item"}{" "}
+                        </div>
                       </Col>
                     </Row>
                     <Row>
@@ -147,7 +172,9 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
                         <div>Total Price</div>
                       </Col>
                       <Col lg={6} md={6} sm={6}>
-                        <div className={style.textBold}>{totalPrice.toLocaleString()}đ</div>
+                        <div className={style.textBold}>
+                          {totalPrice.toLocaleString()}đ
+                        </div>
                       </Col>
                     </Row>
                   </div>
@@ -163,9 +190,12 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
                   </Row>
                   <Row className="text-center">
                     <Col lg={6} md={6} sm={6}>
-                      <Button type="button" className={`${styleBtn.btn} ${styleBtn.btnType2}`} onClick={handleBack}>
-                        Back
-                      </Button>
+                      <Link to="/cart">
+                        <ThisButton
+                          outline={false}
+                          name={"Back"}
+                        />
+                      </Link>
                     </Col>
                     <Col lg={6} md={6} sm={6}>
                       <Button type="submit" className={`${styleBtn.btn} ${styleBtn.btnType1}`} disabled={load}>

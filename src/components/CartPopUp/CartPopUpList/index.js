@@ -16,16 +16,18 @@ const CartPopUp = () => {
 
   const status = useSelector(cartpopupSelector);
   const cartList = useSelector(cartListSelector);
-
+  const [totalItems, setTotalItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     let total = 0;
+    let items = 0;
 
     cartList.forEach((item) => {
+      items += item.quantity;
       total += item.quantity * item.price;
     });
-
+    setTotalItems(items);
     setTotalPrice(total);
   }, [cartList]);
 
@@ -36,7 +38,7 @@ const CartPopUp = () => {
   const handleViewCart = () => {
     navigate("/cart");
   };
-  
+
   const handleCheckOut = () => {
     navigate("/customer-info");
   };
@@ -60,14 +62,16 @@ const CartPopUp = () => {
           style={{ right: status ? "0" : "-100%" }}
         >
           <div className="top-cart-header">
-            <div className="top-cart-title">Cart: {cartList.length} Items</div>
+            <div className="top-cart-title">
+              Cart: {totalItems} {totalItems > 1 ? "Items" : "Item"}{" "}
+            </div>
             <button
               type="button"
               className="btn-close"
               onClick={handleHiddenCartPopUp}
             ></button>
           </div>
-          {!cartList.length ? (
+          {!totalItems ? (
             <div className="top-cart-body">
               <div className="no__product" style={{ display: "flex" }}>
                 <img src={noProduct} alt="" className="no__product-img" />

@@ -60,13 +60,13 @@ const Profile = () => {
                 <Row >
                     <Dashboard />
                     <Col lg={9} >
-                        <div className={style.account_page_header} class="d-md-block d-lg-flex">
+                        <div className={[style.account_page_header, "d-md-block d-lg-flex d-sm-block"].join(' ')}>
                             <div className={style.titleWrap}>
                                 <div className={style.title}>
-                                    <i style={{ marginRight: "10px" }} class="bi bi-person-fill"></i>
+                                    <i style={{ marginRight: "10px" }} className="bi bi-person-fill"></i>
                                     <span style={{ color: "black" }}>My Profile</span>
                                 </div>
-                                <div className={style.show_dashboard_btn} class="d-lg-none d-block">
+                                <div className={[style.show_dashboard_btn, "d-lg-none d-md-block d-sm-block d-xs-block"].join(' ')}>
                                     <i className="bi bi-list"></i>
                                 </div>
                             </div>
@@ -75,9 +75,9 @@ const Profile = () => {
                             </button>
 
                         </div>
-                        <div className={style.profileInfo} class="d-lg-flex d-sm-block d-md-flex bg-light" style={{ justifyContent: "space-between", backgroundColor: "transparent", marginTop: "10px" }}>
-                            <Col lg={6} sm={12} md={6} className="shadow-sm rounded d-flex" style={{ justifyContent: "space-between", backgroundColor: "white" }}>
-                                <dis className="d-flex" style={{ backgroundColor: "white" }}>
+                        <div className={[style.profileInfo, "d-lg-flex d-sm-block d-md-flex bg-light"].join(' ')} style={{ justifyContent: "space-between", backgroundColor: "transparent", marginTop: "10px" }}>
+                            <Col lg={6} sm={12} md={6} xs={12} className="shadow-sm rounded d-flex" style={{ justifyContent: "space-between", backgroundColor: "white" }}>
+                                <div className="d-flex" style={{ backgroundColor: "white" }}>
                                     <div className={style.profileImg}>
 
                                     </div>
@@ -85,30 +85,30 @@ const Profile = () => {
                                         <div>{token ? currentProfile.name : "Name"}</div>
                                         <div >{token ? currentProfile.username : 'Username'}</div>
                                     </div>
-                                </dis>
+                                </div>
                                 <div style={{ padding: "35px 20px", fontSize: "1.4rem" }}>Diamond User</div>
                             </Col>
-                            <Col lg={6} md={6} sm={12} className="d-lg-flex"
-                                style={{ backgroundColor: "white", justifyContent: "space-around" }}>
-                                <Col className="d-flex lg-6 md-6 sm-12" style={{ justifyContent: "space-around" }}>
-                                    <Col lg={5} md={5} sm={6} className="shadow-sm rounded"
+                            <Col lg={6} md={6} sm={12} xs ={12}className="d-lg-flex"
+                                style={{justifyContent: "space-around" }}>
+                                <Col className="d-flex lg-6 md-6 sm-12 xs-12" style={{ justifyContent: "space-around" }}>
+                                    <Col lg={5} md={5} sm={6} xs={6} className="shadow-sm rounded"
                                         style={{ backgroundColor: "white", padding: "10px 0" }}>
                                         <div className={style.order_card_amount}>10</div>
                                         <div className={style.order_card_title}>Pending</div>
                                     </Col>
-                                    <Col lg={5} md={5} sm={6} className="shadow-sm rounded"
+                                    <Col lg={5} md={5} sm={6} xs={6} className="shadow-sm rounded"
                                         style={{ backgroundColor: "white", padding: "10px 0" }}>
                                         <div className={style.order_card_amount}>11</div>
                                         <div className={style.order_card_title}>Shipping</div>
                                     </Col>
                                 </Col>
-                                <Col className="d-flex lg-6 md-6 sm-12" style={{ justifyContent: "space-around" }}>
-                                    <Col lg={5} md={5} sm={6} className="shadow-sm rounded"
+                                <Col className="d-flex lg-6 md-6 sm-12 xs-12" style={{ justifyContent: "space-around" }}>
+                                    <Col lg={5} md={5} sm={6} xs={6} className="shadow-sm rounded"
                                         style={{ backgroundColor: "white", padding: "10px 0" }}>
                                         <div className={style.order_card_amount}>12</div>
                                         <div className={style.order_card_title}>Delivered</div>
                                     </Col>
-                                    <Col lg={5} md={5} sm={6} className="shadow-sm rounded"
+                                    <Col lg={5} md={5} sm={6} xs={6} className="shadow-sm rounded"
                                         style={{ backgroundColor: "white", padding: "10px 0" }}>
                                         <div className={style.order_card_amount}>13</div>
                                         <div className={style.order_card_title}>Canceled</div>
@@ -179,8 +179,8 @@ const Profile = () => {
                                     <div>Gender</div>
                                     <div className='d-flex justify-content-between'>
                                         <div className="form-check" disabled = {!isEdit}>
-                                            <input type="radio" className="form-check-input" id="radio1" name="optradio" value="male" checked />Male
-                                            <label clclassNameass="form-check-label" htmlFor="radio1"></label>
+                                            <input type="radio" className="form-check-input" id="radio1" name="optradio" value="male" defaultChecked />Male
+                                            <label className="form-check-label" htmlFor="radio1"></label>
                                         </div>
                                         <div className="form-check" disabled = {!isEdit}>
                                             <input type="radio" className="form-check-input" id="radio2" name="optradio" value="female" />Female

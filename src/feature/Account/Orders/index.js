@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router'
 import { getOrder } from '../../../service/apiRequest'
 import { useDispatch } from 'react-redux'
 // import SideDashboard from '../SideDashboard'
-import style from'./style.module.css';
+import style from './style.module.css';
 
 const Orders = () => {
     const navigate = useNavigate()
@@ -38,7 +38,8 @@ const Orders = () => {
                                     <i style={{ marginRight: "10px" }} className="bi bi-bag-fill"></i>
                                     <span style={{ color: "black" }}>My Orders</span>
                                 </div>
-                                <div className={style.show_dashboard_btn} class="d-lg-none d-block">                             
+                                <div className={style.show_dashboard_btn} class="d-lg-none d-block">
+                                    <i class="bi bi-list"></i>
                                 </div>
                             </div>
                         </div>

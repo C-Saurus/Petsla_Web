@@ -17,8 +17,6 @@ function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const user = localStorage.getItem("token");
-
-  console.log(user);
   const handleLogin = (e) => {
     e.preventDefault();
     navigate("/login");
@@ -27,7 +25,7 @@ function Header() {
     e.preventDefault();
     logOut(dispatch, navigate);
     successToast("Đăng xuất thành công!");
-    navigate("/" + location.pathname)
+    navigate(location.pathname)
   };
 
   const [searchTxt, setSearchTxt] = useState("");
@@ -182,7 +180,7 @@ function Header() {
             </li>
             <li className="header__nav-third-item">
               <Link to="/account/profile" className="header__nav-third-link">
-                Account
+                {t("content.account")}
               </Link>
             </li>
           </ul>

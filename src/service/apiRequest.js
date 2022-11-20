@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { loginFailed, loginStart, loginSuccess, registerFailed, registerStart, registerSuccess, logoutStart, logoutSuccess, logoutFailed } from './authSlice';
-import { getOrderFailed, getOrderStart, getOrderSuccess, updateOrderFailed, updateOrderStart, updateOrderSuccess } from './orderSlice';
-import { getAddOrderFailed, getAddOrderStart, getAddOrderSuccess, updateAddOrderFailed, updateAddOrderStart, updateAddOrderSuccess } from './addOrderSlice';
+import { getOrderFailed, getOrderStart, getOrderSuccess } from './orderSlice';
+import { getAddOrderFailed, getAddOrderStart, getAddOrderSuccess } from './addOrderSlice';
 import { getUserFailed, getUserStart, getUserSuccess, updateUserFailed, updateUserStart, updateUserSuccess } from './userSlice';
 export const loginUser = async (user, dispatch) => {
     dispatch(loginStart());
@@ -35,7 +35,6 @@ export const getUsers = async (accessToken, dispatch) => {
                 Authorization: 'Bearer ' + accessToken,
             },
         });
-        console.log(res.data)
         dispatch(getUserSuccess(res.data));
     } catch(err) {
         dispatch(getUserFailed());
@@ -45,7 +44,7 @@ export const getUsers = async (accessToken, dispatch) => {
 export const updateUser = async(accessToken, dispatch, newUser) => {
     dispatch(updateUserStart());
     try {
-        const res = await axios.options("http://petsla-api.herokuapp.com/profile/", newUser, {
+        const res = await axios.put("http://petsla-api.herokuapp.com/profile/", newUser, {
             headers: {
                 Authorization: 'Bearer ' + accessToken,
             },
@@ -73,26 +72,14 @@ export const getOrder = async(accessToken, dispatch) => {
                 Authorization: 'Bearer ' + accessToken,
             },
         })
-        console.log(res.data)
         dispatch(getOrderSuccess(res.data))
+        return res.data
     } catch(err) {
         dispatch(getOrderFailed())
+        return false
     }
 }
 
-export const updateOrder = async(accessToken, dispatch) => {
-    dispatch(updateOrderStart())
-    try {
-        const res = await axios.put("http://petsla-api.herokuapp.com/get-order/", {
-            headers: {
-                Authorization: 'Bearer ' + accessToken,
-            },
-        })
-        dispatch(updateOrderSuccess(res.data))
-    } catch(err) {
-        dispatch(updateOrderFailed())
-    }
-}
 
 export const getAddOrder = async(accessToken, dispatch, order) => {
     dispatch(getAddOrderStart())
@@ -101,24 +88,12 @@ export const getAddOrder = async(accessToken, dispatch, order) => {
             headers: {
                 Authorization: 'Bearer ' + accessToken,
             },
-        })
-        console.log(res.data)
+        });
         dispatch(getAddOrderSuccess(res.data))
+        return true
     } catch(err) {
         dispatch(getAddOrderFailed())
+        return false
     }
 }
 
-export const updateAddOrder = async(accessToken, dispatch) => {
-    dispatch(updateAddOrderStart())
-    try {
-        const res = await axios.post("http://petsla-api.herokuapp.com/add-order/", {
-            headers: {
-                Authorization: 'Bearer ' + accessToken,
-            },
-        })
-        dispatch(updateAddOrderSuccess(res.data))
-    } catch(err) {
-        dispatch(updateAddOrderFailed())
-    }
-}

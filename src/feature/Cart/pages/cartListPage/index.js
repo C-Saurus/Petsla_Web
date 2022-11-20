@@ -1,10 +1,11 @@
 import React from "react";
-// import CartItem from "../../components/CartItem";
-import { Container, Card, Row, Col, Form } from "react-bootstrap";
+import { Container, Card, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import ThisButton from "../../components/Button";
 import style from "./style.module.css";
+import styleBtn from "../../components/Button/style.module.css";
 import CartPopUpItem from "../../../../components/CartPopUp/CartPopUpItem";
+import noProduct from "../../../../asset/image/no_product.png";
+
 export default function CartListPage({ cartList, totalItems, totalPrice }) {
   return (
     <React.Fragment>
@@ -15,13 +16,24 @@ export default function CartListPage({ cartList, totalItems, totalPrice }) {
             <Card.Header className="text-center" style={{ fontWeight: "600" }}>
               Cart
             </Card.Header>
-            <Card.Body>
-              {cartList.map((item) => (
-                <Card>
-                  <CartPopUpItem key={item.id} item={item} />
-                </Card>
-              ))}
-            </Card.Body>
+            {!totalItems ? (
+              <div className="top-cart-body">
+                <div className="no__product" style={{ display: "flex" }}>
+                  <img src={noProduct} alt="" className="no__product-img" />
+                  <h3 className="no__product-title">
+                    There's no item in cart!
+                  </h3>
+                </div>
+              </div>
+            ) : (
+              <Card.Body>
+                {cartList.map((item) => (
+                  <Card key={item.id}>
+                    <CartPopUpItem key={item.id} item={item} />
+                  </Card>
+                ))}
+              </Card.Body>
+            )}
           </Card>
         </Col>
         {/* Bill */}
@@ -29,7 +41,7 @@ export default function CartListPage({ cartList, totalItems, totalPrice }) {
           <Card>
             <Container>
               <div style={{ padding: "0 0.5rem" }}>
-                <div style={{ padding: "1rem 0" }}>
+                <div style={{ padding: "1rem 0 0" }}>
                   <Row style={{ flexWrap: "nowrap!important" }}>
                     <Col lg={6} md={6} sm={6}>
                       <div>Quantity</div>
@@ -54,11 +66,10 @@ export default function CartListPage({ cartList, totalItems, totalPrice }) {
                 <Form>
                   <Row>
                     <Form.Group className="my-3">
-                      <Form.Label>Fullname</Form.Label>
                       <Form.Control
                         className={style.formControl}
                         type="text"
-                        placeholder="Full name"
+                        placeholder="voucher"
                         disabled
                       />
                     </Form.Group>
@@ -67,7 +78,11 @@ export default function CartListPage({ cartList, totalItems, totalPrice }) {
                     <div style={{ margin: "-0.5rem 0" }}>
                       {" "}
                       <Link to="/customer-info">
-                        <ThisButton outline={false} name={"Voucher"} />
+                        <Button
+                          className={`${styleBtn.btn} ${styleBtn.btnType2}`}
+                        >
+                          Voucher
+                        </Button>
                       </Link>
                     </div>
                   </Row>
@@ -76,7 +91,11 @@ export default function CartListPage({ cartList, totalItems, totalPrice }) {
                   <div style={{ margin: "-0.5rem 0 0" }}>
                     {" "}
                     <Link to="/customer-info">
-                      <ThisButton outline={true} name={"Checkout"} />
+                      <Button
+                        className={`${styleBtn.btn} ${styleBtn.btnType1}`}
+                      >
+                        Checkout
+                      </Button>{" "}
                     </Link>
                   </div>
                 </Row>

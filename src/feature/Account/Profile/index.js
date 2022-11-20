@@ -97,7 +97,7 @@ const Profile = () => {
                             </Col>
                             <Col lg={6} md={6} sm={12} className="d-lg-flex"
                                 style={{ backgroundColor: "white", justifyContent: "space-around" }}>
-                                <Col className="d-flex lg-6 md-6 sm-6" style={{ justifyContent: "space-around" }}>
+                                <Col className="d-flex lg-6 md-6 sm-12" style={{ justifyContent: "space-around" }}>
                                     <Col lg={5} md={5} sm={6} className="shadow-sm rounded"
                                         style={{ backgroundColor: "white", padding: "10px 0" }}>
                                         <div className={style.order_card_amount}>10</div>
@@ -109,7 +109,7 @@ const Profile = () => {
                                         <div className={style.order_card_title}>Shipping</div>
                                     </Col>
                                 </Col>
-                                <Col className="d-flex lg-6 md-6 sm-6" style={{ justifyContent: "space-around" }}>
+                                <Col className="d-flex lg-6 md-6 sm-12" style={{ justifyContent: "space-around" }}>
                                     <Col lg={5} md={5} sm={6} className="shadow-sm rounded"
                                         style={{ backgroundColor: "white", padding: "10px 0" }}>
                                         <div className={style.order_card_amount}>12</div>

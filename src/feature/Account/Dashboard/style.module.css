@@ -1,0 +1,24 @@
+.dashboard_nav_list {
+    list-style: none;
+    font-size: 1.2rem;
+}
+
+
+.dashboard_nav_item{
+    display: flex;
+    justify-content:left;
+    list-style: none;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* .dashboard_col {
+    padding: 1.5rem;
+} */
+
+.dashboard_header {
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}

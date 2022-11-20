@@ -16,7 +16,7 @@ const Wishlist = () => {
                     <Col lg={9} >
                         <div className={style.account_page_header} class="d-md-block d-lg-flex">
                             <div className={style.titleWrap}>
-                                <div class={style.title}>
+                                <div className={style.title}>
                                     <i style={{ marginRight: "10px" }} class="bi bi-heart-fill"></i>
                                     <span style={{ color: "black" }}>My Wishlist</span>
                                 </div>
@@ -30,7 +30,6 @@ const Wishlist = () => {
 
                         </div>
                     </Col>
-
                 </Row>
             </Container>
         </div>

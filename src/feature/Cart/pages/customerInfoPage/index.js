@@ -17,7 +17,6 @@ import { errorToast, successToast, warnToast } from "../../../../utils/toastify"
 import { getAddOrder } from "../../../../service/apiRequest";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import ThisButton from "../../components/Button";
 
 export default function CustomerInfoPage({totalItems, totalPrice}) {
   const user = JSON.parse(localStorage.getItem("profile"))
@@ -142,7 +141,7 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
               <Container>
                 <div style={{ padding: "0 0.5rem" }}>
                   <div style={{ padding: "1rem 0" }}>
-                    <Row>
+                    <Row style={{flexWrap: "nowrap!important"}}>
                       <Col lg={6} md={6} sm={6}>
                         <div>Quantity</div>
                       </Col>
@@ -152,7 +151,7 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
                         </div>
                       </Col>
                     </Row>
-                    <Row>
+                    <Row style={{flexWrap: "nowrap!important"}}>
                       <Col lg={6} md={6} sm={6}>
                         <div>Total Price</div>
                       </Col>
@@ -176,10 +175,9 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
                   <Row className="text-center">
                     <Col lg={6} md={6} sm={6}>
                       <Link to="/cart">
-                        <ThisButton
-                          outline={false}
-                          name={"Back"}
-                        />
+                      <Button className={`${styleBtn.btn} ${styleBtn.btnType2}`}>
+                        Back
+                      </Button>
                       </Link>
                     </Col>
                     <Col lg={6} md={6} sm={6}>

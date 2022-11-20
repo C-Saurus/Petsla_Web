@@ -90,7 +90,7 @@ const Profile = () => {
                             </Col>
                             <Col lg={6} md={6} sm={12} className="d-lg-flex"
                                 style={{ backgroundColor: "white", justifyContent: "space-around" }}>
-                                <Col className="d-flex lg-6 md-6 sm-6" style={{ justifyContent: "space-around" }}>
+                                <Col className="d-flex lg-6 md-6 sm-12" style={{ justifyContent: "space-around" }}>
                                     <Col lg={5} md={5} sm={6} className="shadow-sm rounded"
                                         style={{ backgroundColor: "white", padding: "10px 0" }}>
                                         <div className={style.order_card_amount}>10</div>
@@ -102,7 +102,7 @@ const Profile = () => {
                                         <div className={style.order_card_title}>Shipping</div>
                                     </Col>
                                 </Col>
-                                <Col className="d-flex lg-6 md-6 sm-6" style={{ justifyContent: "space-around" }}>
+                                <Col className="d-flex lg-6 md-6 sm-12" style={{ justifyContent: "space-around" }}>
                                     <Col lg={5} md={5} sm={6} className="shadow-sm rounded"
                                         style={{ backgroundColor: "white", padding: "10px 0" }}>
                                         <div className={style.order_card_amount}>12</div>
@@ -178,17 +178,17 @@ const Profile = () => {
                                 <div className='gender' >
                                     <div>Gender</div>
                                     <div className='d-flex justify-content-between'>
-                                        <div class="form-check" disabled = {!isEdit}>
-                                            <input type="radio" class="form-check-input" id="radio1" name="optradio" value="male" checked />Male
-                                            <label class="form-check-label" for="radio1"></label>
+                                        <div className="form-check" disabled = {!isEdit}>
+                                            <input type="radio" className="form-check-input" id="radio1" name="optradio" value="male" checked />Male
+                                            <label clclassNameass="form-check-label" htmlFor="radio1"></label>
                                         </div>
-                                        <div class="form-check" disabled = {!isEdit}>
-                                            <input type="radio" class="form-check-input" id="radio2" name="optradio" value="female" />Female
-                                            <label class="form-check-label" for="radio2"></label>
+                                        <div className="form-check" disabled = {!isEdit}>
+                                            <input type="radio" className="form-check-input" id="radio2" name="optradio" value="female" />Female
+                                            <label className="form-check-label" htmlFor="radio2"></label>
                                         </div>
-                                        <div class="form-check" disabled = {!isEdit}>
-                                            <input type="radio" class="form-check-input" id="radio3" name="optradio" value="others" />Others
-                                            <label class="form-check-label" for="radio3"></label>
+                                        <div className="form-check" disabled = {!isEdit}>
+                                            <input type="radio" className="form-check-input" id="radio3" name="optradio" value="others" />Others
+                                            <label className="form-check-label" htmlFor="radio3"></label>
                                         </div>
                                     </div>
                                 </div>

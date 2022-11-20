@@ -1,9 +1,6 @@
-import style from './style.module.css'
-import { Col } from 'react-bootstrap'
-import { Link, useLocation } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import './style.module.css'
 
-const Dashboard = () => {
+const SideDashboard = () => {
     const location = useLocation()
     const [isActive, setIsActive] = useState(1)
 
@@ -23,17 +20,24 @@ const Dashboard = () => {
     }, [location])
 
     return (
-        <Col lg={3} className="d-none d-lg-block">
-            <div className="shadow-sm rounded" style={{ backgroundColor: "white", padding: "0.5rem" }}>
-                <div className="dashboard">
-                    <h5 className={style.dashboard_header}>Dashboard</h5>
+        <div className="side__dashboard">
+            <div className="side__dashboard--pane">
+                <div className='pane--header'>
+                    <div className='pane--header--title'>
+
+                    </div>
+                    <div className='pane--header--close'>
+
+                    </div>
+                </div>
+                <div className='pane--body'>
                     <ul className={style.dashboard_nav_list}>
                         <li>
                             <Link to={`/account/profile`}
                                 style={{ color: isActive === 3 ? "rgb(230, 150, 70)" : "black", textDecoration: "none" }}
                                 className={style.dashboard_nav_item}>
                                 <i className="bi bi-person"></i>
-                                <span style={{color: isActive === 3 ? "rgb(230, 150, 70)" : "black", marginLeft: "10px" }} className="title">Profile</span>
+                                <span style={{ color: isActive === 3 ? "rgb(230, 150, 70)" : "black", marginLeft: "10px" }} className="title">Profile</span>
                             </Link>
                         </li>
                         <li >
@@ -41,7 +45,7 @@ const Dashboard = () => {
                                 style={{ color: isActive === 1 ? "rgb(230, 150, 70)" : "black", textDecoration: "none" }}
                                 className={style.dashboard_nav_item}>
                                 <i className="bi bi-bag"></i>
-                                <span style={{color: isActive === 1 ? "rgb(230, 150, 70)" : "black", marginLeft: "10px" }} className="title">Orders</span>
+                                <span style={{ color: isActive === 1 ? "rgb(230, 150, 70)" : "black", marginLeft: "10px" }} className="title">Orders</span>
                             </Link>
                         </li>
                         <li >
@@ -49,14 +53,16 @@ const Dashboard = () => {
                                 style={{ color: isActive === 2 ? "rgb(230, 150, 70)" : "black", textDecoration: "none" }}
                                 className={style.dashboard_nav_item}>
                                 <i className="bi bi-heart"></i>
-                                <span style={{color: isActive === 2 ? "rgb(230, 150, 70)" : "black", marginLeft: "10px" }} className="title">Wishlist</span>
+                                <span style={{ color: isActive === 2 ? "rgb(230, 150, 70)" : "black", marginLeft: "10px" }} className="title">Wishlist</span>
                             </Link>
                         </li>
                     </ul>
                 </div>
             </div>
-        </Col>
+            <div className="side__dashboard--backdrop">
 
+            </div>
+        </div>
     )
 }
-export default Dashboard
+export default SideDashboard;

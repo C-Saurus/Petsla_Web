@@ -13,23 +13,23 @@ const Footer = () => {
     const { t } = useTranslation()
     useEffect(() => {
         switch (location.pathname) {
-            case "/": setIsActive(1)
-            case "/shop": setIsActive(2)
-            case "/cart": setIsActive(3)
-            case "/account/orders": setIsActive(4)
-            case "/account/wishlist": setIsActive(4)
-            case "/account/profile": setIsActive(4)
+            case "/": setIsActive(1); break;
+            case "/shop": setIsActive(2); break;
+            case "/cart": setIsActive(3); break;
+            case "/account/orders": setIsActive(4); break;
+            case "/account/wishlist": setIsActive(4); break;
+            case "/account/profile": setIsActive(4); break;
             
         }
     }, [location]);
     return (
-        <div classNclassame="footer container">
+        <div className="footer">
             <div className="footer__banner">
                 <img className='footer__banner--img' src="https://www.leoasher.dev/static/media/bannerFooter.4b09af08.png"></img>
             </div>
             <div className='footer__botNav'>
-                <div class="row">
-                    <div class='col d-sm-block d-lg-flex d-md-flex'>
+                <div className="row">
+                    <div className='col d-sm-block d-lg-flex d-md-flex'>
                         <div style={{ "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }} className="footer__description col sm-12 md-4 lg-4">
                             <div style={{ margin: "10px auto", fontSize: "1.2rem", fontWeight: "bold" }}>Về Petsla</div>
                             <div>PetsLa ra đời với sứ mệnh Pets hóa thế giới loài người bằng cách mang đến cho cộng đồng những content thú vị, đáng yêu về pets.</div>

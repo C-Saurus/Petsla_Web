@@ -136,7 +136,7 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
               <Container>
                 <div style={{ padding: "0 0.5rem" }}>
                   <div style={{ padding: "1rem 0" }}>
-                    <Row>
+                    <Row style={{flexWrap: "nowrap!important"}}>
                       <Col lg={6} md={6} sm={6}>
                         <div>Quantity</div>
                       </Col>
@@ -146,7 +146,7 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
                         </div>
                       </Col>
                     </Row>
-                    <Row>
+                    <Row style={{flexWrap: "nowrap!important"}}>
                       <Col lg={6} md={6} sm={6}>
                         <div>Total Price</div>
                       </Col>

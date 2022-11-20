@@ -1,7 +1,8 @@
 
 .footer {
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     /* position: fixed; */
+    /* padding-bottom: 200px; */
 }
 
 .footer__banner {
@@ -10,7 +11,8 @@
 }
 
 .footer__botNav {
-    padding: 20px;
+    /* padding: 20px; */
+    padding-bottom: 80px;
 }
 
 .footer__description {
@@ -51,6 +53,7 @@
     padding: 0;
     margin: 0;
     display: none;
+    padding-top: 50px;
 }
 .bot-nav-list {
     list-style: none;

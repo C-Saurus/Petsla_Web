@@ -1,7 +1,7 @@
 import './footer.css'
-import './grid.css'
+// import './grid.css'
 import '../../asset/css/responsive.css'
-// import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css'
 import "bootstrap-icons/font/bootstrap-icons.css"
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
@@ -23,19 +23,19 @@ const Footer = () => {
         }
     }, [location]);
     return (
-        <div className="footer">
+        <div classNclassame="footer container">
             <div className="footer__banner">
                 <img className='footer__banner--img' src="https://www.leoasher.dev/static/media/bannerFooter.4b09af08.png"></img>
             </div>
             <div className='footer__botNav'>
-                <div className="grid">
-                    <div className='row'>
-                        <div style={{ "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }} className="footer__description col s-12 m-4 l-4">
+                <div class="row">
+                    <div class='col d-sm-block d-lg-flex d-md-flex'>
+                        <div style={{ "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }} className="footer__description col sm-12 md-4 lg-4">
                             <div style={{ margin: "10px auto", fontSize: "1.2rem", fontWeight: "bold" }}>Về Petsla</div>
                             <div>PetsLa ra đời với sứ mệnh Pets hóa thế giới loài người bằng cách mang đến cho cộng đồng những content thú vị, đáng yêu về pets.</div>
                         </div>
-                        <div className="col s-12 m-4 l-4"></div>
-                        <div style={{ "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }} className='footer__followUs col s-12 m-4 l-4'>
+                        <div className="col sm-12 md-4 lg-4 d-sm-none d-sm-none d-md-block d-lg-block"></div>
+                        <div style={{ "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }} className='footer__followUs col sm-12 md-4 lg-4'>
                             <div style={{ margin: "10px auto", fontSize: "1.2rem", fontWeight: "bold", color: "gray" }}>Follow us</div>
                             <div className='footer__followUs--icon'>
                                 <a href="https://www.facebook.com/" style={{ marginRight: "5px", color: "gray" }} target="_blank">
@@ -105,7 +105,6 @@ const Footer = () => {
                                 </div>
                             </div>
                         </Link>
-
                     </li>
                 </ul>
             </div>

@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { Modal, Button, Form } from "react-bootstrap";
-import { loginUser } from "../../service/apiRequest";
+import { getUsers, loginUser } from "../../service/apiRequest";
 import { useDispatch } from "react-redux";
 import { successToast, errorToast, warnToast } from "../../utils/toastify/index";
 import { useForm } from "react-hook-form";
@@ -23,7 +23,6 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  
   const onSubmit = () => {
     setLoad(true);
     const newUser = {
@@ -33,7 +32,8 @@ export default function Login() {
     loginUser(newUser, dispatch).then((res) => {
       if (res) {
         successToast("Đăng nhập thành công!");
-        navigate("/shop")
+        getUsers(localStorage.getItem("token"), dispatch)
+        navigate('/shop', {replace: true})
       } else {
         errorToast("Sai tên đăng nhập hoặc mật khẩu");
         setLoad(false);

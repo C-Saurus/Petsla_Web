@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Form,
   Row,
@@ -6,14 +6,75 @@ import {
   Card,
   FloatingLabel,
   Container,
+  Button
 } from "react-bootstrap";
+import style from "./style.module.css";
+import styleBtn from '../../components/Button/style.module.css'
+import { orderSchema } from "../../../../utils/validateForm";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { errorToast, successToast, warnToast } from "../../../../utils/toastify";
+import { getAddOrder } from "../../../../service/apiRequest";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import ThisButton from "../../components/Button";
-import style from "./style.module.css";
-export default function CustomerInfoPage({ totalItems, totalPrice }) {
+
+export default function CustomerInfoPage({totalItems, totalPrice}) {
+  const user = JSON.parse(localStorage.getItem("profile"))
+  const cartItem = JSON.parse(localStorage.getItem("cartList")) || []
+  const orderItems = cartItem.map((item) => {
+    return {product_id: item.id, quantity: item.quantity, price: item.price}
+  })
+
+  const [phoneNum, setPhoneNum] = useState('')
+  const [address, setAddress] = useState('')
+  const [note, setNote] = useState('')
+  const [load, setLoad] = useState(false)
+  const dispatch = useDispatch()
+  
+  const newOrder = {
+    address: address,
+    note: note,
+    number_phone: phoneNum,
+    orderItems: orderItems,
+    total_price: totalPrice,
+  }
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+
+  } = useForm({
+    mode: "onTouched",
+    resolver: yupResolver(orderSchema)
+  })
+
+  const onSubmit = () => {
+    setLoad(true)
+    if (totalItems === 0) {
+      warnToast('Giỏ hàng của bạn đang trống')
+      setLoad(false)
+    }
+    else if(!localStorage.getItem('token')) {
+      warnToast('Bạn cần đăng nhập trước')
+      setLoad(false)
+    }
+    else {
+      getAddOrder(localStorage.getItem("token"), dispatch, newOrder).then((res) => {
+        if (res) {
+          successToast('Đã đặt hàng thành công!')
+        }
+        else {
+          errorToast('Hết hàng mất rồi :((')
+        }
+        setLoad(false)
+      })
+    }
+  }
   return (
     <React.Fragment>
-      <Form>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <Row>
           {/* CustomerInfo */}
           <Col lg={8} md={7} sm={12}>
@@ -27,29 +88,33 @@ export default function CustomerInfoPage({ totalItems, totalPrice }) {
               <Card.Body>
                 <Form.Group className="my-3">
                   <Form.Label>Fullname</Form.Label>
-                  <Form.Control
-                    className={style.formControl}
-                    type="text"
-                    placeholder="Full name"
-                    disabled
-                  />
+                  <Form.Control className={style.formControl} type="text" placeholder={user ? user.name : 'Full name'} disabled />
                 </Form.Group>
                 <Form.Group className="my-3">
                   <Form.Label>PhoneNumber</Form.Label>
-                  <Form.Control
-                    className={style.formControl}
-                    type="text"
-                    placeholder="Phone number"
+                  <Form.Control className={style.formControl} type="text" placeholder="Phone number" 
+                    name="phoneNum"
+                    value={phoneNum}
+                    {...register("phoneNum")}
+                    onChange={(e) => setPhoneNum(e.target.value)}
                   />
+                  <Form.Text className='text-danger'>
+                    {errors.phoneNum?.message}
+                  </Form.Text>
                 </Form.Group>
                 <Form.Group className="my-3">
                   <Form.Label>Address</Form.Label>
-                  <Form.Control
-                    className={style.formControl}
-                    type="text"
-                    placeholder="Address"
+                  <Form.Control className={style.formControl} type="text" placeholder="Address" 
+                    name="address"
+                    value={address}
+                    {...register("address")}
+                    onChange={e => setAddress(e.target.value)}
                   />
+                  <Form.Text className='text-danger'>
+                    {errors.address?.message}
+                  </Form.Text>
                 </Form.Group>
+                
                 <Form.Group className="my-3">
                   <Form.Label>Note</Form.Label>
                   <FloatingLabel controlId="floatingTextarea" label="Note">
@@ -57,6 +122,8 @@ export default function CustomerInfoPage({ totalItems, totalPrice }) {
                       className={style.formControl}
                       as="textarea"
                       placeholder="Leave a comment here"
+                      value={note}
+                      onChange={e => setNote(e.target.value)}
                     />
                   </FloatingLabel>
                 </Form.Group>
@@ -110,7 +177,9 @@ export default function CustomerInfoPage({ totalItems, totalPrice }) {
                       </Link>
                     </Col>
                     <Col lg={6} md={6} sm={6}>
-                      <ThisButton outline={true} name={"Next"} />
+                      <Button type="submit" className={`${styleBtn.btn} ${styleBtn.btnType1}`} disabled={load}>
+                        Next
+                      </Button>
                     </Col>
                   </Row>
                 </div>

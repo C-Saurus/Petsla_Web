@@ -53,7 +53,8 @@ const authSlice = createSlice({
             state.logout.error = false;
             state.login.currentUser = null
             localStorage.removeItem("token");
-            localStorage.removeItem("profile")
+            localStorage.removeItem("profile");
+            localStorage.removeItem("add_orders")
         },
         logoutFailed: (state) => {
             state.logout.isFetching = false;

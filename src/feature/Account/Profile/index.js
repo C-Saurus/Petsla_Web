@@ -1,31 +1,34 @@
 import React, { useEffect } from 'react'
-import { getAddOrder, getOrder, updateUser } from '../../../service/apiRequest'
-import { useDispatch } from 'react-redux'
 import { successToast, warnToast } from '../../../utils/toastify'
 import { useNavigate } from 'react-router-dom'
 import Dashboard from '../Dashboard'
 import { Container, Row, Col, Card, Form } from 'react-bootstrap'
 import style from './style.module.css'
 import { useState } from 'react'
+import { profileSchema } from '../../../utils/validateForm'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 const Profile = () => {
-    const [first, setFirst] = useState("");
-    const [last, setLast] = useState("");
-    const [eMail, setMail] = useState("abc@gmail.com");
-    const [phone, setPhone] = useState("");
-
-    const [isEdit, setIsEdit] = useState(false)
-
     const navigate = useNavigate()
     const token = localStorage.getItem("token")
-
     useEffect(() => {
         if (!token) {
             warnToast('Bạn cần đăng nhập trước!')
             navigate('/login')
         }
     }, [token, navigate])
+    const currentProfile = JSON.parse(localStorage.getItem("profile"))
+    const [first, setFirst] = useState(token ? currentProfile.first_name : "");
+    const [last, setLast] = useState(token ? currentProfile.last_name : "");
+    const [eMail, setMail] = useState(token ? currentProfile.email : "");
+    const [phone, setPhone] = useState("");
+    const [isEdit, setIsEdit] = useState(false)
+
     const handleEditClick = () => {
+        if (isEdit === true) {
+            successToast('Cập nhật thành công')
+        }
         setIsEdit(!isEdit)
     }
     
@@ -41,26 +44,16 @@ const Profile = () => {
     const handlePhoneChange = (e) =>{
         setPhone(e.target.value)
     }
-    const newProfile = {
-        email: 'datVH123@gmail.com',
-        first_name: 'Panther',
-        last_name: 'Black',
-        name: 'LMI9',
-        username: 'BlackPanther2002'
-    }
-    const newOrder = {
-        address: 'HNNHNNDD',
-        note: '',
-        number_phone: '14332532',
-        orderItems: [{ product_id: 1, quantity: 1, price: 350000 }],
-        total_price: 1
-    }
-    const dispatch = useDispatch();
-    const handleEdit = () => {
-        getAddOrder(localStorage.getItem("token"), dispatch, newOrder).then(() => {
-            successToast('Đã cập nhật thành công')
-        })
-    }
+
+    const {
+        register,
+        handleSubmit,
+        formState: {errors}
+    } = useForm({
+        mode: 'onTouched',
+        resolver: yupResolver(profileSchema)
+    })
+    
     return (
         <div className={style.account_page}>
             <Container>
@@ -69,16 +62,16 @@ const Profile = () => {
                     <Col lg={9} >
                         <div className={style.account_page_header} class="d-md-block d-lg-flex">
                             <div className={style.titleWrap}>
-                                <div class={style.title}>
+                                <div className={style.title}>
                                     <i style={{ marginRight: "10px" }} class="bi bi-person-fill"></i>
                                     <span style={{ color: "black" }}>My Profile</span>
                                 </div>
                                 <div className={style.show_dashboard_btn} class="d-lg-none d-block">
-                                    <i class="bi bi-list"></i>
+                                    <i className="bi bi-list"></i>
                                 </div>
                             </div>
 
-                            <button onClick={handleEditClick} className={style.editBtn}>{isEdit === true ? "Save" : "Edit Profile"}
+                            <button type='submit' onClick={handleEditClick} className={style.editBtn}>{isEdit === true ? "Save" : "Edit Profile"}
                             </button>
 
                         </div>
@@ -89,8 +82,8 @@ const Profile = () => {
 
                                     </div>
                                     <div style={{ padding: "20px 0", fontSize: "1.15rem" }}>
-                                        <div>Name</div>
-                                        <div >UserName</div>
+                                        <div>{token ? currentProfile.name : "Name"}</div>
+                                        <div >{token ? currentProfile.username : 'Username'}</div>
                                     </div>
                                 </dis>
                                 <div style={{ padding: "35px 20px", fontSize: "1.4rem" }}>Diamond User</div>
@@ -125,48 +118,62 @@ const Profile = () => {
                         </div>
                         <Card style={{ marginTop: "10px", fontSize: "1.3rem" }}>
                             <Card.Body>
-                                <Form.Group >
-                                    <Form.Label>First Name:</Form.Label>
-                                    <Form.Control
-                                        className={style.formControl}
-                                        type="text"
-                                        disabled = {!isEdit}
-                                        value = {first}
-                                        onChange = {handleFirstChange}
-
-                                    />
-                                </Form.Group>
-                                <Form.Group className="my-3">
-                                    <Form.Label>Last Name:</Form.Label>
-                                    <Form.Control
-                                        className={style.formControl}
-                                        type="text"
-                                        disabled = {!isEdit}
-                                        value = {last}
-                                        onChange = {handleLastChange}
-                                    />
-                                </Form.Group>
-                                <Form.Group className="my-3">
-                                    <Form.Label>Email:</Form.Label>
-                                    <Form.Control
-                                        className={style.formControl}
-                                        type="text"
-                                        disabled = {!isEdit}
-                                        value = {eMail}
-
-                                        onChange = {handleEmailChange}
-                                    />
-                                </Form.Group>
-                                <Form.Group className="my-3">
-                                    <Form.Label>Phone Number:</Form.Label>
-                                    <Form.Control
-                                        className={style.formControl}
-                                        type="text"
-                                        disabled = {!isEdit}
-                                        value = {phone}
-                                        onChange = {handlePhoneChange}
-                                    />
-                                </Form.Group>
+                                <Form onSubmit={handleSubmit(handleEditClick)}>
+                                    <Form.Group >
+                                        <Form.Label>First Name:</Form.Label>
+                                        <Form.Control
+                                            className={style.formControl}
+                                            type="text"
+                                            disabled = {!isEdit}
+                                            value = {first}
+                                            name='first_name'
+                                            {...register('first_name')}
+                                            onChange = {handleFirstChange}
+                                        />
+                                        <Form.Text className='text-danger'>
+                                            {errors.first_name?.message}
+                                        </Form.Text>
+                                    </Form.Group>
+                                    <Form.Group className="my-3">
+                                        <Form.Label>Last Name:</Form.Label>
+                                        <Form.Control
+                                            className={style.formControl}
+                                            type="text"
+                                            disabled = {!isEdit}
+                                            value = {last}
+                                            name='last_name'
+                                            {...register('last_name')}
+                                            onChange = {handleLastChange}
+                                        />
+                                        <Form.Text className='text-danger'>
+                                            {errors.last_name?.message}
+                                        </Form.Text>
+                                    </Form.Group>
+                                    <Form.Group className="my-3">
+                                        <Form.Label>Email:</Form.Label>
+                                        <Form.Control
+                                            className={style.formControl}
+                                            type="text"
+                                            disabled = {!isEdit}
+                                            value = {eMail}
+                                            {...register('email')}
+                                            onChange = {handleEmailChange}
+                                        />
+                                        <Form.Text className='text-danger'>
+                                            {errors.email?.message}
+                                        </Form.Text>
+                                    </Form.Group>
+                                    <Form.Group className="my-3">
+                                        <Form.Label>Phone Number:</Form.Label>
+                                        <Form.Control
+                                            className={style.formControl}
+                                            type="text"
+                                            disabled = {!isEdit}
+                                            value = {phone}
+                                            onChange = {handlePhoneChange}
+                                        />
+                                    </Form.Group>
+                                </Form>
 
                                 <div className='gender' >
                                     <div>Gender</div>

@@ -19,6 +19,7 @@ const Footer = () => {
             case "/account/orders": setIsActive(4)
             case "/account/wishlist": setIsActive(4)
             case "/account/profile": setIsActive(4)
+            
         }
     }, [location]);
     return (

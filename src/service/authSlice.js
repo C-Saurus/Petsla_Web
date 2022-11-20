@@ -55,6 +55,7 @@ const authSlice = createSlice({
             localStorage.removeItem("token");
             localStorage.removeItem("profile");
             localStorage.removeItem("add_orders")
+            localStorage.removeItem("list_Order")
         },
         logoutFailed: (state) => {
             state.logout.isFetching = false;

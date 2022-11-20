@@ -16,6 +16,7 @@ const orderSlice = createSlice({
         getOrderSuccess: (state, action) => {
             state.order.isFetching = false;
             state.order.orderInfor = action.payload;
+            console.log(action.payload)
         },
         getOrderFailed: (state) => {
             state.order.isFetching = false;

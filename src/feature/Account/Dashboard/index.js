@@ -12,10 +12,13 @@ const Dashboard = () => {
         switch (location.pathname) {
             case "/account/orders":
                 setIsActive(1);
+                break;
             case "/account/wishlist":
                 setIsActive(2)
+                break;
             case "/account/profile":
                 setIsActive(3)
+                break;
         }
     }, [location])
 

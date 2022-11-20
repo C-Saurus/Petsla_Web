@@ -32,14 +32,13 @@ const Orders = () => {
                 <Row >
                     <Dashboard />
                     <Col lg={9} >
-                        <div className={style.account_page_header} class="d-md-block d-lg-flex">
+                        <div className={[style.account_page_header, "d-md-block d-lg-flex"].join(' ')} >
                             <div className={style.titleWrap}>
                                 <div className={style.title}>
                                     <i style={{ marginRight: "10px" }} className="bi bi-bag-fill"></i>
                                     <span style={{ color: "black" }}>My Orders</span>
                                 </div>
-                                <div className={style.show_dashboard_btn} class="d-lg-none d-block">
-                                    <i class="bi bi-list"></i>
+                                <div className={[style.show_dashboard_btn, "d-lg-none d-block"].join(' ')}>                             
                                 </div>
                             </div>
                         </div>

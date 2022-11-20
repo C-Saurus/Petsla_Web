@@ -178,17 +178,17 @@ const Profile = () => {
                                 <div className='gender' >
                                     <div>Gender</div>
                                     <div className='d-flex justify-content-between'>
-                                        <div class="form-check" disabled = {!isEdit}>
-                                            <input type="radio" class="form-check-input" id="radio1" name="optradio" value="male" checked />Male
-                                            <label class="form-check-label" for="radio1"></label>
+                                        <div className="form-check" disabled = {!isEdit}>
+                                            <input type="radio" className="form-check-input" id="radio1" name="optradio" value="male" checked />Male
+                                            <label clclassNameass="form-check-label" htmlFor="radio1"></label>
                                         </div>
-                                        <div class="form-check" disabled = {!isEdit}>
-                                            <input type="radio" class="form-check-input" id="radio2" name="optradio" value="female" />Female
-                                            <label class="form-check-label" for="radio2"></label>
+                                        <div className="form-check" disabled = {!isEdit}>
+                                            <input type="radio" className="form-check-input" id="radio2" name="optradio" value="female" />Female
+                                            <label className="form-check-label" htmlFor="radio2"></label>
                                         </div>
-                                        <div class="form-check" disabled = {!isEdit}>
-                                            <input type="radio" class="form-check-input" id="radio3" name="optradio" value="others" />Others
-                                            <label class="form-check-label" for="radio3"></label>
+                                        <div className="form-check" disabled = {!isEdit}>
+                                            <input type="radio" className="form-check-input" id="radio3" name="optradio" value="others" />Others
+                                            <label className="form-check-label" htmlFor="radio3"></label>
                                         </div>
                                     </div>
                                 </div>

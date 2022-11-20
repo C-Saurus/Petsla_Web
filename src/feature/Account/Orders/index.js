@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 // import { getAddOrder, getOrder, updateUser } from '../../../service/apiRequest'
 // import { useDispatch } from 'react-redux'
 // import { successToast, warnToast } from '../../../utils/toastify'
@@ -15,14 +15,17 @@ const Orders = () => {
     const navigate = useNavigate()
     const token = localStorage.getItem("token")
     const ditpatch = useDispatch()
+    const [listOrder, setListOrder] = useState([]);
     useEffect(() => {
         if (!token) {
             warnToast('Bạn cần đăng nhập trước!')
             navigate('/login')
         }
+        else {
+            getOrder(token, ditpatch).then(res => setListOrder(res))
+        }
     }, [token, navigate, ditpatch])
-    getOrder(token, ditpatch)
-    const listOrder = JSON.parse(localStorage.getItem('list_Order'))
+    console.log(listOrder)
     // render listOrder ra là xong :<
     return (
         <div className={style.account_page}>

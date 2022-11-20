@@ -1,12 +1,12 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Button } from 'react-bootstrap';
 import notFound from '../../asset/notfound.png'
 const index = () => {
-    const navigate = useNavigate;
-  const handleBack = () => {
-    navigate("/")
-  }
+//   const navigate = useNavigate()
+//   const handleBack = () => {
+//     navigate("/")
+//   }
   return (
     <>
         <div style={{
@@ -24,9 +24,11 @@ const index = () => {
             }}>
                 The page you are looking for might have been removed had its name changed or is temporarily unavailable!
             </h5>
-            <Button type="button" className='btn btn-warning' onClick={handleBack}>
-                Back to Home
-            </Button>
+            <Link to="/">
+                <Button type="button" className='btn btn-warning'>
+                    Back to Home
+                </Button>
+            </Link>
         </div>
     </>
   )

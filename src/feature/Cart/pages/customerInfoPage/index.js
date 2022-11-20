@@ -30,6 +30,7 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
   const [address, setAddress] = useState('')
   const [note, setNote] = useState('')
   const [load, setLoad] = useState(false)
+  const [value, setValue] = useState(false)
   const dispatch = useDispatch()
   
   const newOrder = {
@@ -40,14 +41,17 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
     total_price: totalPrice,
   }
 
+  console.log(phoneNum + " " + address)
+
   const {
     register,
     handleSubmit,
     formState: { errors },
 
   } = useForm({
-    mode: "onTouched",
-    resolver: yupResolver(orderSchema)
+    mode: "onSubmit",
+    resolver: yupResolver(orderSchema),
+    reValidateMode: 'onChange',
   })
 
   const onSubmit = () => {
@@ -92,11 +96,12 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
                 </Form.Group>
                 <Form.Group className="my-3">
                   <Form.Label>PhoneNumber</Form.Label>
-                  <Form.Control className={style.formControl} type="text" placeholder="Phone number" 
+                  <Form.Control {...register("phoneNum")} className={style.formControl} type="text" placeholder="Phone number" 
                     name="phoneNum"
                     value={phoneNum}
-                    {...register("phoneNum")}
-                    onChange={(e) => setPhoneNum(e.target.value)}
+                    onChange={e => {setPhoneNum(e.target.value)
+                      setValue(value, true)
+                    }}
                   />
                   <Form.Text className='text-danger'>
                     {errors.phoneNum?.message}
@@ -104,11 +109,12 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
                 </Form.Group>
                 <Form.Group className="my-3">
                   <Form.Label>Address</Form.Label>
-                  <Form.Control className={style.formControl} type="text" placeholder="Address" 
+                  <Form.Control {...register("address")} className={style.formControl} type="text" placeholder="Address" 
                     name="address"
                     value={address}
-                    {...register("address")}
-                    onChange={e => setAddress(e.target.value)}
+                    onChange={e => {setAddress(e.target.value)
+                      setValue(value, true)
+                    }}
                   />
                   <Form.Text className='text-danger'>
                     {errors.address?.message}

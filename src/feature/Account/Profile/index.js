@@ -50,7 +50,7 @@ const Profile = () => {
         handleSubmit,
         formState: {errors}
     } = useForm({
-        mode: 'onTouched',
+        mode: 'onSubmit',
         resolver: yupResolver(profileSchema)
     })
     

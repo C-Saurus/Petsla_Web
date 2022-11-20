@@ -9,6 +9,8 @@ import Register from "./feature/Register/Register";
 import Login from "./feature/Login/Login";
 import CartPopUp from "./components/CartPopUp/CartPopUpList";
 import Profile from "./feature/Account/Profile";
+import Orders from "./feature/Account/Orders"
+import Wishlist from "./feature/Account/WishList"
 import { ToastContainer } from "react-toastify";
 import Missing from "./feature/Missing"
 import EntirePage from "./feature/Cart/pages/EntirePage";
@@ -29,7 +31,9 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         {/* <Route  path='/contact' element={<Contact/>}></Route> */}
-        <Route path="/account/profile" element={<Profile />} component={<Profile />}></Route>
+        <Route path="/account/profile" element={<Profile />} ></Route>
+        <Route path="/account/orders" element={<Orders />} ></Route>
+        <Route path="/account/wishlist" element={<Wishlist />} ></Route>
       </Routes>
       <CartPopUp />
       <Footer></Footer>

@@ -19,23 +19,18 @@ export default function Register() {
         }
     }, [token, navigate])
     const [load, setLoad] = useState(false)
-    const [fname, setFname] = useState("");
-    const [lname, setLname] = useState("");
-    const [email, setEmail] = useState("");
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
     const dispatch = useDispatch();
 
-    const onSubmit = () => {
+    const onSubmit = (data) => {
         setLoad(true)
         const newUser = {
-            firstName: fname,
-            lastName: lname,
-            email: email,
-            username: username,
-            password: password,
-            first_name: fname,
-            last_name: lname,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email,
+            username: data.username,
+            password: data.password,
+            first_name: data.firstName,
+            last_name: data.lastName,
         };
         registerUser(newUser, dispatch).then((res) => {
             console.log(res)
@@ -45,7 +40,7 @@ export default function Register() {
             }
             else {
                 errorToast('Email hoặc Username đã được dùng')
-                setLoad(true)
+                setLoad(false)
             }
         })
     }
@@ -78,40 +73,32 @@ export default function Register() {
                     <Form onSubmit={handleSubmit(onSubmit)}>
                         <Form.Group className="mb-3">
                             <Form.Control type="text" placeholder="First name..."
-                                value={fname}
                                 name='firstName'
-                                {...register('firstName')}
-                                onChange={e => setFname(e.target.value)} />
+                                {...register('firstName', {value: ""})} />
                             <Form.Text className='text-danger'>
                                 {errors.firstName?.message}
                             </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Control type="text" placeholder="Last name..."
-                                value={lname}
                                 name='lastName'
-                                {...register('lastName')}
-                                onChange={e => setLname(e.target.value)} />
+                                {...register('lastName', {value: ""})}/>
                             <Form.Text className='text-danger'>
                                 {errors.lastName?.message}
                             </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Control type="email" placeholder="Email..."
-                                value={email}
                                 name='email'
-                                {...register('email')}
-                                onChange={e => setEmail(e.target.value)} />
+                                {...register('email', {value: ""})} />
                             <Form.Text className='text-danger'>
                                 {errors.email?.message}
                             </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Control type="text" placeholder="Username..."
-                                value={username}
                                 name="username"
-                                {...register("username")}
-                                onChange={e => setUsername(e.target.value)}
+                                {...register("username", {value: ""})}
                             />
                             <Form.Text className='text-danger'>
                                 {errors.username?.message}
@@ -120,10 +107,8 @@ export default function Register() {
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Control type="password" placeholder="Password..."
-                                value={password}
                                 name="password"
-                                {...register("password")}
-                                onChange={e => setPassword(e.target.value)}/>
+                                {...register("password", {value: ""})}/>
                             <Form.Text className='text-danger'>
                                 {errors.password?.message}
                             </Form.Text>

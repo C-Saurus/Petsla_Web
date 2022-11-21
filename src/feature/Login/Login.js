@@ -20,20 +20,20 @@ export default function Login() {
     }
   }, [token, navigate])
   const [load, setLoad] = useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const onSubmit = () => {
+
+  const onSubmit = (data) => {
     setLoad(true);
     const newUser = {
-      username: username,
-      password: password,
+      username: data.username,
+      password: data.password,
     };
     loginUser(newUser, dispatch).then((res) => {
       if (res) {
         successToast("Đăng nhập thành công!");
-        getUsers(localStorage.getItem("token"), dispatch)
-        navigate('/shop', {replace: true})
+        getUsers(localStorage.getItem("token"), dispatch).then(() => {
+          (navigate(-1))
+        })
       } else {
         errorToast("Sai tên đăng nhập hoặc mật khẩu");
         setLoad(false);
@@ -75,10 +75,9 @@ export default function Login() {
               <Form.Control
                 type="text"
                 placeholder="Username..."
-                value={username}
                 name="username"
-                {...register("username")}
-                onChange={(e) => setUsername(e.target.value)}
+                {...register("username", { value: "" })}
+                
               />
               <Form.Text className="text-danger">
                 {errors.username?.message}
@@ -89,10 +88,9 @@ export default function Login() {
               <Form.Control
                 type="password"
                 placeholder="Password..."
-                value={password}
                 name="password"
-                {...register("password")}
-                onChange={(e) => setPassword(e.target.value)}
+                {...register("password", { value: "" })}
+                
               />
               <Form.Text className="text-danger">
                 {errors.password?.message}

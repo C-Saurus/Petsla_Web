@@ -25,19 +25,8 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
     return {product_id: item.id, quantity: item.quantity, price: item.price}
   })
 
-  const [phoneNum, setPhoneNum] = useState('')
-  const [address, setAddress] = useState('')
-  const [note, setNote] = useState('')
   const [load, setLoad] = useState(false)
   const dispatch = useDispatch()
-  
-  const newOrder = {
-    address: address,
-    note: note,
-    number_phone: phoneNum,
-    orderItems: orderItems,
-    total_price: totalPrice,
-  }
 
   const {
     register,
@@ -45,11 +34,11 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
     formState: { errors },
 
   } = useForm({
-    mode: "onTouched",
-    resolver: yupResolver(orderSchema)
+    mode: "onSubmit",
+    resolver: yupResolver(orderSchema),
   })
 
-  const onSubmit = () => {
+  const onSubmit = (data) => {
     setLoad(true)
     if (totalItems === 0) {
       warnToast('Giỏ hàng của bạn đang trống')
@@ -60,6 +49,13 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
       setLoad(false)
     }
     else {
+      const newOrder = {
+        address: data.address,
+        note: data.note,
+        number_phone: data.phoneNum,
+        orderItems: orderItems,
+        total_price: totalPrice,
+      }
       getAddOrder(localStorage.getItem("token"), dispatch, newOrder).then((res) => {
         if (res) {
           successToast('Đã đặt hàng thành công!')
@@ -91,11 +87,8 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
                 </Form.Group>
                 <Form.Group className="my-3">
                   <Form.Label>PhoneNumber</Form.Label>
-                  <Form.Control className={style.formControl} type="text" placeholder="Phone number" 
+                  <Form.Control {...register("phoneNum", {value: ""})} className={style.formControl} type="text" placeholder="Phone number" 
                     name="phoneNum"
-                    value={phoneNum}
-                    {...register("phoneNum")}
-                    onChange={(e) => setPhoneNum(e.target.value)}
                   />
                   <Form.Text className='text-danger'>
                     {errors.phoneNum?.message}
@@ -103,11 +96,8 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
                 </Form.Group>
                 <Form.Group className="my-3">
                   <Form.Label>Address</Form.Label>
-                  <Form.Control className={style.formControl} type="text" placeholder="Address" 
+                  <Form.Control {...register("address", {value: ""})} className={style.formControl} type="text" placeholder="Address" 
                     name="address"
-                    value={address}
-                    {...register("address")}
-                    onChange={e => setAddress(e.target.value)}
                   />
                   <Form.Text className='text-danger'>
                     {errors.address?.message}
@@ -121,8 +111,7 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
                       className={style.formControl}
                       as="textarea"
                       placeholder="Leave a comment here"
-                      value={note}
-                      onChange={e => setNote(e.target.value)}
+                      {...register("note", {value: ""})}
                     />
                   </FloatingLabel>
                 </Form.Group>

@@ -43,9 +43,8 @@ export const orderSchema = yup.object().shape({
     .max(12, "Phone number must be less than 13 number")
     .matches(phoneRegExp, "Phone number is not valid")
     .required('Phone number is required!'),
-  address: yup
-    .string()
-    . required('Address is required')
+  address: yup.string().required('Address is required'),
+  note: yup.string()
 })
 
 export const profileSchema = yup.object().shape({

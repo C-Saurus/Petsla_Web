@@ -73,10 +73,11 @@ export const getOrder = async(accessToken, dispatch) => {
             },
         })
         dispatch(getOrderSuccess(res.data))
-        localStorage.setItem("list_Order", JSON.stringify(res.data))
+        return res.data
+        
     } catch(err) {
         dispatch(getOrderFailed())
-
+        return false
     }
 }
 

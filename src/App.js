@@ -14,6 +14,7 @@ import Wishlist from "./feature/Account/WishList"
 import { ToastContainer } from "react-toastify";
 import Missing from "./feature/Missing"
 import EntirePage from "./feature/Cart/pages/EntirePage";
+import ScrollToTop from "./components/ScrollToTop";
 function App() {
   return (
     <div className="App">
@@ -38,6 +39,7 @@ function App() {
       <CartPopUp />
       <Footer></Footer>
       <ToastContainer/>
+      <ScrollToTop />
     </div>
   );
 }

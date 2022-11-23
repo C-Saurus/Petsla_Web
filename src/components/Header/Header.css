@@ -69,6 +69,7 @@
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
+    cursor: pointer;
   }
   
   .header__nav-first-listIcon-item1-hover {
@@ -81,9 +82,9 @@
     padding: .3rem .5rem;
     border-radius: 3px;
     white-space: nowrap;
-    opacity: 1;
+    opacity: 0;
     transition: .3s;
-   
+    transform: translateY(90%) translateX(-50%);
   }
   
   .header__nav-first-listIcon-item1:hover .header__nav-first-listIcon-item1-hover {
@@ -94,7 +95,6 @@
     display: inline-block;
     margin-top: 3px;
     font-size: 1.625rem;
-    transform: rotate(-20deg); 
     cursor: pointer;
   }
   
@@ -103,18 +103,18 @@
     color: rgb(255, 255, 255);
     position: absolute;
     left: 50%;
-    top: 80%;
+    top: -3%;
     font-size: .875rem;
     padding: .3rem .5rem;
     border-radius: 3px;
     white-space: nowrap;
     opacity: 0;
     transition: .3s;
-    transform: rotate(20deg) translateX(-60%) translateY(65%);  
+    transform: translateY(121.5%) translateX(-50%);
   }
   
   
-  .header__nav-first-listIcon-item2-icon:focus .header__nav-first-listIcon-item2-hover {
+  .header__nav-first-listIcon-item2:hover .header__nav-first-listIcon-item2-hover {
     opacity: 1;
   }
   
@@ -122,10 +122,9 @@
     display: inline-block;
     margin-top: 1px;
     font-size: 1.625rem;
-    transform: rotate(180deg); 
     border: none;
-    background-color: #fff;
     cursor: pointer;
+    transform: rotate(180deg);
   }
   
   
@@ -134,18 +133,29 @@
     color: rgb(255, 255, 255);
     position: absolute;
     left: 50%;
-    top: 95%;
+    top: -3%;
     font-size: .875rem;
     padding: .3rem .5rem;
     border-radius: 3px;
+    white-space: nowrap;
     opacity: 0;
     transition: .3s;
-    transform: rotate(-180deg) translateX(50%) translateY(210%); 
+    transform: rotate(180deg) translateY(81%) translateX(50%);
   }
   
   
-  .header__nav-first-listIcon-item3-icon:hover .header__nav-first-listIcon-item3-hover {
+  .header__nav-first-listIcon-item3:hover .header__nav-first-listIcon-item3-hover {
     opacity: 1;
+  }
+
+  .header__nav-first-listIcon-item3-icon-logout {
+    display: inline-block;
+    margin-top: 1px;
+    font-size: 1.625rem;
+    border: none;
+    transform: rotate(180deg); 
+    background-color: #fff;
+    cursor: pointer;
   }
   
   .header__nav-second {
@@ -293,6 +303,7 @@
     color: black;
     font-size: 1.125rem;
     font-weight: 400;
+    text-decoration: none;
   }
   
   .header__nav-third-link:hover {

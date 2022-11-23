@@ -33,10 +33,9 @@ export default function Register() {
             last_name: data.lastName,
         };
         registerUser(newUser, dispatch).then((res) => {
-            console.log(res)
             if (res) {
                 successToast('Đăng ký thành công!')
-                navigate("/login")
+                navigate(-1)
             }
             else {
                 errorToast('Email hoặc Username đã được dùng')
@@ -50,7 +49,7 @@ export default function Register() {
     }
 
     const handleLogin = () => {
-        navigate("/login")
+        navigate(-1)
     }
 
     const {

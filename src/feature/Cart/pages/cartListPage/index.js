@@ -77,13 +77,14 @@ export default function CartListPage({ cartList, totalItems, totalPrice }) {
                   <Row className="text-center">
                     <div style={{ margin: "-0.5rem 0" }}>
                       {" "}
-                      <Link to="/customer-info">
-                        <Button
-                          className={`${styleBtn.btn} ${styleBtn.btnType2}`}
-                        >
-                          Voucher
-                        </Button>
-                      </Link>
+                      {/* <Link to="/customer-info"> */}
+                      <button
+                        className={`${styleBtn.btn} ${styleBtn.btnType2}`}
+                        type="button"
+                      >
+                        Apply Voucher
+                      </button>
+                      {/* </Link> */}
                     </div>
                   </Row>
                 </Form>
@@ -91,11 +92,11 @@ export default function CartListPage({ cartList, totalItems, totalPrice }) {
                   <div style={{ margin: "-0.5rem 0 0" }}>
                     {" "}
                     <Link to="/customer-info">
-                      <Button
+                      <button
                         className={`${styleBtn.btn} ${styleBtn.btnType1}`}
                       >
                         Checkout
-                      </Button>{" "}
+                      </button>{" "}
                     </Link>
                   </div>
                 </Row>

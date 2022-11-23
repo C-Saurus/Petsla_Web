@@ -37,10 +37,12 @@ const CartPopUp = () => {
 
   const handleViewCart = () => {
     navigate("/cart");
+    dispatch(cartListReducer.actions.displayCartPopUp(false))
   };
 
   const handleCheckOut = () => {
     navigate("/customer-info");
+    dispatch(cartListReducer.actions.displayCartPopUp(false))
   };
 
   const handleClickOutsideCartPopUp = () => {

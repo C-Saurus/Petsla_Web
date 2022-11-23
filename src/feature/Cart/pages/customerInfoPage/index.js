@@ -164,9 +164,9 @@ export default function CustomerInfoPage({totalItems, totalPrice}) {
                       </Link>
                     </Col>
                     <Col lg={6} md={6} sm={6}>
-                      <Button type="submit" className={`${styleBtn.btn} ${styleBtn.btnType1}`} disabled={load}>
+                      <button type="submit" className={`${styleBtn.btn} ${styleBtn.btnType1}`} disabled={load}>
                         Next
-                      </Button>
+                      </button>
                     </Col>
                   </Row>
                 </div>

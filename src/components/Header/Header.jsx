@@ -96,28 +96,30 @@ function Header() {
               </div>
               <div className="header__nav-first-listIcon-item">
                 {!user ? (
-                  <button
+                  <div
                     className="header__nav-first-listIcon-item3"
                     onClick={handleLogin}
                   >
                     <i className="header__nav-first-listIcon-item3-icon fa-solid fa-arrow-right-to-bracket"></i>
-                    <span className="header__nav-first-listIcon-item3-hover">
+                    <span className="header__nav-first-listIcon-item3-hover"
+                    style={{ width: `90px`, textAlign: 'center' }}>
+                    
                       {t("content.login")}
                     </span>
-                  </button>
+                  </div>
                 ) : (
-                  <button
+                  <div
                     className="header__nav-first-listIcon-item3"
                     onClick={handleLogout}
                   >
-                    <i className="header__nav-first-listIcon-item3-icon fa-solid fa-right-from-bracket"></i>
+                    <i className="header__nav-first-listIcon-item3-icon-logout fa-solid fa-arrow-right-to-bracket"></i>
                     <span
                       className="header__nav-first-listIcon-item3-hover"
-                      style={{ width: `100px` }}
+                      style={{ width: `100px`, textAlign: 'center' }}
                     >
                       {t("content.logout")}
                     </span>
-                  </button>
+                  </div>
                 )}
               </div>
             </div>

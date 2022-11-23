@@ -12,5 +12,17 @@
     cursor: pointer;
     transition: 0.3s;
     z-index: 12;
+    opacity: 0;
 }
 
+.backToTopBtn.active {
+    opacity: 0.7;
+}
+
+.backToTopBtn.active:hover{
+    opacity: 1;
+}
+.backToTopBtn i{
+    font-size: 1.5rem;
+    color: #fff;
+}

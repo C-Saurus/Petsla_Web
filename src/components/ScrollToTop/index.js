@@ -13,7 +13,7 @@ export default function ScrollToTop() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 1000) {
+      if (window.pageYOffset > 500) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -27,11 +27,10 @@ export default function ScrollToTop() {
 
   return (
     <div
-      className={style.backToTopBtn}
+      className={[style.backToTopBtn, isVisible ? style.active : ""].join(" ")}
       onClick={scrollToTop}
-      style={{ opacity: isVisible ? "0.7" : "0" }}
     >
-      <i class="fas fa-chevron-up" style={{ color: "#fff" }}></i>
+      <i className="fas fa-chevron-up"></i>
     </div>
   );
 }

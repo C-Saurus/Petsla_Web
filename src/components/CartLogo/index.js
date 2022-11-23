@@ -23,7 +23,7 @@ export default function CartLogo() {
     }
     return (
         <div className="header__nav-second-btn" >
-            <div className="header__nav-second-btn-item">
+            <div className="header__nav-second-btn-item" onClick={handleCartLogo}>
                 <button className="fa-solid fa-cart-shopping header__nav-second-btn-icon" style={{ border: "none", backgroundColor: "transparent" }} onClick={handleCartLogo}>
                 </button>
                 <span className="header__nav-second-btn-num">{cartQuantity}</span>

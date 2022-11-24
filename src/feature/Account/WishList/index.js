@@ -14,7 +14,7 @@ const Wishlist = () => {
                 <Row >
                     <Dashboard />
                     <Col lg={9} >
-                        <div className={style.account_page_header} class="d-md-block d-lg-flex">
+                        <div className ="d-md-block d-lg-flex">
                             <div className={style.titleWrap}>
                                 <div className={style.title}>
                                     <i style={{ marginRight: "10px" }} class="bi bi-heart-fill"></i>

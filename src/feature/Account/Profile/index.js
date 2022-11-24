@@ -31,36 +31,36 @@ const Profile = () => {
         }
         setIsEdit(!isEdit)
     }
-    
-    const handleEmailChange = (e) =>{
+
+    const handleEmailChange = (e) => {
         setMail(e.target.value)
     }
-    const handleFirstChange = (e) =>{
+    const handleFirstChange = (e) => {
         setFirst(e.target.value)
     }
-    const handleLastChange = (e) =>{
+    const handleLastChange = (e) => {
         setLast(e.target.value)
     }
-    const handlePhoneChange = (e) =>{
+    const handlePhoneChange = (e) => {
         setPhone(e.target.value)
     }
 
     const {
         register,
         handleSubmit,
-        formState: {errors}
+        formState: { errors }
     } = useForm({
         mode: 'onSubmit',
         resolver: yupResolver(profileSchema)
     })
-    
+
     return (
         <div className={style.account_page}>
             <Container>
                 <Row >
                     <Dashboard />
                     <Col lg={9} >
-                        <div className={[style.account_page_header, "d-md-block d-lg-flex d-sm-block"].join(' ')}>
+                        <div className={[style.account_page_header, "d-md-block d-lg-flex d-sm-block d-xs-block"].join(' ')}>
                             <div className={style.titleWrap}>
                                 <div className={style.title}>
                                     <i style={{ marginRight: "10px" }} className="bi bi-person-fill"></i>
@@ -71,8 +71,10 @@ const Profile = () => {
                                 </div>
                             </div>
 
-                            <button type='submit' onClick={handleEditClick} className={style.editBtn}>{isEdit === true ? "Save" : "Edit Profile"}
-                            </button>
+                            <div>
+                                <button type='submit' onClick={handleEditClick} className={style.editBtn}>{isEdit === true ? "Save" : "Edit Profile"}
+                                </button>
+                            </div>
 
                         </div>
                         <div className={[style.profileInfo, "d-lg-flex d-sm-block d-md-flex bg-light"].join(' ')} style={{ justifyContent: "space-between", backgroundColor: "transparent", marginTop: "10px" }}>
@@ -88,8 +90,8 @@ const Profile = () => {
                                 </div>
                                 <div style={{ padding: "35px 20px", fontSize: "1.4rem" }}>Diamond User</div>
                             </Col>
-                            <Col lg={6} md={6} sm={12} xs ={12}className="d-lg-flex"
-                                style={{justifyContent: "space-around" }}>
+                            <Col lg={6} md={6} sm={12} xs={12} className="d-lg-flex"
+                                style={{ justifyContent: "space-around" }}>
                                 <Col className="d-flex lg-6 md-6 sm-12 xs-12" style={{ justifyContent: "space-around" }}>
                                     <Col lg={5} md={5} sm={6} xs={6} className="shadow-sm rounded"
                                         style={{ backgroundColor: "white", padding: "10px 0" }}>
@@ -124,11 +126,11 @@ const Profile = () => {
                                         <Form.Control
                                             className={style.formControl}
                                             type="text"
-                                            disabled = {!isEdit}
-                                            value = {first}
+                                            disabled={!isEdit}
+                                            value={first}
                                             name='first_name'
                                             {...register('first_name')}
-                                            onChange = {handleFirstChange}
+                                            onChange={handleFirstChange}
                                         />
                                         <Form.Text className='text-danger'>
                                             {errors.first_name?.message}
@@ -139,11 +141,11 @@ const Profile = () => {
                                         <Form.Control
                                             className={style.formControl}
                                             type="text"
-                                            disabled = {!isEdit}
-                                            value = {last}
+                                            disabled={!isEdit}
+                                            value={last}
                                             name='last_name'
                                             {...register('last_name')}
-                                            onChange = {handleLastChange}
+                                            onChange={handleLastChange}
                                         />
                                         <Form.Text className='text-danger'>
                                             {errors.last_name?.message}
@@ -154,10 +156,10 @@ const Profile = () => {
                                         <Form.Control
                                             className={style.formControl}
                                             type="text"
-                                            disabled = {!isEdit}
-                                            value = {eMail}
+                                            disabled={!isEdit}
+                                            value={eMail}
                                             {...register('email')}
-                                            onChange = {handleEmailChange}
+                                            onChange={handleEmailChange}
                                         />
                                         <Form.Text className='text-danger'>
                                             {errors.email?.message}
@@ -168,9 +170,9 @@ const Profile = () => {
                                         <Form.Control
                                             className={style.formControl}
                                             type="text"
-                                            disabled = {!isEdit}
-                                            value = {phone}
-                                            onChange = {handlePhoneChange}
+                                            disabled={!isEdit}
+                                            value={phone}
+                                            onChange={handlePhoneChange}
                                         />
                                     </Form.Group>
                                 </Form>
@@ -178,15 +180,15 @@ const Profile = () => {
                                 <div className='gender' >
                                     <div>Gender</div>
                                     <div className='d-flex justify-content-between'>
-                                        <div className="form-check" disabled = {!isEdit}>
+                                        <div className="form-check" disabled={!isEdit}>
                                             <input type="radio" className="form-check-input" id="radio1" name="optradio" value="male" defaultChecked />Male
                                             <label className="form-check-label" htmlFor="radio1"></label>
                                         </div>
-                                        <div className="form-check" disabled = {!isEdit}>
+                                        <div className="form-check" disabled={!isEdit}>
                                             <input type="radio" className="form-check-input" id="radio2" name="optradio" value="female" />Female
                                             <label className="form-check-label" htmlFor="radio2"></label>
                                         </div>
-                                        <div className="form-check" disabled = {!isEdit}>
+                                        <div className="form-check" disabled={!isEdit}>
                                             <input type="radio" className="form-check-input" id="radio3" name="optradio" value="others" />Others
                                             <label className="form-check-label" htmlFor="radio3"></label>
                                         </div>

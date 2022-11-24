@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 // import { successToast, warnToast } from '../../../utils/toastify'
 // import { useNavigate } from 'react-router-dom'
 import Dashboard from '../Dashboard'
-import { Container, Row, Col, Card, Form } from 'react-bootstrap'
+import { Col } from 'react-bootstrap'
 // import style from '../Profile/style.module.css'
 import { warnToast } from '../../../utils/toastify'
 import { useNavigate } from 'react-router'
@@ -66,102 +66,94 @@ const Orders = () => {
     };
 
     return (
-        <div className={style.account_page}>
-            <Container>
-                <Row >
-                    <Dashboard />
-                    <Col lg={9} >
-                        <div className="d-md-block d-lg-flex" >
-                            <div className={style.titleWrap}>
-                                <div className={style.title}>
-                                    <i style={{ marginRight: "10px" }} className="bi bi-bag-fill"></i>
-                                    <span style={{ color: "black" }}>My Orders</span>
-                                </div>
-                                <div className={[style.show_dashboard_btn, "d-lg-none d-block"].join(' ')}>
-                                    <i class="bi bi-list"></i>
-                                </div>
-                            </div>
+        <Col lg={9} >
+            <div className="d-md-block d-lg-flex" >
+                <div className={style.titleWrap}>
+                    <div className={style.title}>
+                        <i style={{ marginRight: "10px" }} className="bi bi-bag-fill"></i>
+                        <span style={{ color: "black" }}>My Orders</span>
+                    </div>
+                    <div className={[style.show_dashboard_btn, "d-lg-none d-block"].join(' ')}>
+                        <i class="bi bi-list"></i>
+                    </div>
+                </div>
+            </div>
+            <div className={[style.orderList, "list-group list-group-flush"].join(' ')} style={{ backgroundColor: "transparent" }}>
+                <div className={style.orderListHeader}>
+                    <div className='col-2'>#</div>
+                    <div className='col-2'>Order</div>
+                    <div className='col-2'>Status</div>
+                    <div className='col-2'>Time Placed</div>
+                    <div className='col-2'>Total Price</div>
+                </div>
+                {ords.map((item, index) => (
+                    <div key={item.id} className={[style.orderListItem, 'list-group-item', 'shadow-sm rounded'].join(' ')} style={{ backgroundColor: "rgba(255,255,255,0.4)", marginBottom: "10px" }}>
+                        <div className='col-2'>{index}</div>
+                        <div className='col-2'>{item.id}</div>
+                        <div className='col-2'>
+                            <span className={style.orderStatus}>pending</span>
                         </div>
-                        <div className={[style.orderList, "list-group list-group-flush"].join(' ')} style={{ backgroundColor: "transparent" }}>
-                            <div className={style.orderListHeader}>
-                                <div className='col-2'>#</div>
-                                <div className='col-2'>Order</div>
-                                <div className='col-2'>Status</div>
-                                <div className='col-2'>Time Placed</div>
-                                <div className='col-2'>Total Price</div>
-                            </div>
-                            {ords.map((item, index) => (
-                                <div key={item.id} className={[style.orderListItem, 'list-group-item', 'shadow-sm rounded'].join(' ')} style={{ backgroundColor: "rgba(255,255,255,0.4)", marginBottom: "10px" }}>
-                                    <div className='col-2'>{index}</div>
-                                    <div className='col-2'>{item.id}</div>
-                                    <div className='col-2'>
-                                        <span className={style.orderStatus}>pending</span>
-                                    </div>
-                                    <div className='col-2'>{new Date(item.created_at).toLocaleDateString() + " "
-                                        + new Date(item.created_at).toLocaleTimeString()}</div>
-                                    <div className='col-2'>{item.total_price}</div>
-                                </div>
-                            ))}
-                        </div>
-                        <div className={style.PaginationCustom}>
-                            <ul className={style.pagination}>
-                                <li
-                                    className={[
-                                        style.pageItem,
-                                        currentPage === 1 ? `${style.disabled}` : "",
-                                    ].join(" ")}
-                                >
-                                    <button
-                                        className={style.pageLink}
-                                        onClick={() => handleShiftLeftPage()}
-                                    >
-                                        &laquo;
-                                    </button>
-                                </li>
+                        <div className='col-2'>{new Date(item.created_at).toLocaleDateString() + " "
+                            + new Date(item.created_at).toLocaleTimeString()}</div>
+                        <div className='col-2'>{item.total_price}</div>
+                    </div>
+                ))}
+            </div>
+            <div className={style.PaginationCustom}>
+                <ul className={style.pagination}>
+                    <li
+                        className={[
+                            style.pageItem,
+                            currentPage === 1 ? `${style.disabled}` : "",
+                        ].join(" ")}
+                    >
+                        <button
+                            className={style.pageLink}
+                            onClick={() => handleShiftLeftPage()}
+                        >
+                            &laquo;
+                        </button>
+                    </li>
 
-                                {pages.map((val) => {
-                                    return (
-                                        <li key={val + 1} className={style.pageItem}>
-                                            <button
-                                                className={[
-                                                    style.pageLink,
-                                                    val + 1 === currentPage ? `${style.active}` : "",
-                                                ].join(" ")}
-                                                onClick={() => handleChangePage(val + 1)}
-                                            >
-                                                {val + 1}
-                                            </button>
-                                        </li>
-                                    );
-                                })}
-                                <li
+                    {pages.map((val) => {
+                        return (
+                            <li key={val + 1} className={style.pageItem}>
+                                <button
                                     className={[
-                                        style.pageItem,
-                                        currentPage === pages.length ? `${style.disabled}` : "",
+                                        style.pageLink,
+                                        val + 1 === currentPage ? `${style.active}` : "",
                                     ].join(" ")}
+                                    onClick={() => handleChangePage(val + 1)}
                                 >
-                                    <button
-                                        className={style.pageLink}
-                                        onClick={() => handleShiftRightPage()}
-                                    >
-                                        &raquo;
-                                    </button>
-                                </li>
-                            </ul>
-                            <div className="">
-                                <label htmlFor="itemsPerPage">Items / Page</label>
-                                <select id = "itemsPerPage"  className="" onChange={handleChangeProducts}>
-                                    <option value="5">5</option>
-                                    <option value="10">10</option>
-                                    <option value="15">15</option>
-                                </select>
-                            </div>
-                        </div>
-                    </Col>
-
-                </Row>
-            </Container>
-        </div>
+                                    {val + 1}
+                                </button>
+                            </li>
+                        );
+                    })}
+                    <li
+                        className={[
+                            style.pageItem,
+                            currentPage === pages.length ? `${style.disabled}` : "",
+                        ].join(" ")}
+                    >
+                        <button
+                            className={style.pageLink}
+                            onClick={() => handleShiftRightPage()}
+                        >
+                            &raquo;
+                        </button>
+                    </li>
+                </ul>
+                <div className="">
+                    <label htmlFor="itemsPerPage">Items / Page</label>
+                    <select id="itemsPerPage" className="" onChange={handleChangeProducts}>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                    </select>
+                </div>
+            </div>
+        </Col>
     )
 }
 export default Orders

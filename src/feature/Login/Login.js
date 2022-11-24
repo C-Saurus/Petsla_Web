@@ -9,7 +9,7 @@ import { successToast, errorToast, warnToast } from "../../utils/toastify/index"
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../utils/validateForm/index";
-
+import SideDashboard from "../Account/SideDashboard";
 export default function Login() {
   const token = localStorage.getItem("token")
   const navigate = useNavigate();
@@ -130,6 +130,7 @@ export default function Login() {
           </div>
         </Modal.Body>
       </Modal>
+      <SideDashboard/>
     </div>
   );
 }

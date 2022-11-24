@@ -60,7 +60,7 @@ const Profile = () => {
                 <Row >
                     <Dashboard />
                     <Col lg={9} >
-                        <div className={[style.account_page_header, "d-md-block d-lg-flex d-sm-block d-xs-block"].join(' ')}>
+                        <div className="d-md-block d-lg-flex d-sm-block d-xs-block">
                             <div className={style.titleWrap}>
                                 <div className={style.title}>
                                     <i style={{ marginRight: "10px" }} className="bi bi-person-fill"></i>

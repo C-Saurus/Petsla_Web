@@ -7,8 +7,8 @@
     justify-content: center;
     align-items: center;
     position: fixed;
-    bottom: 3.125rem;
-    right: 2.5rem;
+    bottom: 6rem;
+    right: 2rem;
     cursor: pointer;
     transition: 0.3s;
     z-index: 12;

@@ -13,13 +13,31 @@ const Footer = () => {
     const { t } = useTranslation()
     useEffect(() => {
         switch (location.pathname) {
-            case "/": setIsActive(1); break;
-            case "/shop": setIsActive(2); break;
-            case "/cart": setIsActive(3); break;
-            case "/account/orders": setIsActive(4); break;
-            case "/account/wishlist": setIsActive(4); break;
-            case "/account/profile": setIsActive(4); break;
-            
+            case "/":
+                setIsActive(1);
+                window.scrollTo(0, 0);
+                break;
+            case "/shop":
+                setIsActive(2);
+                window.scrollTo(0, 0);
+                break;
+            case "/cart":
+                setIsActive(3);
+                window.scrollTo(0, 0);
+                break;
+            case "/account/orders":
+                setIsActive(4);
+                window.scrollTo(0, 0);
+                break;
+            case "/account/wishlist":
+                setIsActive(4);
+                window.scrollTo(0, 0);
+                break;
+            case "/account/profile":
+                setIsActive(4);
+                window.scrollTo(0, 0);
+                break;
+
         }
     }, [location]);
     return (

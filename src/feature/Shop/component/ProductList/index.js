@@ -105,8 +105,8 @@ const ProductList = () => {
                 </li>
               </ul>
               <div className="">
-                <label htmlFor="sort-by"> Products Per Page </label>
-                <select className="" onChange={handleChangeProducts}>
+                <label htmlFor="itemsPerPage">Items / Page</label>
+                <select id="itemsPerPage" className="" onChange={handleChangeProducts}>
                   <option value="12">12</option>
                   <option value="24">24</option>
                   <option value="36">36</option>

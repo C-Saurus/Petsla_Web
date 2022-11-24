@@ -34,6 +34,8 @@ function Header() {
   };
 
   const handleSearch = (e) => {
+    if (location.pathname !== "/shop")
+      navigate("/shop")
     e.preventDefault();
     dispatch(FilterSlice.actions.setSearchText(searchTxt));
     window.scrollTo(0, 0);
@@ -102,8 +104,8 @@ function Header() {
                   >
                     <i className="header__nav-first-listIcon-item3-icon fa-solid fa-arrow-right-to-bracket"></i>
                     <span className="header__nav-first-listIcon-item3-hover"
-                    style={{ width: `90px`, textAlign: 'center' }}>
-                    
+                      style={{ width: `90px`, textAlign: 'center' }}>
+
                       {t("content.login")}
                     </span>
                   </div>

@@ -180,16 +180,16 @@ const Profile = () => {
                                 <div className='gender' >
                                     <div>Gender</div>
                                     <div className='d-flex justify-content-between'>
-                                        <div className="form-check" disabled={!isEdit}>
-                                            <input type="radio" className="form-check-input" id="radio1" name="optradio" value="male" defaultChecked />Male
+                                        <div className="form-check" >
+                                            <input disabled={!isEdit} type="radio" className="form-check-input" id="radio1" name="optradio" value="male" defaultChecked />Male
                                             <label className="form-check-label" htmlFor="radio1"></label>
                                         </div>
-                                        <div className="form-check" disabled={!isEdit}>
-                                            <input type="radio" className="form-check-input" id="radio2" name="optradio" value="female" />Female
+                                        <div className="form-check" >
+                                            <input disabled={!isEdit} type="radio" className="form-check-input" id="radio2" name="optradio" value="female" />Female
                                             <label className="form-check-label" htmlFor="radio2"></label>
                                         </div>
-                                        <div className="form-check" disabled={!isEdit}>
-                                            <input type="radio" className="form-check-input" id="radio3" name="optradio" value="others" />Others
+                                        <div className="form-check" >
+                                            <input disabled={!isEdit} type="radio" className="form-check-input" id="radio3" name="optradio" value="others" />Others
                                             <label className="form-check-label" htmlFor="radio3"></label>
                                         </div>
                                     </div>

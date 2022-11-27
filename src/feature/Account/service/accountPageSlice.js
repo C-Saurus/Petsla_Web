@@ -1,4 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-// const accountPageSlice = createSlice()
+export const accountPageSlice = createSlice({
+    name : "sidedashboard",
+    initialState:{
+        status: false
+    },
+    reducers:{
+        displaySideDashboard: (state, action) => {
+            state.status = action.payload;
+        }
+    }
+})

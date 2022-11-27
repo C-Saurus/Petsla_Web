@@ -3,6 +3,7 @@ import { FilterSlice } from '../components/Header/filterSlice';
 import { cartListReducer } from '../feature/Cart/service/cartSlice';
 import {selectProductReducer} from '../feature/Shop/service/productSlice';
 import {productListReducer} from '../feature/Shop/service/productListSlice';
+import { accountPageSlice } from '../feature/Account/service/accountPageSlice';
 import authReducer from '../service/authSlice'
 import userReducer from '../service/userSlice'
 const store = configureStore({
@@ -11,6 +12,7 @@ const store = configureStore({
         selectProduct: selectProductReducer.reducer,
         cartListProducts: cartListReducer.reducer,
         filter: FilterSlice.reducer,
+        sideDashboard: accountPageSlice.reducer,
         // auth
         auth: authReducer,
         user: userReducer

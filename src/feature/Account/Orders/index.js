@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 // import { useDispatch } from 'react-redux'
 // import { successToast, warnToast } from '../../../utils/toastify'
 // import { useNavigate } from 'react-router-dom'
-import Dashboard from '../Dashboard'
 import { Col } from 'react-bootstrap'
 // import style from '../Profile/style.module.css'
 import { warnToast } from '../../../utils/toastify'
@@ -74,7 +73,7 @@ const Orders = () => {
                         <span style={{ color: "black" }}>My Orders</span>
                     </div>
                     <div className={[style.show_dashboard_btn, "d-lg-none d-block"].join(' ')}>
-                        <i class="bi bi-list"></i>
+                        <i className="bi bi-list"></i>
                     </div>
                 </div>
             </div>

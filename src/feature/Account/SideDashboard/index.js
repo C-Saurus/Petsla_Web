@@ -16,6 +16,7 @@ const SideDashboard = () => {
     }
 
     useEffect(() => {
+
         switch (location.pathname) {
             case "/account/orders":
                 setIsActive(1);
@@ -27,6 +28,7 @@ const SideDashboard = () => {
                 setIsActive(3)
                 break;
         }
+        dispatch(accountPageSlice.actions.displaySideDashboard(false))
     }, [location])
 
     return (

@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux'
 // import SideDashboard from '../SideDashboard'
 import style from './style.module.css';
 import 'bootstrap/dist/css/bootstrap.css'
-
+import {accountPageSlice} from '../service/accountPageSlice'
 const Orders = () => {
     const navigate = useNavigate()
     const token = localStorage.getItem("token")
@@ -63,7 +63,10 @@ const Orders = () => {
         setCurrentPage(1);
         setOrdersPerPage(parseInt(e.target.value));
     };
+    const handleShowDashboardbtn = () => {
 
+        ditpatch(accountPageSlice.actions.displaySideDashboard(true))
+    }
     return (
         <Col lg={9} >
             <div className="d-md-block d-lg-flex" >
@@ -73,7 +76,7 @@ const Orders = () => {
                         <span style={{ color: "black" }}>My Orders</span>
                     </div>
                     <div className={[style.show_dashboard_btn, "d-lg-none d-block"].join(' ')}>
-                        <i className="bi bi-list"></i>
+                        <i onClick={handleShowDashboardbtn} className="bi bi-list"></i>
                     </div>
                 </div>
             </div>

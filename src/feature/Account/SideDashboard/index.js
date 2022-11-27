@@ -2,18 +2,20 @@ import style from './style.module.css'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { sideDashboardSelector } from '../../../service/selectors'
+import { accountPageSlice } from '../service/accountPageSlice'
 const SideDashboard = () => {
     
     const location = useLocation()
+    const dispatch = useDispatch()
     const [isActive, setIsActive] = useState(1)
-    const [isShow, setIsShow] = useState(false)
+    const status = useSelector(sideDashboardSelector)
     const handleCloseButton = () => {
-        setIsShow(false)
+        dispatch(accountPageSlice.actions.displaySideDashboard(false))
     }
 
     useEffect(() => {
-        console.log(location.pathname)
         switch (location.pathname) {
             case "/account/orders":
                 setIsActive(1);
@@ -28,11 +30,11 @@ const SideDashboard = () => {
     }, [location])
 
     return (
-        <div className={style.modal} style={{display: isShow === true ? "flex": "flex"}}>
+        <div className={style.modal} style={{display: status === true ? "flex": "none"}}>
             <div className={style.pane}>
                 <div
                     style={{ fontSize: "1.5rem", marginLeft: "20px", marginBottom: "50px" }}>
-                    <i class="bi bi-x-square" onClick={handleCloseButton}></i>
+                    <i className="bi bi-x-square" onClick={handleCloseButton}></i>
                 </div>
                 <h5 className={style.dashboard_header}>Dashboard</h5>
                 <ul className={style.dashboard_nav_list}>

@@ -7,8 +7,11 @@ import { useState } from 'react'
 import { profileSchema } from '../../../utils/validateForm'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useDispatch } from 'react-redux'
+import { accountPageSlice } from '../service/accountPageSlice'
 
 const Profile = () => {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const token = localStorage.getItem("token")
     useEffect(() => {
@@ -44,6 +47,10 @@ const Profile = () => {
         setPhone(e.target.value)
     }
 
+    const handleShowDashboardbtn = () => {
+
+        dispatch(accountPageSlice.actions.displaySideDashboard(true))
+    }
     const {
         register,
         handleSubmit,
@@ -62,7 +69,7 @@ const Profile = () => {
                         <span style={{ color: "black" }}>My Profile</span>
                     </div>
                     <div className={[style.show_dashboard_btn, "d-lg-none d-md-block d-sm-block d-xs-block"].join(' ')}>
-                        <i className="bi bi-list"></i>
+                        <i onClick={handleShowDashboardbtn} className="bi bi-list"></i>
                     </div>
                 </div>
 

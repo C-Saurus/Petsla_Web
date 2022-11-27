@@ -32,7 +32,7 @@ const AccountPage = () => {
                 </Row>
 
             </Container>
-            {/* <SideDashboard/> */}
+            <SideDashboard />
         </div>
     )
 }
